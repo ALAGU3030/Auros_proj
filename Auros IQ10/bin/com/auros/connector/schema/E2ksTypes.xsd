@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<!-- avoid attributes named "id". They cause problems in gsoap at least-->
+<!-- avoid attributes named "id". They cause problems in gsoap at least-->
+
+<xs:schema version="1.0"  targetNamespace="http://e2ks.emergent.com/types" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xmime="http://www.w3.org/2005/05/xmlmime"  xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+            jxb:version="1.0"
+xmlns="http://e2ks.emergent.com/types"
+elementFormDefault="qualified"
+>
+
+  <!-- Generic Version Information. Runtime Client side branching decisions can be based on this.  -->
+  <xs:complexType name="E2KSInstallationInfo">
+    <xs:sequence>
+      <xs:element name="version" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="customer" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="serverInstance" type="xs:string" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="RuleColumn">
+    <xs:sequence>
+      <xs:element name="columnName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="columnType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="ruleParameter" type="Parameter" minOccurs="1"  maxOccurs="1" />
+      <!-- list of parameters needed to evaluate this column. Aggregate of parameters for each value  -->
+      <xs:element name="neededParameters" type="Parameter" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="logicalStatement" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="columnPosition" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="functionOf" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="function" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="kbePreCondition" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="kbeURL" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="kbeOtherInfo" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="tolerance1" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="tolerance1Type" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="tolerance2" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="tolerance2Type" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="grouping" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="groupingName" type="xs:string" minOccurs="0"  maxOccurs="1" />
+
+      <xs:element name="linkType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="linkedKPac" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="prettyName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="idx" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="dependentColumn" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  
+      <xs:element name="color" type="xs:string" minOccurs="1"  maxOccurs="1">
+		<xs:annotation>
+		  <xs:appinfo xml:space="default">
+			<jxb:property>
+					 <jxb:javadoc>The segmented color score of the column. This is different from columnType being "color" which means that cell values of the column are colors.</jxb:javadoc>
+			</jxb:property> 
+		  </xs:appinfo>
+		</xs:annotation>	  
+	  </xs:element>
+      <xs:element name="values" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="ruleColumnProperties" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="prettyNameIdx" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="comment" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="isDefinition" type="xs:string" minOccurs="0"  maxOccurs="1" />
+
+
+
+    </xs:sequence>
+  </xs:complexType >
+
+
+  <xs:complexType name="AurosIdentifier">
+    <xs:sequence>
+
+      <xs:element name="identifiers" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+
+  </xs:complexType>
+
+  <xs:complexType name="AurosAttachment">
+    <xs:annotation>
+      <xs:documentation xml:space="default">
+        AurosAttachment represents files associated with various Auros Objects such as K-Pacs etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+
+      <xs:element name="attachmentIdentifier" type="AurosIdentifier" minOccurs="1" maxOccurs="1" />
+      <xs:element name="fileTypeID" type="xs:int"  />
+      <xs:element name="fileName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="longDescription" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="documentDescription" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="supportDocText" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="fileOrder" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="content" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="consecutiveURLValue" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="proposeMode" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="outOfDate" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="uploadedBy" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="uploadedOn" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="mediaType" type="xs:string"  />
+      <xs:element name="width" type="xs:int"  />
+      <xs:element name="height" type="xs:int"  />
+
+    </xs:sequence>
+  </xs:complexType >
+
+  
+  <xs:complexType name="KPac">
+
+    <xs:annotation>
+      <xs:documentation xml:space="default">
+        KPac is the fundamental representation of Knowledge items in E2KS. A KPac contains meta data, documentation, etc., of rules or requirements.
+        The rules are structured in a tabular form and allow capture and use of Know-how in multiple contexts or applications such as CAD systems, PLM systems etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="kpacHeader" type="KPacHeader" minOccurs="1" maxOccurs="1" />
+
+
+      <xs:element name="justification" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="measurementRef" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="additionalInfo" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="kpacType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="kpacGroupType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="versionId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="contact" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="riskLevel" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="bornOnDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="sunSetDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastUpdateDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="publishedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  
+      <xs:element name="status" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="author" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="origination" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="compositeVitalityScore" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="nonConformanceComponent" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="usageComponent" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="sunsetComponent" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="publicAccessPolicy" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="ruleColumns" type="RuleColumn" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="productCodes" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="requiredOfs" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="supportDocuments" type="AurosAttachment" minOccurs="0"  maxOccurs="unbounded" />
+
+      <xs:element name="kpacAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+
+
+      <xs:element name="kpacAttachments" type="AurosAttachment" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="vtAttachments" type="AurosAttachment" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="validationMessages" type="Message" minOccurs="0"  maxOccurs="unbounded" />
+	  <xs:element name="kpacChapters" type="Chapter" minOccurs="0"  maxOccurs="unbounded" />
+	  <xs:element name="methodDetails" type="Method" minOccurs="0"  maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+
+
+  <xs:complexType name="E2KSAttributeList">
+    <xs:sequence>
+      <xs:element name="containerID" type="AurosIdentifier" minOccurs="1" maxOccurs="1" />
+      <xs:element name="exists" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="attributeValue" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType >
+
+
+  <xs:complexType name="E2KSAttribute">
+    <xs:sequence>
+      <xs:element name="attributeName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="attributeValue" type="xs:string" minOccurs="1"  maxOccurs="unbounded" />
+      <xs:element name="attributeType" type="xs:string" minOccurs="1" maxOccurs="1" />
+	  <xs:element name="attributeDataType" type="xs:string" minOccurs="1" maxOccurs="1" />
+	  <xs:element name="attributeOrder" type="xs:int" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+  
+
+
+  <!--  To be removed InputOptions to be used instead -->
+  <xs:complexType name="OutputOptions">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="value" type="xs:string" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+
+  <!-- Things like how a webcall is processed, when several loosely tied possibilities exist. Eg. "UseTargetValues=True" 
+ This also provides a way to extend call  behavior without changing the schema,wsdl for minor bug fixes, enhancements. -->
+  <xs:complexType name="InputOptions">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="value" type="xs:string" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+
+
+
+  <!-- holds identifying and content descriptive information -->
+  <xs:complexType name="CoPHeader">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  <xs:element name="categoryPath" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+    </xs:sequence>
+    <xs:attribute name="copId" type="xs:string"/>
+  </xs:complexType >
+
+
+
+  <xs:complexType name="CoP">
+    <xs:sequence>
+
+      <xs:element name="copHeader" type="CoPHeader" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="sunsetIncrement" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="openAuthorship" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="publicAccessPolicy" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentTrackingYN" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="tclAuthorshipPolicyId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentTitle" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="projectDisplayName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="mileStoneDisplayName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="subProjectDisplayName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="mapExtRegToSubProject" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="mapRegId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="parameterCheckName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="mapRegIdToMileStone" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentAttachments" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentActuals" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentApprovals" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentApprovalType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="projectProjSpaceMapping" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="subProjectProjSpaceMapping" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="startupPage" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="startupKpac" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="confGlobalPalletId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentTargets" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentDiscussion" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentParamView" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentBasicView" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentCascadeView" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentDefaultView" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="raiseIssue" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <!-- flexible association of properties to CoP -->
+      <xs:element name="copAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="kpacAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="setAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="aceeAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="acseAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+	  <xs:element name="contentKPacHeaders" type="KPacHeader" minOccurs="0"  maxOccurs="unbounded" />
+	  <xs:element name="milestones" type="Milestone" minOccurs="0"  maxOccurs="unbounded" />
+	  <xs:element name="subProjects" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+
+
+    </xs:sequence>
+    <!-- <xs:attribute name="copId" type="xs:string"/> -->
+  </xs:complexType >
+  
+  <xs:complexType name="Milestone">
+    <xs:sequence>
+		<xs:element name="milestoneVersion" type="xs:string" minOccurs="1"  maxOccurs="1" />
+		<xs:element name="milestoneScope" type="xs:string" minOccurs="1"  maxOccurs="1" />
+		<xs:element name="milestoneNames" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+	</xs:sequence>
+  </xs:complexType >
+
+
+
+  <!-- Dimension tells what fundamental quantity is measured. Eg. Mass, Length, Time -->
+
+  <!-- The documentation in documentation element goes to the generated code in Java, etc. -->
+  <xs:complexType name="Dimension">
+    <xs:annotation>
+      <xs:documentation xml:space="default">
+        Dimension tells what fundamental quantity is measured. Eg. Mass, Length, Time
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="descriptiveName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="exponent" type="xs:double" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+  </xs:complexType >
+
+  <!-- CompoundDimension tells what quantity is measured. These are expressed as compounded dimensions, eg. Speed - Length/Time -->
+  <xs:complexType name="CompoundDimension">
+    <xs:sequence>
+      <xs:element name="dimensions" type="Dimension" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="name" type="xs:string"  />
+    </xs:sequence>
+	
+    <xs:attribute name="categoryID" type="xs:int"/>
+ </xs:complexType >
+
+  <!-- Unit tells how a quantity is measured w.r.t a standard. For a Dimension there may be multiple standards. Standards may be prototypes or based on physical constants. 
+This unit is used to represent a "Compound Unit" also such as mtr*mtr. All Units have a dimension associated, but rather than have this association as an explicit membership of Unit, 
+the CompoundDimension is always computed? -->
+  <xs:complexType name="Unit">
+    <xs:sequence>
+      <xs:element name="descriptiveName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  <xs:element name="compoundDimension" type="CompoundDimension" />
+      <xs:element name="validationMessage" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="categoryID" type="xs:int"/>
+    <xs:attribute name="scaleFactor" type="xs:double"/>
+    <xs:attribute name="scaleFactorComputed" type="xs:boolean"/>
+
+ 	
+  </xs:complexType >
+
+
+  <!-- Represents a Parameter or variable in a system of rules/expressions/equations stored in Value Columns or Rule Columns of K-PACS-->
+  <xs:complexType name="Parameter">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="dimension" type="CompoundDimension" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="unit" type="Unit" minOccurs="0"  maxOccurs="1" />
+      
+      <!-- a list of reference values for reference types -->
+      <xs:element name="referenceValues" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+
+    </xs:sequence>
+    <xs:attribute name="dataType" type="xs:string"/>
+
+    <!-- Can hold values such as Nominal, Default, Minimum, Derived etc., 
+	 duplication of field columnType in RuleColumn -->
+    <xs:attribute name="e2ksUsageType" type="xs:string"/>
+
+    <!-- value to assign when e2ksUsageType="Default" -->
+    <xs:attribute name="defaultValue" type="xs:string"/>
+
+  </xs:complexType >
+
+  <!-- Represents Uses of a Parameter in Value Columns/Expressions/Rules as identified in the members -->
+  <xs:complexType name="ParameterUse">
+    <xs:sequence>
+      <xs:element name="paramName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <!-- equal number of the below three should occur -->
+      <!-- every triplet identifies a specific column -->
+      <xs:element name="copID" type="xs:string" minOccurs="1"  maxOccurs="unbounded" />
+      <xs:element name="kpacID" type="xs:string" minOccurs="1"  maxOccurs="unbounded" />
+      <xs:element name="ruleColumnID" type="xs:string" minOccurs="1"  maxOccurs="unbounded" />
+
+
+      <xs:element name="dimension" type="CompoundDimension" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+
+  </xs:complexType >
+
+  <!-- Represents a Use of a Parameter in a specific Value Column/Expression/Rule as identified in the members -->
+  <xs:complexType name="ParameterUseNode">
+    <xs:sequence>
+      <xs:element name="thisParameterUse" type="ParameterUse" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="nodesUsedByThis" type="xs:int" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="nodesUsingThis" type="xs:int" minOccurs="0"  maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="nodeID" type="xs:int"/>
+
+  </xs:complexType >
+
+
+  <!-- Represents a match of the Parameter in E2ks to a Parameter instance in an external system, typicaly a CAD system. 
+Instances have values associated. While ParameterUse relate to rules, Instances relate to facts. There can be multiple instances that
+can be applied to a use. E2ks processes the ParameterUses and ParameterInstances and provides validation results. 
+paramName and instanceName may be auto matched by patterns or non-automatic, explicit means that have no resemblence between them.
+
+-->
+  <xs:complexType name="ParameterInstance">
+    <xs:sequence>
+      <xs:element name="paramName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="instanceName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <!-- The value member is now a String that may hold any type such as bool, int, etc. A better way should be to hold a variant type "ParamValue". todo and explore -->
+      <xs:element name="value" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="units" type="Unit" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="lastModifiedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="modifiedBy" type="xs:string" minOccurs="0"  maxOccurs="1" />
+
+      <!-- when a parameter use refers a rule that has different parameters and there are instances of these parameters, the need to group the instances arises.
+	  This assuming no auto grouping options are used. groupingId is supplied by the client caller and is repsonsible for proper and meaningful grouping. 
+	  The groupingId identifies the set of instances to be used in a rule evaluation context. When the larger context is an assessment, the group id is persisted along with reported values. 
+	  In other cases the grouping is lost after the evaluation call in the server  -->
+      <xs:element name="groupingIDs" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="instanceSourceID" type="xs:string" minOccurs="0"  maxOccurs="1" />
+
+    </xs:sequence>
+
+  </xs:complexType >
+
+  <!-- Identifies a K-PAC -->
+
+  <xs:complexType name="KPacHeader">
+    <xs:annotation>
+      <xs:documentation xml:space="default">
+        KPacHeader idetifies and provides a top level description of a KPac
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:annotation>
+        <xs:documentation>
+          KPac id, which along with copID uniquely identifies a KPac
+        </xs:documentation>
+      </xs:annotation>
+      <xs:element name="kpacID" type="xs:string" minOccurs="1"  maxOccurs="1">
+
+      </xs:element>
+      <xs:element name="copID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="version" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="title" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="SetIdentifier">
+    <xs:sequence>
+      <xs:element name="setID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="SetHeader">
+    <xs:sequence>
+      <xs:element name="setID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="copID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="title" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="Set">
+    <xs:sequence>
+      <xs:element name="setHeader" type="SetHeader" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="mode" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="author" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="setType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="bornOnDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="sunsetDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastUpdateDate" type="xs:string" minOccurs="1"  maxOccurs="1"  />
+      <xs:element name="filterString" type="xs:string" minOccurs="0"  maxOccurs="1"  />
+      <xs:element name="contentKPacsAreCoPLocal" type="xs:string" minOccurs="1"  maxOccurs="1"  />
+	  <xs:element name="setMediaAttachments" type="AurosAttachment" minOccurs="0" maxOccurs="unbounded" />
+	  <xs:element name="setDocAttachments" type="AurosAttachment" minOccurs="0" maxOccurs="unbounded" />
+
+      <xs:element name="contentKPacHeaders" type="KPacHeader" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="contentSetHeaders" type="SetHeader" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="setAttributes" type="E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+
+    </xs:sequence>
+  </xs:complexType >
+
+  <!-- Identifies a Method K-PAC Step-->
+ 
+	<xs:complexType name="Step">
+		<xs:sequence>
+			<xs:element name="stepId" type="xs:int" minOccurs="1" maxOccurs="1" />
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="logicStepType" type="xs:int" minOccurs="1" maxOccurs="1" />
+			<xs:element name="logicSourceType" type="xs:int" minOccurs="1" maxOccurs="1" />
+			
+            <xs:element name="xPos" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="yPos" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="zIndex" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="dimension1" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="dimension2" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="process" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="arcWidth" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="arcHeight" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="shadowFlag" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="angle" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="fontSize" type="xs:int" minOccurs="1" maxOccurs="1" />            
+            <xs:element name="bgcolor" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="textColor" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="borderColor" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="borderWidth" type="xs:double" minOccurs="1" maxOccurs="1" />
+            <xs:element name="weight" type="xs:double" minOccurs="1" maxOccurs="1" />       
+            <xs:element name="percent" type="xs:int" minOccurs="1" maxOccurs="1" />
+        
+            <xs:element name="idx" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="cpStatus" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="showVTImages" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="settings" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="acIndicator" type="xs:string" minOccurs="1" maxOccurs="1" />
+
+            <xs:element name="ruleColumns" type="RuleColumn" minOccurs="0" maxOccurs="unbounded" />
+            
+            <xs:element name="supportDocuments" type="AurosAttachment"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="mediaAttachments" type="AurosAttachment"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="urlAttachments" type="AurosAttachment"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="setLinks" type="xs:string"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="kpacLinks" type="AurosIdentifier"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="validationMessages" type="Message" minOccurs="0"  maxOccurs="unbounded" />
+			<xs:element name="setAttributes" type="E2KSAttribute" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+
+<xs:complexType name="StepConnection">
+	<xs:sequence>
+		 <xs:element name="toStepId" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="fromStepId" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="connType" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="lineType" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="x1" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="y1" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="x2" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="y2" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="point1" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="point2" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="dfltPoints" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="conPoints" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="stroke" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+		 <xs:element name="behavior" type="xs:int"  minOccurs="1"  maxOccurs="1"/> 
+	</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="PanelSettings">
+   <xs:sequence>
+     <xs:element name="executableMode" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+     <xs:element name="cellSizes" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+     <xs:element name="panelA" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+     <xs:element name="panelB" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+     <xs:element name="panelC" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+     <xs:element name="panelD" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+     <xs:element name="layout" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+   </xs:sequence>
+</xs:complexType>
+
+  <xs:complexType name="Method">
+    <xs:sequence>
+      <xs:element name="step" type="Step" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="stepConnections" type="StepConnection" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="panelSettings" type="PanelSettings" minOccurs="1"  maxOccurs="1" />
+    </xs:sequence>
+   </xs:complexType>	
+
+  <xs:complexType name="ConformanceStateChoice">
+    <xs:sequence>
+      <xs:element name="choiceID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+
+      <xs:element name="name" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+      <xs:element name="description" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="colorCode" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="abbreviation" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+      <xs:element name="position" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="mappingStates" type="xs:string"  minOccurs="0"  maxOccurs="unbounded"/>
+      <xs:element name="mandataoryFields" type="xs:string"  minOccurs="0"  maxOccurs="unbounded"/>
+      <xs:element name="helpText" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      
+      <!-- palette to which this choice belongs -->
+      <xs:element name="paletteID" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="disabled" type="xs:string"/>
+    <xs:attribute name="nonConformance" type="xs:string"/>
+
+  </xs:complexType>
+
+
+  <xs:complexType name="ConformanceState">
+    <xs:sequence>
+
+      <xs:element name="state" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="action" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="position" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="status" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="explanation" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+	  
+      <xs:element name="copID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="kpacID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="kpacVersion" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+      <!-- if the assessment has occurances for this K-PAC this field will be -->
+      <xs:element name="occuranceID" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="subOccuranceID" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="occuranceName" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+      <xs:element name="ruleColumnID" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="ruleColumnType" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="ruleColumnName" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="ruleColumnParameterName" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="rowID" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+
+
+      <xs:element name="instanceValue" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="evaluationResult" type="xs:string"/>
+      <!-- Is the result graded using a confomance state palette ? or just a numeric value -->
+      <xs:element name="isGraded" type="xs:string"/>
+      <xs:element name="endUserMessage" type="Message"/>
+      <xs:element name="endUserFailMessage" type="Message"/>
+
+      <!-- either supplied by client or auto grouped using the instance suffix or other schemes -->
+      <xs:element name="instanceGroup" type="xs:string"/>
+
+      <xs:element name="neededParameters" type="Parameter" minOccurs="0" maxOccurs="unbounded"/>
+
+      <!-- list of supplied instances used for this conformance -->
+      <xs:element name="suppliedParameterInstances" type="ParameterInstance"  minOccurs="0" maxOccurs="unbounded"/>
+      <!-- list of previosly reported instances if any and if used for this conformance -->
+      <xs:element name="reportedParameterInstances" type="ParameterInstance"  minOccurs="0" maxOccurs="unbounded"/>
+
+      <!-- self contained list -->
+      <xs:element name="computedParameterInstances" type="ParameterInstance" minOccurs="0" maxOccurs="unbounded"/>
+      <!-- there will be one output parameter instance for each Conformance State,  though many are possible in a K-PAC -->
+      <xs:element name="outputParameterInstanceIndex" type="xs:int"  minOccurs="0"  maxOccurs="1"/>
+	  
+       <!-- Runtime evaluated bounds for Max, Min, Nominal and Range column types. 
+	   These bounds specify values at which conformance - pass, fail status changes.
+	   In case of Range there will be 2 values in the list lower and upper -->
+     <xs:element name="conformanceBounds" type="xs:string"  minOccurs="0"  maxOccurs="unbounded"/>
+	  
+
+      <xs:element name="issueIdsFromNonConformance" type="xs:string"  minOccurs="0"  maxOccurs="unbounded"/>
+
+       <xs:element name="changeHistory" type="ChangeHistory" minOccurs="0" maxOccurs="unbounded"/>
+     
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="ConformanceStateChoicePalette">
+    <xs:sequence>
+      <xs:element name="paletteID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="choices" type="ConformanceStateChoice"  minOccurs="0"  maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <!-- messageType can be error, warning, success, info -->
+      <xs:element name="messageType" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="messageContext" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="messageText" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="contextURL" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EvaluationResult">
+    <xs:sequence>
+      <xs:element name="groupName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="result" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="evaluated" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <!-- index of the expression that was finally evaluated in giving rise to this result -->
+      <xs:element name="keyExpressionIndex" type="xs:int" minOccurs="1"  maxOccurs="1" />
+
+      <xs:element name="neededParameterNames" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+
+      <!-- index into caller supplied list -->
+      <xs:element name="usedParameterInstances" type="xs:int" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+
+    </xs:sequence>
+
+  </xs:complexType >
+
+
+  <xs:complexType name="AurosMessages">
+    <xs:sequence>
+      <xs:element name="messages" type="Message" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="status" type="xs:int" />
+
+    </xs:sequence>
+  </xs:complexType >
+
+
+
+  <!-- This result should be similar to max extent possible between assessments and sets to help using common code in the clients -->
+  <xs:complexType name="RuleProcessorResult">
+    <xs:sequence>
+      <xs:element name="conformances" type="ConformanceState" minOccurs="1"  maxOccurs="unbounded" />
+	  
+	  <!-- to be deprecated - use allKPacsProcessed.getKpacHeader() instead --> 
+      <xs:element name="kpacsProcessed" type="KPacHeader" minOccurs="0"  maxOccurs="unbounded" />
+	  
+	  <xs:element name="allKPacsProcessed" type="KPac" minOccurs="0"  maxOccurs="unbounded" />
+
+      <xs:element name="parameters" type="Parameter" minOccurs="0"  maxOccurs="unbounded" />
+      <!-- matching dimensions for the above parameters -->
+      <xs:element name="dimensions" type="CompoundDimension" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="parameterUses" type="ParameterUse" minOccurs="0"  maxOccurs="unbounded" />
+
+    </xs:sequence>
+
+  </xs:complexType >
+
+  <xs:complexType name="ExpressionProcessorResult">
+    <xs:sequence>
+      <xs:element name="computedParameterInstances" type="ParameterInstance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="neededParamInstances" type="ParameterInstance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+
+  </xs:complexType >
+
+
+  <xs:complexType name="Lock">
+    <xs:sequence>
+      <xs:element name="key" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <!-- Data restriction - read, write etc.-->
+      <xs:element name="activityRestricted" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <!-- Type locked Assessment, K-PAC etc. -->
+      <xs:element name="lockedItemType" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+      <!-- item locked identified as one string eg. "R_TEST-1", "2653", "S543" -->
+      <xs:element name="lockedItemId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="Discussion">
+    <xs:sequence>
+      <xs:element name="discussionData" type="DiscussionData" maxOccurs="unbounded"/>
+      <xs:element name="context" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="contextID" type="AurosIdentifier" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="DiscussionData">
+    <xs:sequence>
+      <xs:element name="comments" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="dateCommented" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="commentatorId" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="commentType" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="parentId" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="level" type="xs:int" minOccurs="1" maxOccurs="1" />
+      <xs:element name="childIndices" type="xs:int" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="idx" type="xs:string" use="required"/>
+  </xs:complexType >
+  
+  <xs:complexType name="AurosRelation">
+    <xs:annotation>
+      <xs:documentation xml:space="default">
+        AurosRelation captures relations between Auros objects such as Auros Assessments to related Issues , projects to issues etc.
+		The members only identify the related objects. Separate queries must be made to get the entire object.
+      </xs:documentation>
+    </xs:annotation>  
+    <xs:sequence>
+      <xs:element name="aurosID" type="AurosIdentifier" >
+		<xs:annotation>
+		  <xs:appinfo xml:space="default">
+			<jxb:property>
+					 <jxb:javadoc>Identifies an Auros object in relation</jxb:javadoc>
+			</jxb:property> 
+		  </xs:appinfo>
+		</xs:annotation>		  
+	  </xs:element>
+      <xs:element name="relatedAurosIDs" type="AurosIdentifier" minOccurs="0" maxOccurs="unbounded">
+	  		<xs:annotation>
+		  <xs:appinfo xml:space="default">
+			<jxb:property>
+					 <jxb:javadoc>List of related Auros Identifiers to aurosID  </jxb:javadoc>
+			</jxb:property> 
+		  </xs:appinfo>
+		</xs:annotation>
+	  </xs:element>
+    </xs:sequence>
+    
+  </xs:complexType >
+
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="userId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="firstName" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="lastName" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="email" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="password" type="xs:string" minOccurs="0"  maxOccurs="1" />
+      <xs:element name="userType" type="xs:int" minOccurs="0"  maxOccurs="1" />
+
+    </xs:sequence>
+  </xs:complexType >
+  
+  <xs:complexType name="ValueTable">
+    <xs:sequence>
+      <xs:element name="rowNumber" type="xs:int" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="columNumber" type="xs:int" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="value" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="groupId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="kpacId" type="xs:int" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="expressionAsXml" type="xs:string" minOccurs="0"  maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+  
+  
+    <xs:complexType name="ChangeHistory">
+    <xs:sequence>
+      <xs:element name="changedBy" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="changedFrom" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="changedTo" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="changedWhat" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="changedTimeStamp" type="xs:string" use="required"/>
+  </xs:complexType >
+  
+	<xs:complexType name="AurosCounter">
+	  	<xs:sequence>
+	  		<xs:element name="countedItemID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="countedItem" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="count" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+	 	</xs:sequence>
+  	</xs:complexType>
+
+	<xs:complexType name="Chapter">
+	  	<xs:sequence>
+		
+	  		<xs:element name="chapterName" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="chapterDescription" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  	
+	  		<xs:element name="helpText" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+			
+	  		<xs:element name="chapterAlerts" type="Alert"  minOccurs="0"  maxOccurs="unbounded"/>
+
+	  		<xs:element name="supportDocuments" type="AurosAttachment"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="mediaAttachments" type="AurosAttachment"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="urlAttachments" type="AurosAttachment"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="setLinks" type="xs:string"  minOccurs="0"  maxOccurs="unbounded"/>
+	  		<xs:element name="kpacLinks" type="AurosIdentifier"  minOccurs="0"  maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="chapterID" type="xs:string" use="required"/>
+
+  	</xs:complexType>
+
+
+	
+	<xs:complexType name="Alert">
+	  	<xs:sequence>
+	  		<xs:element name="alertMessage" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="pos" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+	 	</xs:sequence>
+		<xs:attribute name="alertTypeID" type="xs:string" use="required"/>
+
+  	</xs:complexType>
+
+	<xs:complexType name="AlertType">
+	  	<xs:sequence>
+	  		<xs:element name="alertName" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+	  		<xs:element name="colorCode" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="iconIDX" type="xs:int"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="iconName" type="xs:string"  minOccurs="1"  maxOccurs="1"/>	
+			<xs:element name="iconData" minOccurs="0" maxOccurs="1" type="xs:base64Binary"/>			
+	 	</xs:sequence>
+		<xs:attribute name="alertTypeID" type="xs:string" use="required"/>
+		<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+
+  	</xs:complexType>
+  	
+	<xs:complexType name="EEChapterGroup">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="position" type="xs:int" minOccurs="1" maxOccurs="1" />
+			<xs:element name="extendedElements" type="E2KSAttribute" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	
+</xs:schema>
+

@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config 
+	Release="1.3" 
+	CreationDate="27.03.2019" 
+	Purpose="This xml file is used by the Auros Reporting Tool" 
+	LogDir="C:\tmp\AurosLog">
+	<Ford>
+		<Service Name="WSL" URL="https://www.wsl.ford.com/auth.cgi"/>
+	</Ford> 
+	<Auros PromptForCredentials="false">
+		<!-- <Service Name="E2KSAssessmentsService" URL="https://aurosprodapitest5406.apps.pd01i.edc2.cf.ford.com/e2ks/e2ksassessments?wsdl"/>
+		<Service Name="E2KSIssuesService" URL="https://aurosprodapitest5406.apps.pd01i.edc2.cf.ford.com/e2ks/e2ksissues?wsdl"/>
+		<Service Name="E2KSBaseService" URL="https://aurosprodapitest5406.apps.pd01i.edc2.cf.ford.com/e2ks/e2ksbase?wsdl"/> -->
+		<!--API USED  https://aurosprodapitest5413.apps.pd01i.edc2.cf.ford.com-->
+		<Service Name="E2KSAssessmentsService" URL="https://aurosprodapitest5413.apps.pd01i.edc2.cf.ford.com/e2ks/e2ksassessments?wsdl"/>
+		<Service Name="E2KSIssuesService" URL="https://aurosprodapitest5413.apps.pd01i.edc2.cf.ford.com/e2ks/e2ksissues?wsdl"/>
+		<Service Name="E2KSBaseService" URL="https://aurosprodapitest5413.apps.pd01i.edc2.cf.ford.com/e2ks/e2ksbase?wsdl"/> 
+	</Auros>
+	<ValidArgs>
+		<CheckList>
+			<Arg Name="cops" Type="acBasic"/>
+			<Arg Name="status" Type="acBasic"/>
+			<Arg Name="project" Type="acBasic"/>
+			<Arg Name="Subproject" Type="acBasic"/>
+			<Arg Name="UnUp" Type="ee"/>
+			<Arg Name="CBG" Type="ee"/>
+			<Arg Name="Vehicle Line" Type="ee"/>
+		</CheckList>
+		<IssueList>
+			<Arg Name="status" Type="issueBasic">
+				<map Name="open" ID="1"/>
+				<map Name="pending" ID="2"/>
+				<map Name="closed" ID="5"/>
+			</Arg>
+			<Arg Name="project" Type="issueBasic"/>
+			<Arg Name="IssueType" Type="issueBasic">
+				<map Name="DPA5" ID="1"/>
+				<map Name="DVQ" ID="16"/>
+				<map Name="V - Phase Issues" ID="923"/>
+			</Arg>
+			<Arg Name="UnUp" Type="issueExtendedElement">
+				<map Name="UN" ID="UN"/>
+				<map Name="UP" ID="UP"/>
+				<map Name="Un" ID="Un"/>
+				<map Name="Up" ID="Up"/>
+			</Arg>
+			<Arg Name="Vehicle Line" Type="issueExtendedElement">
+				<map Name="CD4_2013_CD391N" ID="CD4_2013_CD391N"/>
+				<map Name="CD4_2013_CD391E" ID="CD4_2013_CD391E"/>
+				<map Name="CD4_2013_CD391C" ID="CD4_2013_CD391C"/>
+				<map Name="CD4_2013_CD391A" ID="CD4_2013_CD391A"/>
+				<map Name="CD4_2013_CD533" ID="CD4_2013_CD533"/>
+				<map Name="CD4_2013_CD548" ID="CD4_2013_CD548"/>
+				<map Name="CD4_2013_CD391HEV" ID="CD4_2013_CD391HEV"/>
+				<map Name="V408_LWB" ID="V408_LWB"/>
+				<map Name="V408_SWB" ID="V408_SWB"/>
+				<map Name="V408_Common" ID="V408_Common"/>
+				<map Name="CD4_CD391" ID="CD4_CD391"/>
+				<map Name="B562" ID="B562"/>
+				<map Name="P552" ID="P552"/>
+				<map Name="U502" ID="U502"/>
+				<map Name="B299_MCA_ASEAN" ID="B299_MCA_ASEAN"/>
+				<map Name="B299_MCA_CHINA" ID="B299_MCA_CHINA"/>
+				<map Name="B299_MCA_FNA" ID="B299_MCA_FNA"/>
+				<map Name="B299_MCA_FOE" ID="B299_MCA_FOE"/>
+				<map Name="B299_MCA_FSAO" ID="B299_MCA_FSAO"/>
+				<map Name="B299_MCA_INDIA" ID="B299_MCA_INDIA"/>
+				<map Name="CD4_CD533" ID="CD4_CD533"/>
+				<map Name="CD4_CD391_5DR" ID="CD4_CD391_5DR"/>
+				<map Name="CD4_CD391_WAGON" ID="CD4_CD391_WAGON"/>
+				<map Name="CD4_CD548" ID="CD4_CD548"/>
+				<map Name="S550" ID="S550"/>
+				<map Name="VN127" ID="VN127"/>
+				<map Name="B299_MCA_ST" ID="B299_MCA_ST"/>
+				<map Name="HDE_H534_CARGO_FSAO" ID="HDE_H534_CARGO_FSAO"/>
+				<map Name="CD4.2_2014.5_CD390E" ID="CD4.2_2014.5_CD390E"/>
+				<map Name="CD4.2_2014.5_CD539E" ID="CD4.2_2014.5_CD539E"/>
+				<map Name="C489_2014_C489" ID="C489_2014_C489"/>
+				<map Name="CD4.2_2015_CD539C" ID="CD4.2_2015_CD539C"/>
+				<map Name="CD4.2_2015_CD539N" ID="CD4.2_2015_CD539N"/>
+				<map Name="CD4.2_2015_U540" ID="CD4.2_2015_U540"/>
+				<map Name="CD4_2013_CD391PHEV" ID="CD4_2013_CD391PHEV"/>
+				<map Name="CD4_2014_CD391E_ICA" ID="CD4_2014_CD391E_ICA"/>
+				<map Name="CD4_2014_CD391N_ICA" ID="CD4_2014_CD391N_ICA"/>
+				<map Name="S550_RHD" ID="S550_RHD"/>
+				<map Name="B460_ALL" ID="B460_ALL"/>
+				<map Name="B299_CNG" ID="B299_CNG"/>
+				<map Name="CD4.2_2014.5_FoEBridgingParts" ID="CD4.2_2014.5_FoEBridgingParts"/>
+				<map Name="CD4.2_2015_FNABridgingParts" ID="CD4.2_2015_FNABridgingParts"/>
+				<map Name="CD4.2_2015_U540BridgingParts" ID="CD4.2_2015_U540BridgingParts"/>
+				<map Name="P473_2015_CNG" ID="P473_2015_CNG"/>
+				<map Name="P552_2015" ID="P552_2015"/>
+				<map Name="- Not Applicable" ID="- Not Applicable"/>
+				<map Name="- Unknown" ID="- Unknown"/>
+				<map Name="U22X_2015_U222" ID="U22X_2015_U222"/>
+				<map Name="U22X_2015_U228" ID="U22X_2015_U228"/>
+				<map Name="U502_2015_U502_Base" ID="U502_2015_U502_Base"/>
+				<map Name="U502_2015_U502_Police" ID="U502_2015_U502_Police"/>
+				<map Name="B562_5-Door" ID="B562_5-Door"/>
+				<map Name="P55X_Regular Cab" ID="P55X_Regular Cab"/>
+				<map Name="P55X_Super Cab" ID="P55X_Super Cab"/>
+				<map Name="P55X_Crew Cab" ID="P55X_Crew Cab"/>
+				<map Name="V363N_Low Roof" ID="V363N_Low Roof"/>
+				<map Name="S550_Convertible" ID="S550_Convertible"/>
+				<map Name="CD4.3_2016_D544C" ID="CD4.3_2016_D544C"/>
+				<map Name="CD4.3_2016_D544N" ID="CD4.3_2016_D544N"/>
+				<map Name="CD4.3_2016_D568C" ID="CD4.3_2016_D568C"/>
+				<map Name="CD4.3_2016_D568N" ID="CD4.3_2016_D568N"/>
+				<map Name="B515_Russia" ID="B515_Russia"/>
+				<map Name="B515_EBU" ID="B515_EBU"/>
+				<map Name="B232_2016_Stage6" ID="B232_2016_Stage6"/>
+				<map Name="B299_2015.5_Stage6" ID="B299_2015.5_Stage6"/>
+				<map Name="B460_2015_Stage6" ID="B460_2015_Stage6"/>
+				<map Name="B515_2015.75_Stage6" ID="B515_2015.75_Stage6"/>
+				<map Name="CD4.2_2015_CD533_Gobie" ID="CD4.2_2015_CD533_Gobie"/>
+				<map Name="CD4.2_2015_CD539C_Moonroof" ID="CD4.2_2015_CD539C_Moonroof"/>
+				<map Name="CD4.2_2016_CD539X" ID="CD4.2_2016_CD539X"/>
+				<map Name="CD4.2_2016_U540" ID="CD4.2_2016_U540"/>
+				<map Name="CD4_2016_CD391E_ICA" ID="CD4_2016_CD391E_ICA"/>
+				<map Name="S550_China" ID="S550_China"/>
+				<map Name="B562_2015_INDIA_Base" ID="B562_2015_INDIA_Base"/>
+				<map Name="S550_SVT" ID="S550_SVT"/>
+				<map Name="V363 Transit RWD INT 2446" ID="V363 Transit RWD INT 2446"/>
+				<map Name="V36X Transit Auto INT 2447" ID="V36X Transit Auto INT 2447"/>
+				<map Name="V36X Transit FWD INT 2445" ID="V36X Transit FWD INT 2445"/>
+				<map Name="B460_Sigma_DPS6" ID="B460_Sigma_DPS6"/>
+				<map Name="B562_2015_APA_4 Door" ID="B562_2015_APA_4 Door"/>
+				<map Name="B562_2015_APA_5 Door" ID="B562_2015_APA_5 Door"/>
+				<map Name="B562_2015_APA_Sub_4Meter" ID="B562_2015_APA_Sub_4Meter"/>
+				<map Name="B562_2015_INDIA_1_19L_Sigma" ID="B562_2015_INDIA_1_19L_Sigma"/>
+				<map Name="U502_2016_U502_Base" ID="U502_2016_U502_Base"/>
+				<map Name="U502_2016_U502_Police" ID="U502_2016_U502_Police"/>
+				<map Name="P558_2017" ID="P558_2017"/>
+				<map Name="C346_MCA_Base" ID="C346_MCA_Base"/>
+				<map Name="C346_MCA_ST_BEV_and_Misc_Content" ID="C346_MCA_ST_BEV_and_Misc_Content"/>
+				<map Name="CD4.2_2015_U540C" ID="CD4.2_2015_U540C"/>
+				<map Name="V363N_2016_OBD_ ICA" ID="V363N_2016_OBD_ ICA"/>
+				<map Name="V363 RWD Sweep-Up" ID="V363 RWD Sweep-Up"/>
+				<map Name="V36X Auto Sweep-Up" ID="V36X Auto Sweep-Up"/>
+				<map Name="V36X FWD Sweep-Up" ID="V36X FWD Sweep-Up"/>
+				<map Name="B299_MCA_R" ID="B299_MCA_R"/>
+				<map Name="V362C_2016_Tourneo" ID="V362C_2016_Tourneo"/>
+				<map Name="V362C_2016_VanKombi" ID="V362C_2016_VanKombi"/>
+				<map Name="B562_2014_B562_1.5L_Sigma_FF" ID="B562_2014_B562_1.5L_Sigma_FF"/>
+				<map Name="C344_MCA" ID="C344_MCA"/>
+				<map Name="CD4.1_2017_CD391C" ID="CD4.1_2017_CD391C"/>
+				<map Name="CD4.1_2017_CD391FSAO" ID="CD4.1_2017_CD391FSAO"/>
+				<map Name="CD4.1_2017_CD391HEV" ID="CD4.1_2017_CD391HEV"/>
+				<map Name="CD4.1_2017_CD391N" ID="CD4.1_2017_CD391N"/>
+				<map Name="CD4.1_2017_CD391SHO" ID="CD4.1_2017_CD391SHO"/>
+				<map Name="CD4.1_2017_CD533N" ID="CD4.1_2017_CD533N"/>
+				<map Name="D3D4_2016_D258" ID="D3D4_2016_D258"/>
+				<map Name="D3D4_2016_D385" ID="D3D4_2016_D385"/>
+				<map Name="D3D4_2016_D471" ID="D3D4_2016_D471"/>
+				<map Name="D3D4_2016_D472" ID="D3D4_2016_D472"/>
+				<map Name="B479_FoE_CE1" ID="B479_FoE_CE1"/>
+				<map Name="P552_ICA_2017_Base" ID="P552_ICA_2017_Base"/>
+				<map Name="P552_ICA_2017_P552V" ID="P552_ICA_2017_P552V"/>
+				<map Name="V36X_2016.5_ICA_UP_V363" ID="V36X_2016.5_ICA_UP_V363"/>
+				<map Name="C346_RS" ID="C346_RS"/>
+				<map Name="B479_FNA_ASEAN_CE7" ID="B479_FNA_ASEAN_CE7"/>
+				<map Name="B562_2017_EU" ID="B562_2017_EU"/>
+				<map Name="C346_ICA_2016.5_E85" ID="C346_ICA_2016.5_E85"/>
+				<map Name="C520_2016_Base" ID="C520_2016_Base"/>
+				<map Name="B515_MCA_2016_FSAO_CBQ" ID="B515_MCA_2016_FSAO_CBQ"/>
+				<map Name="B515_MCA_2016_CHINA_CBX" ID="B515_MCA_2016_CHINA_CBX"/>
+				<map Name="V36X_2016.5_ICA_UP_V362" ID="V36X_2016.5_ICA_UP_V362"/>
+				<map Name="B515_MCA_2016_ASEAN_CBY" ID="B515_MCA_2016_ASEAN_CBY"/>
+				<map Name="B515_MCA_2016_INDIA_CBW" ID="B515_MCA_2016_INDIA_CBW"/>
+				<map Name="B515_MCA_2016_RUSSIA_CR1" ID="B515_MCA_2016_RUSSIA_CR1"/>
+				<map Name="B562_2016_FOE" ID="B562_2016_FOE"/>
+				<map Name="P552MCA_2018" ID="P552MCA_2018"/>
+				<map Name="P552_2018_Crew Cab" ID="P552_2018_Crew Cab"/>
+				<map Name="P552_2018_Regular Cab" ID="P552_2018_Regular Cab"/>
+				<map Name="P552_2018_Super Cab" ID="P552_2018_Super Cab"/>
+				<map Name="U55X_2018_U553" ID="U55X_2018_U553"/>
+				<map Name="V362_MCA_2018_Bus" ID="V362_MCA_2018_Bus"/>
+				<map Name="U55X_2018_U554" ID="U55X_2018_U554"/>
+				<map Name="H623E_2018" ID="H623E_2018"/>
+				<map Name="B-CAR_2016.75_R1234YF_B460" ID="B-CAR_2016.75_R1234YF_B460"/>
+				<map Name="C519AP_CGH" ID="C519AP_CGH"/>
+				<map Name="C519EU_CGE" ID="C519EU_CGE"/>
+				<map Name="C519NA_CGF" ID="C519NA_CGF"/>
+				<map Name="C519SA_CGG" ID="C519SA_CGG"/>
+				<map Name="B479_2017.5_B479_5DR" ID="B479_2017.5_B479_5DR"/>
+				<map Name="H625_2018_FO" ID="H625_2018_FO"/>
+				<map Name="H623_2018_FO" ID="H623_2018_FO"/>
+				<map Name="H623_5E" ID="H623_5E"/>
+				<map Name="H623S" ID="H623S"/>
+				<map Name="H623E" ID="H623E"/>
+				<map Name="H623S_2018" ID="H623S_2018"/>
+				<map Name="H623_SE_2018" ID="H623_SE_2018"/>
+				<map Name="H625S_2018" ID="H625S_2018"/>
+				<map Name="H623_2018_FSA" ID="H623_2018_FSA"/>
+				<map Name="CD4.1_2017_CD391E" ID="CD4.1_2017_CD391E"/>
+				<map Name="B2E_2018_FoE_STG6.2_B515" ID="B2E_2018_FoE_STG6.2_B515"/>
+				<map Name="C519_2018.5" ID="C519_2018.5"/>
+				<map Name="B2E_2018_FoE_STG6.2_B479" ID="B2E_2018_FoE_STG6.2_B479"/>
+				<map Name="B460_MCA_2018.5_C4A" ID="B460_MCA_2018.5_C4A"/>
+				<map Name="B479_2017.5_B479_3DR" ID="B479_2017.5_B479_3DR"/>
+				<map Name="B479_2017.5_B479_4DR" ID="B479_2017.5_B479_4DR"/>
+				<map Name="B479_China_CE8" ID="B479_China_CE8"/>
+				<map Name="B479_FSAO_CE5" ID="B479_FSAO_CE5"/>
+				<map Name="B479_ST_2018_FoE" ID="B479_ST_2018_FoE"/>
+				<map Name="B479_Thai_ECO_CE7" ID="B479_Thai_ECO_CE7"/>
+				<map Name="B515_MCA_2016_CRAIOVA_CR6" ID="B515_MCA_2016_CRAIOVA_CR6"/>
+				<map Name="B562 3-pt SeatBelt" ID="B562 3-pt SeatBelt"/>
+				<map Name="B562 ICA" ID="B562 ICA"/>
+				<map Name="B562_2014_INDIA" ID="B562_2014_INDIA"/>
+				<map Name="B-CAR_2016.75_R1234YF_B232" ID="B-CAR_2016.75_R1234YF_B232"/>
+				<map Name="B-CAR_2016.75_R1234YF_B299MCA" ID="B-CAR_2016.75_R1234YF_B299MCA"/>
+				<map Name="B-CAR_2016.75_R1234YF_B515" ID="B-CAR_2016.75_R1234YF_B515"/>
+				<map Name="C1_MCA_C344_R1234Y" ID="C1_MCA_C344_R1234Y"/>
+				<map Name="C1_MCA_C346_R1234Y" ID="C1_MCA_C346_R1234Y"/>
+				<map Name="C344ICA_2018.5_STG6.2_EU" ID="C344ICA_2018.5_STG6.2_EU"/>
+				<map Name="C346_2017_BEV" ID="C346_2017_BEV"/>
+				<map Name="C489_2017_Beijing 6" ID="C489_2017_Beijing 6"/>
+				<map Name="C519_2018.5_C519_4Dr" ID="C519_2018.5_C519_4Dr"/>
+				<map Name="C519_2018.5_C519_5Dr" ID="C519_2018.5_C519_5Dr"/>
+				<map Name="C519_2018.5_C519_Wagon" ID="C519_2018.5_C519_Wagon"/>
+				<map Name="C520_2017_Beijing 6" ID="C520_2017_Beijing 6"/>
+				<map Name="C520_2017_Sport" ID="C520_2017_Sport"/>
+				<map Name="C520_2017_Vignale" ID="C520_2017_Vignale"/>
+				<map Name="CD4.1_MCA_2017_Beijing 6" ID="CD4.1_MCA_2017_Beijing 6"/>
+				<map Name="CD4.2_2016_CD539E_Vignale" ID="CD4.2_2016_CD539E_Vignale"/>
+				<map Name="CD4.2_2016_CD539X_Vignale" ID="CD4.2_2016_CD539X_Vignale"/>
+				<map Name="CD4.2_2017_Beijing 6" ID="CD4.2_2017_Beijing 6"/>
+				<map Name="CD4.2_2019_CD389_MCA" ID="CD4.2_2019_CD389_MCA"/>
+				<map Name="CD4.2_2019_CD390_MCA" ID="CD4.2_2019_CD390_MCA"/>
+				<map Name="CD4.2_2019_CD539A_MCA" ID="CD4.2_2019_CD539A_MCA"/>
+				<map Name="CD4.2_2019_CD539C_MCA" ID="CD4.2_2019_CD539C_MCA"/>
+				<map Name="CD4.2_2019_CD539N_MCA" ID="CD4.2_2019_CD539N_MCA"/>
+				<map Name="CD4.2_2019_CD539X_MCA" ID="CD4.2_2019_CD539X_MCA"/>
+				<map Name="CD4.3_2016_D544_Cooling" ID="CD4.3_2016_D544_Cooling"/>
+				<map Name="CD4.3_2016_D544_Fuel_Tank" ID="CD4.3_2016_D544_Fuel_Tank"/>
+				<map Name="CD4.3_2017_Beijing 6" ID="CD4.3_2017_Beijing 6"/>
+				<map Name="CD4_2015_CD533" ID="CD4_2015_CD533"/>
+				<map Name="CD4_2015_CD533_Blacklabel" ID="CD4_2015_CD533_Blacklabel"/>
+				<map Name="H623_2019_AP" ID="H623_2019_AP"/>
+				<map Name="H623_2019_JMC" ID="H623_2019_JMC"/>
+				<map Name="H625_2018_FSA" ID="H625_2018_FSA"/>
+				<map Name="H625_2019_AP" ID="H625_2019_AP"/>
+				<map Name="H625_2019_JMC" ID="H625_2019_JMC"/>
+				<map Name="JH476_2018_JMC_Phase_II" ID="JH476_2018_JMC_Phase_II"/>
+				<map Name="P552_ICA_2017_P552V_CHINA" ID="P552_ICA_2017_P552V_CHINA"/>
+				<map Name="P558_Crew Cab" ID="P558_Crew Cab"/>
+				<map Name="P558_Regular Cab" ID="P558_Regular Cab"/>
+				<map Name="P558_Super Cab" ID="P558_Super Cab"/>
+				<map Name="S550_2018" ID="S550_2018"/>
+				<map Name="S550_2018_S550_GPF" ID="S550_2018_S550_GPF"/>
+				<map Name="U375_ICA_2018_U375APA" ID="U375_ICA_2018_U375APA"/>
+				<map Name="U375_ICA_2018_U375CH" ID="U375_ICA_2018_U375CH"/>
+				<map Name="U502_2016_U502_Platinum" ID="U502_2016_U502_Platinum"/>
+				<map Name="U55X_2018_U553_LWB" ID="U55X_2018_U553_LWB"/>
+				<map Name="V362_MCA_2018_Combi" ID="V362_MCA_2018_Combi"/>
+				<map Name="V362_MCA_2018_Van" ID="V362_MCA_2018_Van"/>
+				<map Name="V363_2015.75_SRW" ID="V363_2015.75_SRW"/>
+				<map Name="V36X Wave 3" ID="V36X Wave 3"/>
+				<map Name="V36X_2016.25_V362_ERA_Glonass" ID="V36X_2016.25_V362_ERA_Glonass"/>
+				<map Name="V36X_2016.25_V363_ERA_Glonass" ID="V36X_2016.25_V363_ERA_Glonass"/>
+				<map Name="V36X_2016.5_ICA_V362 RAS" ID="V36X_2016.5_ICA_V362 RAS"/>
+				<map Name="C346_2017_FSA" ID="C346_2017_FSA"/>
+				<map Name="CD391_2018_Police" ID="CD391_2018_Police"/>
+				<map Name="CD391_2018_Taxi" ID="CD391_2018_Taxi"/>
+				<map Name="CD4.2_2019_U540N_MCA" ID="CD4.2_2019_U540N_MCA"/>
+				<map Name="CD4.2_2019_U540C_MCA" ID="CD4.2_2019_U540C_MCA"/>
+				<map Name="P375_ICA2_2018_P375AAT" ID="P375_ICA2_2018_P375AAT"/>
+				<map Name="P375_ICA2_2018_P375FMCSA" ID="P375_ICA2_2018_P375FMCSA"/>
+				<map Name="P375_ICA2_2018_P375FSAO" ID="P375_ICA2_2018_P375FSAO"/>
+				<map Name="P558_2018_Buzz" ID="P558_2018_Buzz"/>
+				<map Name="B500CH" ID="B500CH"/>
+				<map Name="B500FSAO" ID="B500FSAO"/>
+				<map Name="P552_ICA_2017_Phantom" ID="P552_ICA_2017_Phantom"/>
+				<map Name="B500_2018_4DR/5DR Common" ID="B500_2018_4DR/5DR Common"/>
+				<map Name="B500_2018_5DR Unique" ID="B500_2018_5DR Unique"/>
+				<map Name="V363_MCA_2019_V362" ID="V363_MCA_2019_V362"/>
+				<map Name="V363_MCA_2019_V363E" ID="V363_MCA_2019_V363E"/>
+				<map Name="V363_MCA_2019_V363N" ID="V363_MCA_2019_V363N"/>
+				<map Name="V363_MCA_2019_V363N AWD" ID="V363_MCA_2019_V363N AWD"/>
+				<map Name="C519_2017.5_5dr" ID="C519_2017.5_5dr"/>
+				<map Name="C519_2017.5_4dr" ID="C519_2017.5_4dr"/>
+				<map Name="C519_2017.5_WGN" ID="C519_2017.5_WGN"/>
+				<map Name="B299_ICA_2018" ID="B299_ICA_2018"/>
+				<map Name="B299_ICA_2018_SideImpact" ID="B299_ICA_2018_SideImpact"/>
+				<map Name="B515_MCA_2018_INDIA_CBW_MEGA_PROJECT" ID="B515_MCA_2018_INDIA_CBW_MEGA_PROJECT"/>
+				<map Name="CD4.2_2018.75_CD539E" ID="CD4.2_2018.75_CD539E"/>
+				<map Name="CD4.2_2018.75_CD390_ICA" ID="CD4.2_2018.75_CD390_ICA"/>
+				<map Name="C520_ICA_2018.75_STG6.2_EU" ID="C520_ICA_2018.75_STG6.2_EU"/>
+				<map Name="V363_MCA_2019_V363E 10R80" ID="V363_MCA_2019_V363E 10R80"/>
+				<map Name="U22X_2016_GCC_5.4L" ID="U22X_2016_GCC_5.4L"/>
+				<map Name="CD6_2020_U625N" ID="CD6_2020_U625N"/>
+				<map Name="CD6_2020_U625N_Police" ID="CD6_2020_U625N_Police"/>
+				<map Name="CD6_2020_U625N_HEV" ID="CD6_2020_U625N_HEV"/>
+				<map Name="CD6_2020_U625N_PHEV" ID="CD6_2020_U625N_PHEV"/>
+				<map Name="CD6_2020_U625E" ID="CD6_2020_U625E"/>
+				<map Name="CD6_2020_U611N" ID="CD6_2020_U611N"/>
+				<map Name="CD6_2020_U611N_PHEV" ID="CD6_2020_U611N_PHEV"/>
+				<map Name="CD6_2020_CD622N" ID="CD6_2020_CD622N"/>
+				<map Name="CD6_2020_CD622N_PHEV" ID="CD6_2020_CD622N_PHEV"/>
+				<map Name="CD6_2020_U625S" ID="CD6_2020_U625S"/>
+				<map Name="C2_C482_FHEV_PHEV" ID="C2_C482_FHEV_PHEV"/>
+				<map Name="C2_C483_FHEV_PHEV" ID="C2_C483_FHEV_PHEV"/>
+				<map Name="C2_C430_FHEV_PHEV" ID="C2_C430_FHEV_PHEV"/>
+				<map Name="C2_C482_Classic_PT" ID="C2_C482_Classic_PT"/>
+				<map Name="C2_C483_Classic_PT" ID="C2_C483_Classic_PT"/>
+				<map Name="C2_C430_Classic_PT" ID="C2_C430_Classic_PT"/>
+				<map Name="S550_2018_EVO" ID="S550_2018_EVO"/>
+				<map Name="CD4.1_ICA_2019_CD391N" ID="CD4.1_ICA_2019_CD391N"/>
+				<map Name="CD4.2_2109_CD539C_MCA_Diesel" ID="CD4.2_2109_CD539C_MCA_Diesel"/>
+				<map Name="B562_MCA_2018.5_5Dr" ID="B562_MCA_2018.5_5Dr"/>
+				<map Name="B562_MCA_2018.5_4Dr" ID="B562_MCA_2018.5_4Dr"/>
+				<map Name="B562_MCA_2018.5_Sub4Meter" ID="B562_MCA_2018.5_Sub4Meter"/>
+				<map Name="B562_MCA_2018.5_Cross" ID="B562_MCA_2018.5_Cross"/>
+				<map Name="B500_2019_Fox" ID="B500_2019_Fox"/>
+				<map Name="CX482N_2020" ID="CX482N_2020"/>
+				<map Name="CX482E_2020" ID="CX482E_2020"/>
+				<map Name="CX482A_2020" ID="CX482A_2020"/>
+				<map Name="CX483N_2020" ID="CX483N_2020"/>
+				<map Name="CX483A_2020" ID="CX483A_2020"/>
+				<map Name="H625_2018" ID="H625_2018"/>
+				<map Name="H623_5J_2019" ID="H623_5J_2019"/>
+				<map Name="H625A_2019" ID="H625A_2019"/>
+				<map Name="CX430N_2020" ID="CX430N_2020"/>
+				<map Name="CX430A_2020" ID="CX430A_2020"/>
+				<map Name="B500_2018_Stage6" ID="B500_2018_Stage6"/>
+				<map Name="C519_2018.5_Vignale" ID="C519_2018.5_Vignale"/>
+				<map Name="C519_2018.5_ST_Line" ID="C519_2018.5_ST_Line"/>
+				<map Name="C519_2018.5_A_Line" ID="C519_2018.5_A_Line"/>
+				<map Name="B562_2017_Trail" ID="B562_2017_Trail"/>
+				<map Name="CD4.2_2019_Mid_Power_X_A" ID="CD4.2_2019_Mid_Power_X_A"/>
+				<map Name="B2E_2018_FoE_STG6.2_B515_FWD_Neo_MMT6" ID="B2E_2018_FoE_STG6.2_B515_FWD_Neo_MMT6"/>
+				<map Name="B2E_2018_FoE_STG6.2_B515_DVneo_AWD" ID="B2E_2018_FoE_STG6.2_B515_DVneo_AWD"/>
+				<map Name="V363_MCA_2019_ALL" ID="V363_MCA_2019_ALL"/>
+				<map Name="B515_MCA_2017_MINOR_EMBEDDED_MODEM" ID="B515_MCA_2017_MINOR_EMBEDDED_MODEM"/>
+				<map Name="B515_MCA_2017_MINOR_CHINA_FLY_RADIO" ID="B515_MCA_2017_MINOR_CHINA_FLY_RADIO"/>
+				<map Name="B515_MCA_2017_MINOR_ICA2" ID="B515_MCA_2017_MINOR_ICA2"/>
+				<map Name="B515_MCA_2017_MINOR_TPMS" ID="B515_MCA_2017_MINOR_TPMS"/>
+				<map Name="B515_MCA_2017_MINOR_STORM" ID="B515_MCA_2017_MINOR_STORM"/>
+				<map Name="CD4.2_2019_CD539_Vignale" ID="CD4.2_2019_CD539_Vignale"/>
+				<map Name="B500_2019_4DR_FSAO" ID="B500_2019_4DR_FSAO"/>
+				<map Name="B500_2019_5DR_CHN" ID="B500_2019_5DR_CHN"/>
+				<map Name="B500_2019_5DR_FSAO" ID="B500_2019_5DR_FSAO"/>
+				<map Name="S550_2019_EVO" ID="S550_2019_EVO"/>
+				<map Name="H534_2019.5_AMT_II" ID="H534_2019.5_AMT_II"/>
+				<map Name="H534_PTU_2018.5MY" ID="H534_PTU_2018.5MY"/>
+				<map Name="H534_8X2_2018.5MY" ID="H534_8X2_2018.5MY"/>
+				<map Name="BX726_2020.25_MEA" ID="BX726_2020.25_MEA"/>
+				<map Name="BX726_2020.25_mHEV" ID="BX726_2020.25_mHEV"/>
+				<map Name="B500_2019_4DR_CHN" ID="B500_2019_4DR_CHN"/>
+				<map Name="BX726_2020.25_FoE" ID="BX726_2020.25_FoE"/>
+				<map Name="BX726_2020.25_LPG" ID="BX726_2020.25_LPG"/>
+				<map Name="JH476_2018_JMC_Phase_I" ID="JH476_2018_JMC_Phase_I"/>
+				<map Name="P552_ICA_2019_P552V" ID="P552_ICA_2019_P552V"/>
+				<map Name="V363N_2018_UPFITTER" ID="V363N_2018_UPFITTER"/>
+				<map Name="V363_MCA_2019_RUSSIA" ID="V363_MCA_2019_RUSSIA"/>
+				<map Name="V363_MCA_2019_LEGACY" ID="V363_MCA_2019_LEGACY"/>
+				<map Name="C519_ST_2019.75" ID="C519_ST_2019.75"/>
+				<map Name="D568MCA_2019_China" ID="D568MCA_2019_China"/>
+				<map Name="D568MCA_2019_MEA" ID="D568MCA_2019_MEA"/>
+				<map Name="D568MCA_2019_1.5L_Stage6" ID="D568MCA_2019_1.5L_Stage6"/>
+				<map Name="B562_2019_AMT" ID="B562_2019_AMT"/>
+				<map Name="B515_2019_AMT" ID="B515_2019_AMT"/>
+				<map Name="B515_MCA_2018_STORM" ID="B515_MCA_2018_STORM"/>
+				<map Name="B515_2018.5_Ecosport_Storm" ID="B515_2018.5_Ecosport_Storm"/>
+				<map Name="CD391N_2019_Police" ID="CD391N_2019_Police"/>
+				<map Name="CD391N_2019_Taxi" ID="CD391N_2019_Taxi"/>
+				<map Name="CD391N_2019_ICA" ID="CD391N_2019_ICA"/>
+				<map Name="CD391C_2019_ICA" ID="CD391C_2019_ICA"/>
+				<map Name="B2E_B1_2020.25_BX726" ID="B2E_B1_2020.25_BX726"/>
+				<map Name="B2E_B1_2020.25_B479" ID="B2E_B1_2020.25_B479"/>
+				<map Name="CD391C_2019_ICA_Beijing6" ID="CD391C_2019_ICA_Beijing6"/>
+				<map Name="B479_2020.25_mHEV" ID="B479_2020.25_mHEV"/>
+				<map Name="S550_2019_Bullitt" ID="S550_2019_Bullitt"/>
+				<map Name="D568MCA_2019_PHEV" ID="D568MCA_2019_PHEV"/>
+				<map Name="CX482R_2020" ID="CX482R_2020"/>
+				<map Name="CX482PHEV_2020" ID="CX482PHEV_2020"/>
+				<map Name="B562_2018.25_Special_Series" ID="B562_2018.25_Special_Series"/>
+				<map Name="F5X_2020_F53" ID="F5X_2020_F53"/>
+				<map Name="F5X_2020_F59" ID="F5X_2020_F59"/>
+				<map Name="V362C_2020.25_STG6_Diesel" ID="V362C_2020.25_STG6_Diesel"/>
+				<map Name="V362C_2020.25_STG6_GTDI" ID="V362C_2020.25_STG6_GTDI"/>
+				<map Name="C519_2019.75_mHEV" ID="C519_2019.75_mHEV"/>
+				<map Name="V363_MCA_2019_DUAL-CO_E" ID="V363_MCA_2019_DUAL-CO_E"/>
+				<map Name="V363_MCA_2019_DUAL-CO_N" ID="V363_MCA_2019_DUAL-CO_N"/>
+				<map Name="C344_ICA_ 2019.75_RDE_1" ID="C344_ICA_ 2019.75_RDE_1"/>
+				<map Name="C344_ICA_ 2019.75_RDE_2" ID="C344_ICA_ 2019.75_RDE_2"/>
+				<map Name="C519_2020_Fox_mHEV" ID="C519_2020_Fox_mHEV"/>
+				<map Name="C346_MCA_2019_Stage5" ID="C346_MCA_2019_Stage5"/>
+				<map Name="C346_MCA_2019_Stage6" ID="C346_MCA_2019_Stage6"/>
+				<map Name="B479_2020.25_LPG" ID="B479_2020.25_LPG"/>
+				<map Name="V363_DualCo_2020.5_FoE" ID="V363_DualCo_2020.5_FoE"/>
+				<map Name="V363_DualCo_2020.5_FNA" ID="V363_DualCo_2020.5_FNA"/>
+				<map Name="CX72X_2020_C727" ID="CX72X_2020_C727"/>
+				<map Name="CX72X_2020_C728" ID="CX72X_2020_C728"/>
+				<map Name="B515_MCA_EU_2019_4GMODEM" ID="B515_MCA_EU_2019_4GMODEM"/>
+				<map Name="P702_2021_Regular_Cab" ID="P702_2021_Regular_Cab"/>
+				<map Name="P702_2021_Super_Cab" ID="P702_2021_Super_Cab"/>
+				<map Name="P702_2021_Crew_Cab" ID="P702_2021_Crew_Cab"/>
+				<map Name="BX726_2020.25_ST_Line" ID="BX726_2020.25_ST_Line"/>
+				<map Name="B479_ICA_2020.25_FOE" ID="B479_ICA_2020.25_FOE"/>
+				<map Name="B479_ICA_2020.25_mHEV" ID="B479_ICA_2020.25_mHEV"/>
+				<map Name="B479_ICA_2020.25_LPG" ID="B479_ICA_2020.25_LPG"/>
+				<map Name="CX482_2020_ST_Vignale" ID="CX482_2020_ST_Vignale"/>
+				<map Name="CX482_2020_Cargo_Mgmt" ID="CX482_2020_Cargo_Mgmt"/>
+				<map Name="B515_2019_B515E" ID="B515_2019_B515E"/>
+				<map Name="B515_2019_B515S" ID="B515_2019_B515S"/>
+				<map Name="B515_MCA_2017_MINOR_FA_SR" ID="B515_MCA_2017_MINOR_FA_SR"/>
+				<map Name="B515_MCA_2017_CHINA_STG6_REGULATORY" ID="B515_MCA_2017_CHINA_STG6_REGULATORY"/>
+				<map Name="H729_2020_Cargo_Light" ID="H729_2020_Cargo_Light"/>
+				<map Name="P375_2020_MEA" ID="P375_2020_MEA"/>
+				<map Name="U375_2020_C_Stage6" ID="U375_2020_C_Stage6"/>
+				<map Name="B562_2020_Bharat" ID="B562_2020_Bharat"/>
+				<map Name="B515_2020_Bharat" ID="B515_2020_Bharat"/>
+				<map Name="B515_2020_China_Stage6" ID="B515_2020_China_Stage6"/>
+				<map Name="T6_MCA_2020_B1.0_U725N" ID="T6_MCA_2020_B1.0_U725N"/>
+				<map Name="T6_MCA_2020_B1.0_P703N" ID="T6_MCA_2020_B1.0_P703N"/>
+				<map Name="T6_MCA_2020_B1.1_P703A" ID="T6_MCA_2020_B1.1_P703A"/>
+				<map Name="T6_MCA_2020_B1.1_P703S" ID="T6_MCA_2020_B1.1_P703S"/>
+				<map Name="T6_MCA_2020_B1.1_P703M" ID="T6_MCA_2020_B1.1_P703M"/>
+				<map Name="T6_MCA_2020_B1.1_U704A" ID="T6_MCA_2020_B1.1_U704A"/>
+				<map Name="T6_MCA_2020_B1.1_U704C" ID="T6_MCA_2020_B1.1_U704C"/>
+				<map Name="T6_MCA_2020_B1.1_U704M" ID="T6_MCA_2020_B1.1_U704M"/>
+				<map Name="U375_2020_Bharat_Stage6" ID="U375_2020_Bharat_Stage6"/>
+				<map Name="P375_2020_RDE" ID="P375_2020_RDE"/>
+				<map Name="P703_2021" ID="P703_2021"/>
+				<map Name="U725_2021" ID="U725_2021"/>
+				<map Name="B515_MCA_MINOR_CVR_EPID" ID="B515_MCA_MINOR_CVR_EPID"/>
+				<map Name="CD542_2021_China_Classic" ID="CD542_2021_China_Classic"/>
+				<map Name="CD542_2021_FNA_Hybrid" ID="CD542_2021_FNA_Hybrid"/>
+				<map Name="U55X_2022_U554" ID="U55X_2022_U554"/>
+				<map Name="C2_C482_MPR" ID="C2_C482_MPR"/>
+				<map Name="C2_C483_MPR" ID="C2_C483_MPR"/>
+				<map Name="C519_MPR" ID="C519_MPR"/>
+				<map Name="C2_C430_MPR" ID="C2_C430_MPR"/>
+				<map Name="C490_MCA_2018_ST_Line" ID="C490_MCA_2018_ST_Line"/>
+				<map Name="S550_2019_GT350" ID="S550_2019_GT350"/>
+				<map Name="P375_2020_China" ID="P375_2020_China"/>
+				<map Name="T6_MCA_2020_B1.0_P703A" ID="T6_MCA_2020_B1.0_P703A"/>
+				<map Name="T6_MCA_2020_B1.1_P703C" ID="T6_MCA_2020_B1.1_P703C"/>
+				<map Name="T6_MCA_2020_B1.1_U704S" ID="T6_MCA_2020_B1.1_U704S"/>
+				<map Name="CD4.2_2020_CD539" ID="CD4.2_2020_CD539"/>
+				<map Name="CD4.2_2020_CD390" ID="CD4.2_2020_CD390"/>
+				<map Name="B562_ICA_2021_FE_SA" ID="B562_ICA_2021_FE_SA"/>
+				<map Name="B562_ICA_2021_FE_AP" ID="B562_ICA_2021_FE_AP"/>
+				<map Name="B562_ICA_2021_FE_EU" ID="B562_ICA_2021_FE_EU"/>
+				<map Name="T6_MCA_2020_B1.2_U725N" ID="T6_MCA_2020_B1.2_U725N"/>
+				<map Name="T6_MCA_2020_B1.2_P703N" ID="T6_MCA_2020_B1.2_P703N"/>
+				<map Name="B515_MCA_2017_MINOR_Centennial_BW" ID="B515_MCA_2017_MINOR_Centennial_BW"/>
+				<map Name="B515_MCA_2017_MINOR_CTR" ID="B515_MCA_2017_MINOR_CTR"/>
+				<map Name="P375_2020_BU_PHASE 3" ID="P375_2020_BU_PHASE 3"/>
+				<map Name="CD542_2021_China_Hybrid" ID="CD542_2021_China_Hybrid"/>
+				<map Name="CD542_2021_FNA_Classic" ID="CD542_2021_FNA_Classic"/>
+				<map Name="U55X_2022_U553" ID="U55X_2022_U553"/>
+				<map Name="CX727_2020_IP_Cnsl" ID="CX727_2020_IP_Cnsl"/>
+				<map Name="B515_MCA_2021_OBD_EMISSIONS_NA" ID="B515_MCA_2021_OBD_EMISSIONS_NA"/>
+				<map Name="C519C_2020.75_Active_Wagon" ID="C519C_2020.75_Active_Wagon"/>
+				<map Name="B2E_B1_2020_B515E_NCAP" ID="B2E_B1_2020_B515E_NCAP"/>
+				<map Name="CD4.2_2020_CD539_390_Freshning" ID="CD4.2_2020_CD539_390_Freshning"/>
+				<map Name="V362A_2020.5_ASEAN_Bus" ID="V362A_2020.5_ASEAN_Bus"/>
+				<map Name="B479_2020_25_DCT300" ID="B479_2020_25_DCT300"/>
+				<map Name="BX726_2020_25_DCT300" ID="BX726_2020_25_DCT300"/>
+				<map Name="B479_2020_25_mHEVC" ID="B479_2020_25_mHEVC"/>
+				<map Name="BX726_2020_25_mHEVC" ID="BX726_2020_25_mHEVC"/>
+				<map Name="B515_MCA_2021_FNA" ID="B515_MCA_2021_FNA"/>
+				<map Name="Troller_2020_TREX" ID="Troller_2020_TREX"/>
+				<map Name="Troller_2020_TR40" ID="Troller_2020_TR40"/>
+				<map Name="V363N_2021_RHD_USPS" ID="V363N_2021_RHD_USPS"/>
+				<map Name="V363_2021.25_5T_PORTFOLIO" ID="V363_2021.25_5T_PORTFOLIO"/>
+				<map Name="B680_2022_BRA" ID="B680_2022_BRA"/>
+				<map Name="B680_2022_ARG" ID="B680_2022_ARG"/>
+				<map Name="BX755_2022_ARG" ID="BX755_2022_ARG"/>
+				<map Name="BX755_2022_BRA" ID="BX755_2022_BRA"/>
+				<map Name="CX430E_2020" ID="CX430E_2020"/>
+				<map Name="C519_2019.75_mHEVC" ID="C519_2019.75_mHEVC"/>
+				<map Name="C519_2020.25_CO2_Actions" ID="C519_2020.25_CO2_Actions"/>
+				<map Name="CX430_2021_Late_China_Content" ID="CX430_2021_Late_China_Content"/>
+				<map Name="H729_2020_Beverage" ID="H729_2020_Beverage"/>
+				<map Name="H729_2020_Mahle Cooling" ID="H729_2020_Mahle Cooling"/>
+				<map Name="Troller_2020_3PSB_ISOFIX" ID="Troller_2020_3PSB_ISOFIX"/>
+				<map Name="B515_MCA_2021_EU_NCAP" ID="B515_MCA_2021_EU_NCAP"/>
+				<map Name="B515_MCA_2021_ICA_NA" ID="B515_MCA_2021_ICA_NA"/>
+				<map Name="CDX754_2021_Classic" ID="CDX754_2021_Classic"/>
+				<map Name="CDX754_2021_Hybrid" ID="CDX754_2021_Hybrid"/>
+				<map Name="B2E_B1_2020_B515E_CO2" ID="B2E_B1_2020_B515E_CO2"/>
+				<map Name="CX72X_2021.5_C727_GT" ID="CX72X_2021.5_C727_GT"/>
+				<map Name="T6_MCA_2020_B1.0_ 2.7L_LVPN" ID="T6_MCA_2020_B1.0_ 2.7L_LVPN"/>
+				<map Name="T6_MCA_2020_B1.0_Bigfoot" ID="T6_MCA_2020_B1.0_Bigfoot"/>
+				<map Name="CX727_2020_Rear_Suspension_Revision" ID="CX727_2020_Rear_Suspension_Revision"/>
+				<map Name="BX745_2021_N330" ID="BX745_2021_N330"/>
+				<map Name="CX430A_2021_Display" ID="CX430A_2021_Display"/>
+				<map Name="CX430A_2021_2ND_Row_Fixed_Glass" ID="CX430A_2021_2ND_Row_Fixed_Glass"/>
+				<map Name="V713N_2022_Base" ID="V713N_2022_Base"/>
+				<map Name="V713N_2022_AV" ID="V713N_2022_AV"/>
+				<map Name="P702_2022_Raptor_Crew_Cab" ID="P702_2022_Raptor_Crew_Cab"/>
+				<map Name="B479_MCA_2021.75_ST_LINE" ID="B479_MCA_2021.75_ST_LINE"/>
+				<map Name="B479_MCA_2021.75_A_LINE" ID="B479_MCA_2021.75_A_LINE"/>
+				<map Name="B479_MCA_2021.75_VAN" ID="B479_MCA_2021.75_VAN"/>
+				<map Name="B479_MCA_2021.75_TIT" ID="B479_MCA_2021.75_TIT"/>
+				<map Name="U725_2021_5DR" ID="U725_2021_5DR"/>
+				<map Name="U725_2021_3DR" ID="U725_2021_3DR"/>
+				<map Name="B680_2022_BRA_BX_UNDERHOOD" ID="B680_2022_BRA_BX_UNDERHOOD"/>
+				<map Name="CX756_2020_China_Gas" ID="CX756_2020_China_Gas"/>
+				<map Name="CX756_2020_China_PHEV" ID="CX756_2020_China_PHEV"/>
+				<map Name="CD4.2_2021_U540N" ID="CD4.2_2021_U540N"/>
+				<map Name="B680_BX755_CMM_2022_UN" ID="B680_BX755_CMM_2022_UN"/>
+				<map Name="CX482_2022_AV_Gen_1.5_Vehicle" ID="CX482_2022_AV_Gen_1.5_Vehicle"/>
+				<map Name="V363_N_BEV_2022_Kansas" ID="V363_N_BEV_2022_Kansas"/>
+				<map Name="V363_E_BEV_2022_Kocaeli" ID="V363_E_BEV_2022_Kocaeli"/>
+				<map Name="CX482E_2021.25_FHEV" ID="CX482E_2021.25_FHEV"/>
+				<map Name="P702_2022_BEV" ID="P702_2022_BEV"/>
+				<map Name="P702_2021.5_DR2" ID="P702_2021.5_DR2"/>
+				<map Name="P702_2021.5_CCD_OBS" ID="P702_2021.5_CCD_OBS"/>
+				<map Name="P702_2021.5_China_Ltd" ID="P702_2021.5_China_Ltd"/>
+			</Arg>
+		</IssueList>
+	</ValidArgs>
+	<AssessmentReport>
+		<Attr Order="0" Name="Assessment ID" DisplayName="Assessment ID">
+			<Container>General</Container>
+		</Attr>
+		<Attr Order="1" Name="K-PAC" DisplayName="K-PAC ID">
+			<Container>General</Container>
+		</Attr>
+		<Attr Order="2" Name="Status" DisplayName="Status">
+			<Container>General</Container>
+		</Attr>
+		<Attr Order="3" Name="Program" DisplayName="Program">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="4" Name="Operation / Process" DisplayName="Operation / Process">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="5" Name="Timing" DisplayName="Timing">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="6" Name="Assessment Descriptor" DisplayName="Assessment Descriptor">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="7" Name="Description" DisplayName="Description">
+			<Container>KPAC</Container>
+		</Attr>
+		<Attr Order="8" Name="Type" DisplayName="Type">
+			<Container>KPAC</Container>
+		</Attr>
+		<Attr Order="9" Name="CBG" DisplayName="CBG">
+			<Container>AC</Container>
+		</Attr>
+		<Attr Order="10" Name="Vehicle Line" DisplayName="Vehicle Line">
+			<Container>AC</Container>
+		</Attr>
+		<Attr Order="11" Name="TC_End_Item_And_Revision" DisplayName="TC_End_Item_And_Revision">
+			<Container>AC</Container>
+		</Attr>
+		<Attr Order="12" Name="TC_Occurrence_UID" DisplayName="TC_Occurrence_UID">
+			<Container>AC</Container>
+		</Attr>
+		<Attr Order="13" Name="PAF" DisplayName="PAF">
+			<Container>ACEE</Container>
+		</Attr>
+		<Attr Order="14" Name="Plant" DisplayName="Plant">
+			<Container>ACEE</Container>
+		</Attr>
+		<Attr Order="15" Name="Author" DisplayName="Author">
+			<Container>KPAC</Container>
+		</Attr>
+		<Attr Order="16" Name="Last Modified On" DisplayName="Last Modified On">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="17" Name="Creator" DisplayName="Creator">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="18" Name="UnUp" DisplayName="UnUp">
+			<Container>AC</Container>
+		</Attr>
+		<Attr Order="19" Name="Justification" DisplayName="Justification">
+			<Container>KPAC</Container>
+		</Attr>
+		<Attr Order="20" Name="Evaluator" DisplayName="Evaluator">
+			<Container>AC</Container>
+		</Attr>
+		<Attr Order="21" Name="Title" DisplayName="Title">
+			<Container>KPAC</Container>
+		</Attr>
+		<Attr Order="22" Name="Last Modified By" DisplayName="Last Modified By">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="23" Name="Additional Information" DisplayName="Additional Information">
+			<Container>KPAC</Container>
+		</Attr>
+		<Attr Order="24" Name="Lead PMT" DisplayName="Lead PMT">
+			<Container>AC Header</Container>
+		</Attr>
+		<Attr Order="25" Name="TC_PAF" DisplayName="TC_PAF">
+			<Container>General</Container>
+		</Attr>
+		<Attr Order="26" Name="All Issues" DisplayName="All Issues">
+			<Container>General</Container>
+		</Attr>
+		<Attr Order="27" Name="Causal Factor" DisplayName="Causal Factor">
+			<Container>ACSE</Container>
+		</Attr>
+
+
+	</AssessmentReport>
+	<IssueReport ChunkSize="300">
+		<Attr Order="0" Name="ID" DisplayName="ID" Simple_Getter="y"/>
+		<Attr Order="1" Name="Target Closure Date" DisplayName="Target Closure Date" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="2" Name="Status" DisplayName="Status" Simple_Getter="y"/>
+		<Attr Order="3" Name="Issue Description" DisplayName="Issue Description" Simple_Getter="y"/>
+		<Attr Order="4" Name="Discussion" DisplayName="Discussion" Simple_Getter="n (Julian Date inside to be converted and strings to be concat)"/>
+
+
+		<Attr Order="5" Name="Severity" DisplayName="Severity" Simple_Getter="y"/>
+		<Attr Order="6" Name="Resolution Lead" DisplayName="Resolution Lead" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="7" Name="Mfg Functional Area" DisplayName="Mfg Functional Area" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="8" Name="Lead PMT" DisplayName="Lead PMT" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="9" Name="TC_End_Item_And_Revision" DisplayName="TC_End_Item_And_Revision" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="10" Name="UnUp" DisplayName="UnUp" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="11" Name="Issue Type" DisplayName="Issue Type" Simple_Getter="y"/>
+		<Attr Order="12" Name="Variant" DisplayName="Variant" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="13" Name="Date Opened" DisplayName="Date Opened" Simple_Getter="y"/>
+		<Attr Order="14" Name="Date Closed" DisplayName="Date Closed" Simple_Getter="y"/>
+		<Attr Order="15" Name="Creator" DisplayName="Creator" Simple_Getter="y"/>
+		<Attr Order="16" Name="Champion" DisplayName="Champion" Simple_Getter="n (via getIssueAssignees() and list in list concept"/>
+		<Attr Order="17" Name="Team Members" DisplayName="Team Members" Simple_Getter="n (via getIssueInterestedParties() and list in list concept"/>
+		<Attr Order="18" Name="Vehicle Line" DisplayName="Vehicle Line" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="19" Name="Checklist ID" DisplayName="Checklist ID" Simple_Getter="n (via getIssueSourceIdentifiers() and getAssessmentHeaders search req. ) + lists to be analysed)"/>
+		<Attr Order="20" Name="K-PAC ID" DisplayName="K-PAC ID" Simple_Getter="n (via getIssueSourceIdentifiers() ) - lists to be analysed)"/>
+
+
+		<Attr Order="21" Name="Action" DisplayName="Action" Simple_Getter="y"/>
+		<Attr Order="22" Name="Control Model" DisplayName="Control Model" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="23" Name="Last Modified By" DisplayName="Last Modified By" Simple_Getter="n (via getIssueHistory...)"/>
+		<Attr Order="24" Name="Issue Additional Information" DisplayName="Issue Additional Information" Simple_Getter="y (maybe via getQaPlanning())"/>
+		<Attr Order="25" Name="Type" DisplayName="Type" Simple_Getter="leer?"/>
+		<Attr Order="26" Name="Date Last Modified" DisplayName="Date Last Modified" Simple_Getter="y"/>
+		<Attr Order="27" Name="Causal Factors" DisplayName="Causal Factors" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="28" Name="Data Source" DisplayName="Data Source" Simple_Getter="leer?"/>
+		<Attr Order="29" Name="Block" DisplayName="Block" Simple_Getter="y (Annonym by getIssueChapters())"/>
+		<Attr Order="30" Name="Program" DisplayName="Program" Simple_Getter="y"/><Attr Order="31" Name="Plant" DisplayName="Plant" Simple_Getter="y"/><Attr Order="32" Name="Title" DisplayName="Title" Simple_Getter="y"/><Attr Order="33" Name="Additional Information" DisplayName="Additional Information" Simple_Getter="y"/><Attr Order="34" Name="Lead CSS" DisplayName="Lead CSS" Simple_Getter="y"/><Attr Order="35" Name="Lead CPSC" DisplayName="Lead CPSC" Simple_Getter="y"/><Attr Order="36" Name="PAF" DisplayName="PAF" Simple_Getter="y"/>
+
+
+	</IssueReport>
+</Config>

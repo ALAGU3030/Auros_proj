@@ -1,0 +1,2901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="E2KSAssessments"  targetNamespace="http://auros.emergentsys.com/services/assessments" xmlns:tns="http://auros.emergentsys.com/services/assessments"
+    xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	>
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://auros.emergentsys.com/services/assessments" xmlns:e2kstypes="http://e2ks.emergent.com/types"
+			 xmlns:assessment_types="http://e2ks.emergent.com/assessment_types"
+			xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+
+      <!-- schemaLocation Attribute for xsd location check path syntax-->
+      <xsd:import  schemaLocation="E2ksAssessmentTypes.xsd" namespace="http://e2ks.emergent.com/assessment_types"/>
+      <xsd:import  schemaLocation="E2ksTypes.xsd" namespace="http://e2ks.emergent.com/types"/>
+
+      <complexType name="getE2KSInstallationInfoResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSInstallationInfo" />
+        </sequence>
+      </complexType>
+      <element name="getE2KSInstallationInfoResponse" type="tns:getE2KSInstallationInfoResponse" />
+
+
+      <complexType name="getAssessmentResponse">
+        <sequence>
+          <element name="result" type="assessment_types:Assessment"   minOccurs="0"  maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getAssessmentResponse" type="tns:getAssessmentResponse" />
+
+      <complexType name="getAssessmentRequest">
+        <sequence>
+          <element name="assessmentId" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+
+      </complexType>
+      <element name="getAssessment" type="tns:getAssessmentRequest" />
+
+
+      <complexType name="getAssessmentsInCopResponse">
+        <sequence>
+          <element name="result" type="assessment_types:AssessmentHeader"   minOccurs="0"  maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getAssessmentsInCopResponse" type="tns:getAssessmentsInCopResponse" />
+
+      <complexType name="getAssessmentsInCopRequest">
+        <sequence>
+          <element name="copId" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="getAssessmentsInCop" type="tns:getAssessmentsInCopRequest" />
+      
+ 
+      <complexType name="getMasterACIDsForCoPResponse">
+        <sequence>
+          <element name="result" type="assessment_types:CoPMasterACHeaders"   minOccurs="0"  maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getMasterACIDsForCoPResponse" type="tns:getMasterACIDsForCoPResponse" />
+
+      <complexType name="getMasterACIDsForCoPRequest">
+        <sequence>
+          <element name="copIds" type="xsd:string"   minOccurs="1"  maxOccurs="unbounded"/>
+          <element name="statusFilter" type="xsd:string"   minOccurs="0"  maxOccurs="unbounded"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="getMasterACIDsForCoP" type="tns:getMasterACIDsForCoPRequest" />
+      
+     <complexType name="getMasterACCheckpointsResponse">
+        <sequence>
+          <element name="result" type="assessment_types:MasterACCheckpoints"   minOccurs="1"  maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getMasterACCheckpointsResponse" type="tns:getMasterACCheckpointsResponse" />
+
+      <complexType name="getMasterACCheckpointsRequest">
+        <sequence>
+          <element name="assessmentId" type="xsd:int"   minOccurs="1"  maxOccurs="1"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="getMasterACCheckpoints" type="tns:getMasterACCheckpointsRequest" /> 
+         
+      <complexType name="getProjectsResponse">
+        <sequence>
+          <element name="result" type="assessment_types:Project"   minOccurs="1"  maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getProjectsResponse" type="tns:getProjectsResponse" />
+
+      <complexType name="getProjectsRequest">
+        <sequence>
+          <element name="copId" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getProjects" type="tns:getProjectsRequest" />
+
+      <complexType name="getProjectsWithAssessmentsResponse">
+        <sequence>
+          <element name="result" type="assessment_types:Project"   minOccurs="1"  maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getProjectsWithAssessmentsResponse" type="tns:getProjectsWithAssessmentsResponse" />
+
+      <complexType name="getProjectsWithAssessmentsRequest">
+        <sequence>
+          <element name="copId" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+         <element name="inputOptions" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getProjectsWithAssessments" type="tns:getProjectsWithAssessmentsRequest" />
+
+      <complexType name="getSubProjectsWithAssessmentsResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="0"  maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getSubProjectsWithAssessmentsResponse" type="tns:getSubProjectsWithAssessmentsResponse" />
+
+      <complexType name="getSubProjectsWithAssessmentsRequest">
+        <sequence>
+          <element name="copID" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+          <element name="projName" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getSubProjectsWithAssessments" type="tns:getSubProjectsWithAssessmentsRequest" />
+
+
+      <complexType name="getReportedValuesResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:ParameterInstance"  maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getReportedValuesResponse" type="tns:getReportedValuesResponse" />
+
+      <complexType name="getReportedValuesRequest">
+        <sequence>
+          <element name="assessmentId" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getReportedValues" type="tns:getReportedValuesRequest" />
+
+
+      <complexType name="setReportedValuesResponse">
+        <sequence>
+          <element name="result" type="xsd:boolean"  minOccurs="1"   maxOccurs="1" />
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="setReportedValuesResponse" type="tns:setReportedValuesResponse" />
+
+      <complexType name="setReportedValuesRequest">
+        <sequence>
+          <element name="assessmentId" type="xsd:string"   minOccurs="1"  maxOccurs="1"/>
+          <element name="reportedParameterInstances" type="e2kstypes:ParameterInstance"  maxOccurs="unbounded"/>
+          <element name="inputOptions" type="e2kstypes:InputOptions" minOccurs="0"  maxOccurs="unbounded" />
+        </sequence>
+      </complexType>
+      <element name="setReportedValues" type="tns:setReportedValuesRequest" />
+
+
+      <complexType name="runRuleProcessorOnAssessmentResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:RuleProcessorResult"  minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+
+        </sequence>
+      </complexType>
+      <element name="runRuleProcessorOnAssessmentResponse" type="tns:runRuleProcessorOnAssessmentResponse" />
+
+      <complexType name="runRuleProcessorOnAssessmentRequest">
+        <sequence>
+          <element name="suppliedParameterInstances" type="e2kstypes:ParameterInstance" minOccurs="0"  maxOccurs="unbounded" />
+          <!-- input units are part of param instances-->
+          <!--element name="units" type="e2kstypes:Unit" minOccurs="0"  maxOccurs="unbounded" /-->
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="inputOptions" type="e2kstypes:InputOptions" minOccurs="0"  maxOccurs="unbounded" />
+        </sequence>
+      </complexType>
+      <element name="runRuleProcessorOnAssessment" type="tns:runRuleProcessorOnAssessmentRequest" />
+
+      <complexType name="lockAssessmentResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:Lock"  minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="lockAssessmentResponse" type="tns:lockAssessmentResponse" />
+
+      <complexType name="lockAssessmentRequest">
+        <sequence>
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="lockAssessment" type="tns:lockAssessmentRequest" />
+
+      <complexType name="unlockAssessmentResponse">
+        <sequence>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="unlockAssessmentResponse" type="tns:unlockAssessmentResponse" />
+
+      <complexType name="unlockAssessmentRequest">
+        <sequence>
+          <element name="lock" type="e2kstypes:Lock" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="unlockAssessment" type="tns:unlockAssessmentRequest" />
+
+
+      <complexType name="getAssessmentHeadersResponse">
+        <sequence>
+          <element name="result" type="assessment_types:AssessmentHeader"  minOccurs="0"   maxOccurs="unbounded"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getAssessmentHeadersResponse" type="tns:getAssessmentHeadersResponse" />
+
+      <complexType name="getAssessmentHeadersRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getAssessmentHeaders" type="tns:getAssessmentHeadersRequest" />
+      
+       <complexType name="getAssessmentHeadersByEvaluatorResponse">
+        <sequence>
+          <element name="result" type="assessment_types:AssessmentHeader"  minOccurs="0"   maxOccurs="unbounded"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getAssessmentHeadersByEvaluatorResponse" type="tns:getAssessmentHeadersByEvaluatorResponse" />
+
+      <complexType name="getAssessmentHeadersByEvaluatorRequest">
+        <sequence>
+          <element name="userId" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+          
+        </sequence>
+      </complexType>
+      <element name="getAssessmentHeadersByEvaluator" type="tns:getAssessmentHeadersByEvaluatorRequest" />
+      
+      <complexType name="getAssessmentHeadersByCreatorResponse">
+        <sequence>
+          <element name="result" type="assessment_types:AssessmentHeader"  minOccurs="0"   maxOccurs="unbounded"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getAssessmentHeadersByCreatorResponse" type="tns:getAssessmentHeadersByCreatorResponse" />
+
+      <complexType name="getAssessmentHeadersByCreatorRequest">
+        <sequence>
+         <element name="userId" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+          
+        </sequence>
+      </complexType>
+      <element name="getAssessmentHeadersByCreator" type="tns:getAssessmentHeadersByCreatorRequest" />
+
+
+      <complexType name="createAssessmentResponse">
+        <sequence>
+          <element name="result" type="assessment_types:Assessment"  minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="createAssessmentResponse" type="tns:createAssessmentResponse" />
+
+      <complexType name="createAssessmentRequest">
+        <sequence>
+          <element name="creationHeaderData" type="assessment_types:AssessmentHeader" minOccurs="1"  maxOccurs="1"  />
+          <element name="contentIds" type="e2kstypes:AurosIdentifier" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="createAssessment" type="tns:createAssessmentRequest" />
+
+
+      <complexType name="deleteAssessmentResponse">
+        <sequence>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="deleteAssessmentResponse" type="tns:deleteAssessmentResponse" />
+
+      <complexType name="deleteAssessmentRequest">
+        <sequence>
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="deleteAssessment" type="tns:deleteAssessmentRequest" />
+
+      <complexType name="modifyAssessmentHeaderResponse">
+        <sequence>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="modifyAssessmentHeaderResponse" type="tns:modifyAssessmentHeaderResponse" />
+
+      <complexType name="modifyAssessmentHeaderRequest">
+        <sequence>
+          <element name="header" type="assessment_types:AssessmentHeader" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="modifyAssessmentHeader" type="tns:modifyAssessmentHeaderRequest" />
+
+      <complexType name="setAssessmentAttributesResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="setAssessmentAttributesResponse" type="tns:setAssessmentAttributesResponse" />
+
+      <complexType name="setAssessmentAttributesRequest">
+        <sequence>
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="attributes" type="e2kstypes:E2KSAttribute" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="setAssessmentAttributes" type="tns:setAssessmentAttributesRequest" />
+
+      <complexType name="getAssessmentsAttributesResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"  minOccurs="0"   maxOccurs="unbounded"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getAssessmentsAttributesResponse" type="tns:getAssessmentsAttributesResponse" />
+
+      <complexType name="getAssessmentsAttributesRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getAssessmentsAttributes" type="tns:getAssessmentsAttributesRequest" />
+
+      <complexType name="updateAssessmentMemberListResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="updateAssessmentMemberListResponse" type="tns:updateAssessmentMemberListResponse" />
+
+      <complexType name="updateAssessmentMemberListRequest">
+        <sequence>
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="updateSource" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="newMemberIDs" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="updateAssessmentMemberList" type="tns:updateAssessmentMemberListRequest" />
+
+      <complexType name="reopenAssessmentResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="reopenAssessmentResponse" type="tns:reopenAssessmentResponse" />
+
+      <complexType name="reopenAssessmentRequest">
+        <sequence>
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="lock" type="e2kstypes:Lock" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="reopenAssessment" type="tns:reopenAssessmentRequest" />
+
+      <complexType name="closeAssessmentResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="closeAssessmentResponse" type="tns:closeAssessmentResponse" />
+
+      <complexType name="closeAssessmentRequest">
+        <sequence>
+          <element name="assessmentID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="lock" type="e2kstypes:Lock" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="closeAssessment" type="tns:closeAssessmentRequest" />
+
+
+
+      <complexType name="getConformanceStateChoicesResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:ConformanceStateChoice"  minOccurs="0"   maxOccurs="unbounded"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getConformanceStateChoicesResponse" type="tns:getConformanceStateChoicesResponse" />
+
+      <complexType name="getConformanceStateChoicesRequest">
+        <sequence>
+          <element name="copID" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getConformanceStateChoices" type="tns:getConformanceStateChoicesRequest" />
+
+
+      <complexType name="getRollupPriorityConformanceStateResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:ConformanceStateChoice"  minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="getRollupPriorityConformanceStateResponse" type="tns:getRollupPriorityConformanceStateResponse" />
+
+      <complexType name="getRollupPriorityConformanceStateRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string" minOccurs="1"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+		  
+        </sequence>
+      </complexType>
+      <element name="getRollupPriorityConformanceState" type="tns:getRollupPriorityConformanceStateRequest" />
+
+
+
+      <complexType name="getConformanceStateStatisticsResponse">
+        <sequence>
+          <element name="result" type="assessment_types:AssessmentConformanceStatistics"  minOccurs="0"   maxOccurs="unbounded"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getConformanceStateStatisticsResponse" type="tns:getConformanceStateStatisticsResponse" />
+
+      <complexType name="getConformanceStateStatisticsRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+       </sequence>
+      </complexType>
+      <element name="getConformanceStateStatistics" type="tns:getConformanceStateStatisticsRequest" />
+
+
+
+      <complexType name="getAssessmentLinkAndAttachmentStatisticsResponse">
+        <sequence>
+          <element name="result" type="assessment_types:AssessmentLinkAndAttachmentStatistics"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="getAssessmentLinkAndAttachmentStatisticsResponse" type="tns:getAssessmentLinkAndAttachmentStatisticsResponse" />
+
+      <complexType name="getAssessmentLinkAndAttachmentStatisticsRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getAssessmentLinkAndAttachmentStatistics" type="tns:getAssessmentLinkAndAttachmentStatisticsRequest" />
+
+      <complexType name="changeOccurrenceResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="changeOccurrenceResponse" type="tns:changeOccurrenceResponse" />
+
+      <complexType name="changeOccurrenceRequest">
+        <sequence>
+
+          <element name="fromOccurrenceID" type="e2kstypes:AurosIdentifier"/>
+          <element name="toOccurrenceID" type="e2kstypes:AurosIdentifier"/>
+          <element name="fromName" type="xsd:string"/>
+          <element name="toName" type="xsd:string"/>
+          <element name="inputOptions" type="e2kstypes:InputOptions" maxOccurs="unbounded" />
+
+        </sequence>
+      </complexType>
+      <element name="changeOccurrence" type="tns:changeOccurrenceRequest" />
+
+      <complexType name="changeOccurrencesResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="changeOccurrencesResponse" type="tns:changeOccurrencesResponse" />
+
+      <complexType name="changeOccurrencesRequest">
+        <sequence>
+
+          <element name="fromOccurrenceIDs" type="e2kstypes:AurosIdentifier" minOccurs="1" maxOccurs="unbounded"/>
+          <element name="toOccurrenceIDs" type="e2kstypes:AurosIdentifier" minOccurs="1" maxOccurs="unbounded"/>
+          <element name="fromNames" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+          <element name="toNames" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+          <element name="inputOptions" type="e2kstypes:InputOptions" maxOccurs="unbounded" />
+
+        </sequence>
+      </complexType>
+      <element name="changeOccurrences" type="tns:changeOccurrencesRequest" />
+
+
+
+      <complexType name="retrieveACSEAttributesForCoPsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributesForCoPsResponse" type="tns:retrieveACSEAttributesForCoPsResponse" />
+
+      <complexType name="retrieveACSEAttributesForCoPsRequest">
+        <sequence>
+
+          <element name="cops" type="e2kstypes:CoP"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributesForCoPs" type="tns:retrieveACSEAttributesForCoPsRequest" />
+
+	  
+
+      <complexType name="retrieveACEEAttributesForCoPsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACEEAttributesForCoPsResponse" type="tns:retrieveACEEAttributesForCoPsResponse" />
+
+      <complexType name="retrieveACEEAttributesForCoPsRequest">
+        <sequence>
+
+          <element name="cops" type="e2kstypes:CoP"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="retrieveACEEAttributesForCoPs" type="tns:retrieveACEEAttributesForCoPsRequest" />
+      
+
+      <complexType name="retrieveACSEAttributesForCoPIDsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributesForCoPIDsResponse" type="tns:retrieveACSEAttributesForCoPIDsResponse" />
+
+      <complexType name="retrieveACSEAttributesForCoPIDsRequest">
+        <sequence>
+
+          <element name="copIDs" type="xsd:string"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributesForCoPIDs" type="tns:retrieveACSEAttributesForCoPIDsRequest" />
+
+	  
+
+      <complexType name="retrieveACEEAttributesForCoPIDsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACEEAttributesForCoPIDsResponse" type="tns:retrieveACEEAttributesForCoPIDsResponse" />
+
+      <complexType name="retrieveACEEAttributesForCoPIDsRequest">
+        <sequence>
+
+          <element name="copIDs" type="xsd:string"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="retrieveACEEAttributesForCoPIDs" type="tns:retrieveACEEAttributesForCoPIDsRequest" />
+	  
+      <complexType name="retrieveACSEAttributesForACsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributesForACsResponse" type="tns:retrieveACSEAttributesForACsResponse" />
+
+      <complexType name="retrieveACSEAttributesForACsRequest">
+        <sequence>
+
+          <element name="acIDs" type="xsd:string"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributesForACs" type="tns:retrieveACSEAttributesForACsRequest" />
+      	  
+      <complexType name="retrieveACEEAttributesForACsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACEEAttributesForACsResponse" type="tns:retrieveACEEAttributesForACsResponse" />
+
+      <complexType name="retrieveACEEAttributesForACsRequest">
+        <sequence>
+
+          <element name="acIDs" type="xsd:string"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="retrieveACEEAttributesForACs" type="tns:retrieveACEEAttributesForACsRequest" />
+	  
+      <complexType name="setACSEAttributesForACsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="setACSEAttributesForACsResponse" type="tns:setACSEAttributesForACsResponse" />
+
+      <complexType name="setACSEAttributesForACsRequest">
+        <sequence>
+
+          <element name="attributeList" type="e2kstypes:E2KSAttributeList"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="setACSEAttributesForACs" type="tns:setACSEAttributesForACsRequest" />
+      	  
+      <complexType name="getAllTargetValuesResponse">
+        <sequence>
+          <element name="result" type="assessment_types:ParameterTargetList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getAllTargetValuesResponse" type="tns:getAllTargetValuesResponse" />
+
+      <complexType name="getAllTargetValuesRequest">
+        <sequence>
+
+          <element name="acIDs" type="xsd:string"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="getAllTargetValues" type="tns:getAllTargetValuesRequest" />
+      
+      	  
+      <complexType name="setAllTargetValuesResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="setAllTargetValuesResponse" type="tns:setAllTargetValuesResponse" />
+
+      <complexType name="setAllTargetValuesRequest">
+        <sequence>
+          <element name="inputTargetList" type="assessment_types:ParameterTargetList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="setAllTargetValues" type="tns:setAllTargetValuesRequest" />
+	  
+	  
+      <complexType name="addOccurrencesResponse">
+        <sequence>
+		  <element name="addedOccurrences" type="assessment_types:Occurrence"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="addOccurrencesResponse" type="tns:addOccurrencesResponse" />
+
+      <complexType name="addOccurrencesRequest">
+        <sequence>
+          <element name="acid" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>		  		
+          <element name="occurrencesToAdd" type="assessment_types:Occurrence"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="addOccurrences" type="tns:addOccurrencesRequest" />
+	  
+	  
+      <complexType name="deleteOccurrencesResponse">
+        <sequence>
+		  <element name="deletedOccurrenceIDs" type="e2kstypes:AurosIdentifier"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="deleteOccurrencesResponse" type="tns:deleteOccurrencesResponse" />
+
+      <complexType name="deleteOccurrencesRequest">
+        <sequence>		  		
+          <element name="occurrencesToDelete" type="e2kstypes:AurosIdentifier"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="deleteOccurrences" type="tns:deleteOccurrencesRequest" />
+		  
+	  
+	  
+	  
+      <complexType name="searchAssessmentsForCriteriaResponse">
+        <sequence>
+		  <element name="searchResults" type="e2kstypes:AurosIdentifier"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="searchAssessmentsForCriteriaResponse" type="tns:searchAssessmentsForCriteriaResponse" />
+
+      <complexType name="searchAssessmentsForCriteriaRequest">
+        <sequence>
+          <element name="searchAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="searchAssessmentsForCriteria" type="tns:searchAssessmentsForCriteriaRequest" />
+	  
+	
+      <complexType name="getOccurrencesResponse">
+        <sequence>
+		  <element name="result" type="assessment_types:Occurrence"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getOccurrencesResponse" type="tns:getOccurrencesResponse" />
+
+      <complexType name="getOccurrencesRequest">
+        <sequence>
+          <element name="acid" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>		  
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="getOccurrences" type="tns:getOccurrencesRequest" />
+	  	
+	
+      <complexType name="addOccurrencesAutoNamedResponse">
+        <sequence>
+		  <element name="addedOccurrences" type="assessment_types:Occurrence"  minOccurs="0"   maxOccurs="unbounded"/>		  
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="addOccurrencesAutoNamedResponse" type="tns:addOccurrencesAutoNamedResponse" />
+
+      <complexType name="addOccurrencesAutoNamedRequest">
+        <sequence>
+          <element name="acid" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>		  		
+          <element name="occurrencesToAdd" type="assessment_types:Occurrence"  minOccurs="1"   maxOccurs="1"/>		  
+          <element name="count" type="xsd:int"  minOccurs="1"   maxOccurs="1"/>	
+		  
+          <element name="nameTemplate" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>	
+           <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+
+        </sequence>
+      </complexType>
+      <element name="addOccurrencesAutoNamed" type="tns:addOccurrencesAutoNamedRequest" />
+      
+	  	
+	
+      <complexType name="setOccurrencePropertiesResponse">
+        <sequence>
+		  <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="setOccurrencePropertiesResponse" type="tns:setOccurrencePropertiesResponse" />
+
+      <complexType name="setOccurrencePropertiesRequest">
+        <sequence>
+          <element name="occurrenceProperties" type="e2kstypes:E2KSAttributeList" minOccurs="0" maxOccurs="unbounded"/>	
+           <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="setOccurrenceProperties" type="tns:setOccurrencePropertiesRequest" />
+	
+	
+      <complexType name="getDiscussionsOnOccurranceResponse">
+        <sequence>
+        	<element name="result" type="e2kstypes:Discussion"  minOccurs="0"   maxOccurs="unbounded"/>
+		  	<element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getDiscussionsOnOccurranceResponse" type="tns:getDiscussionsOnOccurranceResponse" />
+
+      <complexType name="getDiscussionsOnOccurranceRequest">
+        <sequence>
+          <element name="occurrenceID" type="e2kstypes:AurosIdentifier" minOccurs="1" maxOccurs="1"/>	
+           <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getDiscussionsOnOccurrance" type="tns:getDiscussionsOnOccurranceRequest" />
+	
+	
+      <complexType name="getDiscussionsOnAssessmentResponse">
+        <sequence>
+        	<element name="result" type="e2kstypes:Discussion"  minOccurs="0"   maxOccurs="unbounded"/>
+		  	<element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getDiscussionsOnAssessmentResponse" type="tns:getDiscussionsOnAssessmentResponse" />
+
+      <complexType name="getDiscussionsOnAssessmentRequest">
+        <sequence>
+          <element name="assessmentID" type="string" minOccurs="1" maxOccurs="1"/>	
+           <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getDiscussionsOnAssessment" type="tns:getDiscussionsOnAssessmentRequest" />
+	
+	
+      <complexType name="getRolledUpConfStateForACByAttributeResponse">
+        <sequence>
+        	<element name="result" type="assessment_types:RollUpStateByACID"  minOccurs="0"   maxOccurs="unbounded"/>
+		  	<element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getRolledUpConfStateForACByAttributeResponse" type="tns:getRolledUpConfStateForACByAttributeResponse" />
+
+      <complexType name="getRolledUpConfStateForACByAttributeRequest">
+        <sequence>
+          	<element name="chkIds" type="string" minOccurs="1" maxOccurs="unbounded"/>
+          	<element name="attributeName" type="string" minOccurs="1" maxOccurs="1"/>
+           	<element name="inputOptions" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getRolledUpConfStateForACByAttribute" type="tns:getRolledUpConfStateForACByAttributeRequest" />
+      
+      
+      
+       <complexType name="countKPacsForAssessmentsByAttributeResponse">
+        <sequence>
+        	<element name="result" type="assessment_types:AssessmentKPacCounter"  minOccurs="0"   maxOccurs="unbounded"/>
+		  	<element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="countKPacsForAssessmentsByAttributeResponse" type="tns:countKPacsForAssessmentsByAttributeResponse" />
+
+      <complexType name="countKPacsForAssessmentsByAttributeRequest">
+        <sequence>
+          	<element name="acIDs" type="string" minOccurs="1" maxOccurs="unbounded"/>
+          	<element name="fldName" type="string" minOccurs="1" maxOccurs="1"/>
+           	<element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="countKPacsForAssessmentsByAttribute" type="tns:countKPacsForAssessmentsByAttributeRequest" />
+      
+      
+      <complexType name="copyAssessmentResponse">
+          <sequence>
+              <element name="result" type="xsd:int" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="messages" type="e2kstypes:AurosMessages"
+                  minOccurs="1" maxOccurs="1" />
+          </sequence>
+      </complexType>
+      <element name="copyAssessmentResponse" type="tns:copyAssessmentResponse" />
+
+      <complexType name="copyAssessmentRequest">
+          <sequence>
+              <element name="acId" type="xsd:int" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="inputOptions" type="e2kstypes:InputOptions"
+                  minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+      </complexType>
+      <element name="copyAssessment" type="tns:copyAssessmentRequest" />
+      
+      <complexType name="replicateAssessmentsResponse">
+          <sequence>
+              <element name="replicatedACs" type="assessment_types:ReplicatedAC" minOccurs="0" maxOccurs="unbounded" />
+              <element name="messages" type="e2kstypes:AurosMessages" minOccurs="1" maxOccurs="1" />
+          </sequence>
+      </complexType>
+      <element name="replicateAssessmentsResponse" type="tns:replicateAssessmentsResponse" />
+
+      <complexType name="replicateAssessmentsRequest">
+          <sequence>
+              <element name="acReplicationDataList" type="assessment_types:ACReplicationDataList" minOccurs="1" maxOccurs="1" />
+              <element name="basicElementsToCopy" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+              <element name="aceeElementsToCopy" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+              <element name="acseElementsToCopy" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+              <element name="inputOptions" type="e2kstypes:InputOptions" minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+      </complexType>
+      
+      <element name="replicateAssessments" type="tns:replicateAssessmentsRequest" />
+      
+      <complexType name="isCopAssessmentCreatorResponse">
+          <sequence>
+              <element name="result" type="xsd:boolean" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="messages" type="e2kstypes:AurosMessages"
+                  minOccurs="1" maxOccurs="1" />
+          </sequence>
+      </complexType>
+      <element name="isCopAssessmentCreatorResponse" type="tns:isCopAssessmentCreatorResponse" />
+
+      <complexType name="isCopAssessmentCreatorRequest">
+          <sequence>
+              <element name="userId" type="xsd:string" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="copId" type="xsd:string" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="inputOptions" type="e2kstypes:InputOptions"
+                  minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+      </complexType>
+      <element name="isCopAssessmentCreator" type="tns:isCopAssessmentCreatorRequest" />
+
+      <element name="E2KSFault" type="tns:E2KSFault" />
+      <complexType name="E2KSFault">
+        <sequence>
+          <element name="faultInfo" type="xsd:string" />
+          <element name="message" type="xsd:string" />
+        </sequence>
+      </complexType>
+      
+      <complexType name="setACApproversResponse">
+          <sequence>
+              <element name="messages" type="e2kstypes:AurosMessages"
+                  minOccurs="1" maxOccurs="1" />
+          </sequence>
+      </complexType>
+      <element name="setACApproversResponse" type="tns:setACApproversResponse" />
+
+      <complexType name="setACApproversRequest">
+          <sequence>
+              <element name="acId" type="xsd:int" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="approvalTypeName" type="xsd:string" minOccurs="1"
+                  maxOccurs="1" />
+              <element name="approverIds" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+              <element name="inputOptions" type="e2kstypes:InputOptions"
+                  minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+      </complexType>
+      <element name="setACApprovers" type="tns:setACApproversRequest" />
+
+      <complexType name="attachACToACStepResponse">
+        <sequence>
+          <element name="result" type="xsd:boolean"  minOccurs="1"   maxOccurs="1" />
+          <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+        </sequence>
+      </complexType>
+      <element name="attachACToACStepResponse" type="tns:attachACToACStepResponse" />
+
+      <complexType name="attachACToACStepRequest">
+        <sequence>
+          <element name="assessmentId" type="xsd:int"   minOccurs="1"  maxOccurs="1"/>
+          <element name="kpacId" type="xsd:string" minOccurs="1" maxOccurs="1" />
+          <element name="stepId" type="xsd:int" minOccurs="1" maxOccurs="1" />
+          <element name="attachACIds" type="xsd:int" minOccurs="1" maxOccurs="unbounded" />
+          <element name="inputOptions" type="e2kstypes:InputOptions" minOccurs="0"  maxOccurs="unbounded" />
+        </sequence>
+      </complexType>
+      <element name="attachACToACStep" type="tns:attachACToACStepRequest" />
+      
+      
+      <complexType name="getCountReportResponse">
+        <sequence>
+           <element name="result" type="assessment_types:CountReport"  minOccurs="1"   maxOccurs="1"/>
+           <element name="messages" type="e2kstypes:AurosMessages"   minOccurs="1"   maxOccurs="1"/>
+       </sequence>
+      </complexType>
+      <element name="getCountReportResponse" type="tns:getCountReportResponse" />
+
+      <complexType name="getCountReportRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string" minOccurs="0"  maxOccurs="unbounded"  />
+          <element name="primaryCategory" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="primaryCategoryType" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="secondaryCategory" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="secondaryCategoryType" type="xsd:string" minOccurs="1"  maxOccurs="1"  />
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getCountReport" type="tns:getCountReportRequest" />
+    </xsd:schema>
+
+
+
+
+  </types>
+
+
+  <message name="E2KSFault">
+    <part name="E2KSFault" element="tns:E2KSFault" />
+  </message>
+
+  <message name="getE2KSInstallationInfoResponse">
+    <part name="parameters" element="tns:getE2KSInstallationInfoResponse" />
+  </message>
+  <message name="getE2KSInstallationInfoRequest">
+
+  </message>
+
+
+  <message name="getAssessmentResponse">
+    <part name="parameters" element="tns:getAssessmentResponse" />
+  </message>
+  <message name="getAssessmentRequest">
+    <part name="parameters" element="tns:getAssessment" />
+  </message>
+
+
+  <message name="getAssessmentsInCopResponse">
+    <part name="parameters" element="tns:getAssessmentsInCopResponse" />
+  </message>
+  <message name="getAssessmentsInCopRequest">
+    <part name="parameters" element="tns:getAssessmentsInCop" />
+  </message>
+
+  <message name="getProjectsResponse">
+    <part name="parameters" element="tns:getProjectsResponse" />
+  </message>
+  <message name="getProjectsRequest">
+    <part name="parameters" element="tns:getProjects" />
+  </message>
+
+  <message name="getProjectsWithAssessmentsResponse">
+    <part name="parameters" element="tns:getProjectsWithAssessmentsResponse" />
+  </message>
+  <message name="getProjectsWithAssessmentsRequest">
+    <part name="parameters" element="tns:getProjectsWithAssessments" />
+  </message>
+
+  <message name="getSubProjectsWithAssessmentsResponse">
+    <part name="parameters" element="tns:getSubProjectsWithAssessmentsResponse" />
+  </message>
+  <message name="getSubProjectsWithAssessmentsRequest">
+    <part name="parameters" element="tns:getSubProjectsWithAssessments" />
+  </message>
+
+
+  <message name="getReportedValuesResponse">
+    <part name="parameters" element="tns:getReportedValuesResponse" />
+  </message>
+  <message name="getReportedValuesRequest">
+    <part name="parameters" element="tns:getReportedValues" />
+  </message>
+
+  <message name="setReportedValuesResponse">
+    <part name="parameters" element="tns:setReportedValuesResponse" />
+  </message>
+  <message name="setReportedValuesRequest">
+    <part name="parameters" element="tns:setReportedValues" />
+  </message>
+
+  <message name="runRuleProcessorOnAssessmentResponse">
+    <part name="parameters" element="tns:runRuleProcessorOnAssessmentResponse" />
+  </message>
+  <message name="runRuleProcessorOnAssessmentRequest">
+    <part name="parameters" element="tns:runRuleProcessorOnAssessment" />
+  </message>
+
+  <message name="lockAssessmentResponse">
+    <part name="parameters" element="tns:lockAssessmentResponse" />
+  </message>
+  <message name="lockAssessmentRequest">
+    <part name="parameters" element="tns:lockAssessment" />
+  </message>
+
+  <message name="unlockAssessmentResponse">
+    <part name="parameters" element="tns:unlockAssessmentResponse" />
+  </message>
+  <message name="unlockAssessmentRequest">
+    <part name="parameters" element="tns:unlockAssessment" />
+  </message>
+
+  <message name="getAssessmentHeadersResponse">
+    <part name="parameters" element="tns:getAssessmentHeadersResponse" />
+  </message>
+  <message name="getAssessmentHeadersRequest">
+    <part name="parameters" element="tns:getAssessmentHeaders" />
+  </message>
+  
+  <message name="getAssessmentHeadersByEvaluatorResponse">
+    <part name="parameters" element="tns:getAssessmentHeadersByEvaluatorResponse" />
+  </message>
+  <message name="getAssessmentHeadersByEvaluatorRequest">
+    <part name="parameters" element="tns:getAssessmentHeadersByEvaluator" />
+  </message>
+  
+  <message name="getAssessmentHeadersByCreatorResponse">
+    <part name="parameters" element="tns:getAssessmentHeadersByCreatorResponse" />
+  </message>
+  <message name="getAssessmentHeadersByCreatorRequest">
+    <part name="parameters" element="tns:getAssessmentHeadersByCreator" />
+  </message>
+
+  <message name="createAssessmentResponse">
+    <part name="parameters" element="tns:createAssessmentResponse" />
+  </message>
+  <message name="createAssessmentRequest">
+    <part name="parameters" element="tns:createAssessment" />
+  </message>
+
+  <message name="deleteAssessmentResponse">
+    <part name="parameters" element="tns:deleteAssessmentResponse" />
+  </message>
+  <message name="deleteAssessmentRequest">
+    <part name="parameters" element="tns:deleteAssessment" />
+  </message>
+
+  <message name="modifyAssessmentHeaderResponse">
+    <part name="parameters" element="tns:modifyAssessmentHeaderResponse" />
+  </message>
+  <message name="modifyAssessmentHeaderRequest">
+    <part name="parameters" element="tns:modifyAssessmentHeader" />
+  </message>
+
+
+  <message name="setAssessmentAttributesResponse">
+    <part name="parameters" element="tns:setAssessmentAttributesResponse" />
+  </message>
+  <message name="setAssessmentAttributesRequest">
+    <part name="parameters" element="tns:setAssessmentAttributes" />
+  </message>
+
+
+
+  <message name="getAssessmentsAttributesResponse">
+    <part name="parameters" element="tns:getAssessmentsAttributesResponse" />
+  </message>
+  <message name="getAssessmentsAttributesRequest">
+    <part name="parameters" element="tns:getAssessmentsAttributes" />
+  </message>
+
+
+  <message name="updateAssessmentMemberListResponse">
+    <part name="parameters" element="tns:updateAssessmentMemberListResponse" />
+  </message>
+  <message name="updateAssessmentMemberListRequest">
+    <part name="parameters" element="tns:updateAssessmentMemberList" />
+  </message>
+
+  <message name="reopenAssessmentResponse">
+    <part name="parameters" element="tns:reopenAssessmentResponse" />
+  </message>
+  <message name="reopenAssessmentRequest">
+    <part name="parameters" element="tns:reopenAssessment" />
+  </message>
+
+  <message name="closeAssessmentResponse">
+    <part name="parameters" element="tns:closeAssessmentResponse" />
+  </message>
+  <message name="closeAssessmentRequest">
+    <part name="parameters" element="tns:closeAssessment" />
+  </message>
+
+
+
+  <message name="getConformanceStateChoicesResponse">
+    <part name="parameters" element="tns:getConformanceStateChoicesResponse" />
+  </message>
+  <message name="getConformanceStateChoicesRequest">
+    <part name="parameters" element="tns:getConformanceStateChoices" />
+  </message>
+
+
+  <message name="getRollupPriorityConformanceStateResponse">
+    <part name="parameters" element="tns:getRollupPriorityConformanceStateResponse" />
+  </message>
+  <message name="getRollupPriorityConformanceStateRequest">
+    <part name="parameters" element="tns:getRollupPriorityConformanceState" />
+  </message>
+
+
+  <message name="getConformanceStateStatisticsResponse">
+    <part name="parameters" element="tns:getConformanceStateStatisticsResponse" />
+  </message>
+  <message name="getConformanceStateStatisticsRequest">
+    <part name="parameters" element="tns:getConformanceStateStatistics" />
+  </message>
+
+  <message name="getAssessmentLinkAndAttachmentStatisticsResponse">
+    <part name="parameters" element="tns:getAssessmentLinkAndAttachmentStatisticsResponse" />
+  </message>
+  <message name="getAssessmentLinkAndAttachmentStatisticsRequest">
+    <part name="parameters" element="tns:getAssessmentLinkAndAttachmentStatistics" />
+  </message>
+
+
+  <message name="changeOccurrenceResponse">
+    <part name="parameters" element="tns:changeOccurrenceResponse" />
+  </message>
+  <message name="changeOccurrenceRequest">
+    <part name="parameters" element="tns:changeOccurrence" />
+  </message>
+
+
+  <message name="changeOccurrencesResponse">
+    <part name="parameters" element="tns:changeOccurrencesResponse" />
+  </message>
+  <message name="changeOccurrencesRequest">
+    <part name="parameters" element="tns:changeOccurrences" />
+  </message>
+
+
+  <message name="retrieveACSEAttributesForCoPsResponse">
+    <part name="parameters" element="tns:retrieveACSEAttributesForCoPsResponse" />
+  </message>
+  <message name="retrieveACSEAttributesForCoPsRequest">
+    <part name="parameters" element="tns:retrieveACSEAttributesForCoPs" />
+  </message>
+
+  <message name="retrieveACEEAttributesForCoPsResponse">
+    <part name="parameters" element="tns:retrieveACEEAttributesForCoPsResponse" />
+  </message>
+  <message name="retrieveACEEAttributesForCoPsRequest">
+    <part name="parameters" element="tns:retrieveACEEAttributesForCoPs" />
+  </message>
+    
+  <message name="retrieveACSEAttributesForCoPIDsResponse">
+    <part name="parameters" element="tns:retrieveACSEAttributesForCoPIDsResponse" />
+  </message>
+  <message name="retrieveACSEAttributesForCoPIDsRequest">
+    <part name="parameters" element="tns:retrieveACSEAttributesForCoPIDs" />
+  </message>
+
+  <message name="retrieveACEEAttributesForCoPIDsResponse">
+    <part name="parameters" element="tns:retrieveACEEAttributesForCoPIDsResponse" />
+  </message>
+  <message name="retrieveACEEAttributesForCoPIDsRequest">
+    <part name="parameters" element="tns:retrieveACEEAttributesForCoPIDs" />
+  </message>
+
+  <message name="retrieveACSEAttributesForACsResponse">
+    <part name="parameters" element="tns:retrieveACSEAttributesForACsResponse" />
+  </message>
+  <message name="retrieveACSEAttributesForACsRequest">
+    <part name="parameters" element="tns:retrieveACSEAttributesForACs" />
+  </message>
+
+  <message name="retrieveACEEAttributesForACsResponse">
+    <part name="parameters" element="tns:retrieveACEEAttributesForACsResponse" />
+  </message>
+  <message name="retrieveACEEAttributesForACsRequest">
+    <part name="parameters" element="tns:retrieveACEEAttributesForACs" />
+  </message>
+
+  <message name="setACSEAttributesForACsResponse">
+    <part name="parameters" element="tns:setACSEAttributesForACsResponse" />
+  </message>
+  <message name="setACSEAttributesForACsRequest">
+    <part name="parameters" element="tns:setACSEAttributesForACs" />
+  </message>
+
+  <message name="getAllTargetValuesResponse">
+    <part name="parameters" element="tns:getAllTargetValuesResponse" />
+  </message>
+  <message name="getAllTargetValuesRequest">
+    <part name="parameters" element="tns:getAllTargetValues" />
+  </message>
+
+  <message name="setAllTargetValuesResponse">
+    <part name="parameters" element="tns:setAllTargetValuesResponse" />
+  </message>
+  <message name="setAllTargetValuesRequest">
+    <part name="parameters" element="tns:setAllTargetValues" />
+  </message>
+
+
+  <message name="addOccurrencesResponse">
+    <part name="parameters" element="tns:addOccurrencesResponse" />
+  </message>
+  <message name="addOccurrencesRequest">
+    <part name="parameters" element="tns:addOccurrences" />
+  </message>
+
+
+  <message name="deleteOccurrencesResponse">
+    <part name="parameters" element="tns:deleteOccurrencesResponse" />
+  </message>
+  <message name="deleteOccurrencesRequest">
+    <part name="parameters" element="tns:deleteOccurrences" />
+  </message>
+  
+   <message name="searchAssessmentsForCriteriaResponse">
+    <part name="parameters" element="tns:searchAssessmentsForCriteriaResponse" />
+  </message>
+  <message name="searchAssessmentsForCriteriaRequest">
+    <part name="parameters" element="tns:searchAssessmentsForCriteria" />
+  </message> 
+
+  
+  
+     <message name="getOccurrencesResponse">
+    <part name="parameters" element="tns:getOccurrencesResponse" />
+  </message>
+  <message name="getOccurrencesRequest">
+    <part name="parameters" element="tns:getOccurrences" />
+  </message> 
+
+   <message name="addOccurrencesAutoNamedResponse">
+    <part name="parameters" element="tns:addOccurrencesAutoNamedResponse" />
+  </message>
+  <message name="addOccurrencesAutoNamedRequest">
+    <part name="parameters" element="tns:addOccurrencesAutoNamed" />
+  </message> 
+
+   <message name="setOccurrencePropertiesResponse">
+    <part name="parameters" element="tns:setOccurrencePropertiesResponse" />
+  </message>
+  <message name="setOccurrencePropertiesRequest">
+    <part name="parameters" element="tns:setOccurrenceProperties" />
+  </message> 
+
+   <message name="getDiscussionsOnOccurranceResponse">
+    <part name="parameters" element="tns:getDiscussionsOnOccurranceResponse" />
+  </message>
+  <message name="getDiscussionsOnOccurranceRequest">
+    <part name="parameters" element="tns:getDiscussionsOnOccurrance" />
+  </message>
+
+   <message name="getDiscussionsOnAssessmentResponse">
+    <part name="parameters" element="tns:getDiscussionsOnAssessmentResponse" />
+  </message>
+  <message name="getDiscussionsOnAssessmentRequest">
+    <part name="parameters" element="tns:getDiscussionsOnAssessment" />
+  </message> 
+
+   <message name="getRolledUpConfStateForACByAttributeResponse">
+    <part name="parameters" element="tns:getRolledUpConfStateForACByAttributeResponse" />
+  </message>
+  <message name="getRolledUpConfStateForACByAttributeRequest">
+    <part name="parameters" element="tns:getRolledUpConfStateForACByAttribute" />
+  </message>
+  
+  
+  <message name="countKPacsForAssessmentsByAttributeResponse">
+    <part name="parameters" element="tns:countKPacsForAssessmentsByAttributeResponse" />
+  </message>
+  <message name="countKPacsForAssessmentsByAttributeRequest">
+    <part name="parameters" element="tns:countKPacsForAssessmentsByAttribute" />
+  </message>
+  
+  <message name="copyAssessmentResponse">
+        <part name="parameters" element="tns:copyAssessmentResponse" />
+    </message>
+    <message name="copyAssessmentRequest">
+        <part name="parameters" element="tns:copyAssessment" />
+    </message>
+    
+    <message name="replicateAssessmentsResponse">
+        <part name="parameters" element="tns:replicateAssessmentsResponse" />
+    </message>
+    <message name="replicateAssessmentsRequest">
+        <part name="parameters" element="tns:replicateAssessments" />
+    </message>
+    
+    <message name="setACApproversResponse">
+    	<part name="parameters" element="tns:setACApproversResponse" />
+    </message>
+    <message name="setACApproversRequest">
+    	<part name="parameters" element="tns:setACApprovers" />
+    </message>
+    
+    <message name="attachACToACStepResponse">
+    	<part name="parameters" element="tns:attachACToACStepResponse" />
+    </message>
+    <message name="attachACToACStepRequest">
+    	<part name="parameters" element="tns:attachACToACStep" />
+    </message>
+    
+    <message name="isCopAssessmentCreatorResponse">
+        <part name="parameters" element="tns:isCopAssessmentCreatorResponse" />
+    </message>
+    <message name="isCopAssessmentCreatorRequest">
+        <part name="parameters" element="tns:isCopAssessmentCreator" />
+    </message>
+    
+    <message name="getCountReportResponse">
+    	<part name="parameters" element="tns:getCountReportResponse" />
+    </message>
+    <message name="getCountReportRequest">
+    	<part name="parameters" element="tns:getCountReport" />
+    </message>
+
+  <message name="getMasterACIDsForCoPResponse">
+    <part name="parameters" element="tns:getMasterACIDsForCoPResponse" />
+  </message>
+  <message name="getMasterACIDsForCoPRequest">
+    <part name="parameters" element="tns:getMasterACIDsForCoP" />
+  </message>
+  
+  <message name="getMasterACCheckpointsResponse">
+    <part name="parameters" element="tns:getMasterACCheckpointsResponse" />
+  </message>
+  <message name="getMasterACCheckpointsRequest">
+    <part name="parameters" element="tns:getMasterACCheckpoints" />
+  </message>
+  
+  <portType name="E2KSAssessmentsPortType">
+
+    <operation name="getE2KSInstallationInfo">
+      <documentation>
+        Retrieves this installation information.
+\snippet TestAbstractAssessmentManager.java getE2KSInstallationInfoCases
+      </documentation>
+      <input message="tns:getE2KSInstallationInfoRequest"  name="getE2KSInstallationInfoRequest"/>
+      <output message="tns:getE2KSInstallationInfoResponse" name="getE2KSInstallationInfoResponse"/>
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="getAssessment">
+      <documentation>
+        Retrieves the specified Assessment. The persistedConformanceStates ( which is a list of ConformanceState) member of the Assessment object returned through getAssessment()
+		will not contain the ruleColumn related members. The Conformances stored for the assessment are at a rolled up K-PAC level and not at the column level. The rule processing methods 
+		can return the various column level deatils.
+\snippet TestAbstractAssessmentManager.java getAssessmentCases
+      </documentation>
+      <input  message="tns:getAssessmentRequest"  name="getAssessmentRequest" />
+      <output message="tns:getAssessmentResponse" name="getAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="getAssessmentsInCop">
+      <documentation>
+        Retrieves the specified Assessment.
+\snippet TestAbstractAssessmentManager.java getAssessmentsInCopCases
+      </documentation>
+      <input  message="tns:getAssessmentsInCopRequest"  name="getAssessmentsInCopRequest" />
+      <output message="tns:getAssessmentsInCopResponse" name="getAssessmentsInCopResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+  <operation name="getMasterACIDsForCoP">
+      <documentation>
+      Retrieves a list of Master Assessment IDs for the given List of CoPs filtered by given AC Status list.
+      ACStatus List is  - Optional (This is the statuses of the Master Assessments to be retrieved)
+      If AC status is not provided then only retrieve Master Assessments in Evaluation Ready status
+\snippet TestAbstractAssessmentManager.java getMasterACIDsForCoPCases
+      </documentation>
+      <input  message="tns:getMasterACIDsForCoPRequest"  name="getMasterACIDsForCoPRequest" />
+      <output message="tns:getMasterACIDsForCoPResponse" name="getMasterACIDsForCoPResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+      <operation name="getMasterACCheckpoints">
+      <documentation>
+      Retrieves a list of Master Checkpoints of a given Assessment.
+      \snippet TestAbstractAssessmentManager.java getMasterACCheckpointsCases
+      </documentation>
+      <input  message="tns:getMasterACCheckpointsRequest"  name="getMasterACCheckpointsRequest" />
+      <output message="tns:getMasterACCheckpointsResponse" name="getMasterACCheckpointsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="getProjects">
+      <documentation>
+        Retrieves all projects in the cop
+\snippet TestAbstractAssessmentManager.java getProjectsCases
+      </documentation>
+      <input  message="tns:getProjectsRequest"  name="getProjectsRequest" />
+      <output message="tns:getProjectsResponse" name="getProjectsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="getProjectsWithAssessments">
+      <documentation>
+        Retrieves all projects in the cop
+\snippet TestAbstractAssessmentManager.java getProjectsWithAssessmentsCases
+      </documentation>
+      <input  message="tns:getProjectsWithAssessmentsRequest"  name="getProjectsWithAssessmentsRequest" />
+      <output message="tns:getProjectsWithAssessmentsResponse" name="getProjectsWithAssessmentsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="getSubProjectsWithAssessments">
+       <documentation>
+ getSubProjectsWithAssessments returns a list of Sub Projects of a CoP and Project of Assessments.
+ \snippet TestAbstractCoPsManager.java getSubProjectsWithAssessmentsCases
+      </documentation>
+
+     <input  message="tns:getSubProjectsWithAssessmentsRequest"  name="getSubProjectsWithAssessmentsRequest" />
+      <output message="tns:getSubProjectsWithAssessmentsResponse" name="getSubProjectsWithAssessmentsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="getReportedValues">
+      <documentation>
+        Retrieves the parameter instances and their values reported for the Assessment specified.
+		see setReportedValues()
+\snippet TestAbstractAssessmentManager.java getAllReportedValuesCases
+      </documentation>
+
+      <input  message="tns:getReportedValuesRequest"  name="getReportedValuesRequest" />
+      <output message="tns:getReportedValuesResponse" name="getReportedValuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    <operation name="setReportedValues">
+      <documentation>
+        Sets the parameter instances in the Assessment specified. Existing values will be overwritten if that instance exists.
+        Set reported value may trigger Rule Processing if auto update rule processing is set True for the COP.
+		To enable the reported and/or target value feature below config settings are needed in the web app.
+		The cop must be configured from the menu Community of Practice (CoP) Admin -> Assessment Faeture Configuration -> Reported and Target Parameters
+		To view the reported values in assessments, configure the cop, Community of Practice (CoP) Admin -> Assessment Controls (AC) -> AC Basic Configurations -> AC Views
+
+\snippet TestAbstractAssessmentManager.java setReportedValuesCases
+      </documentation>
+      <input  message="tns:setReportedValuesRequest"  name="setReportedValuesRequest" />
+      <output message="tns:setReportedValuesResponse" name="setReportedValuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="runRuleProcessorOnAssessment">
+      <documentation>
+        Runs rule processing on the list of KPacs in the Assessment. When rule processing is done on an assessment there are a few additional features
+	of an Assessment that can be used.
+	1) An assessment can be associated with a set of ReportedValues which are persisted. Typically these are a snap shot of variables and their values 
+in an external CAD system etc. If a variable and its value are not supplied rule processing can use these previously stored values.
+	2) Target values for a parameter are values which can override the K-PAC row value of columns that Minimum, Maximum, Nominal, and Range. 
+	They are optionally defined and assoicated with the assessment. Targets provide a way to modify the K-PAC behaviour/rule for the above type of columns 
+	without actually modifying the K-PAC.
+	3) Occurrences are named instances of a K-PAC in an assessment and can have properties associated. When Rule processing is done for an assessment, the K-PAC is 
+	evaluated for each occurrence it has defined and the results associated to the occurrence. Target Values defined above can be defined for each 
+	Occurrence, which defines a new behaviour for each occurrence. Reported values and the supplied parameter values (passed in the call)
+	can be associated with Occurrences. In that case the reported values and the supplied parameter values can be grouped against matching occurrence names.	
+	4) Assessments have associated with them a palette defined in the CoP. The results of K-PAC evaluations which may be color values and boolean values 
+	can be mapped to a conformance state - a descriptive business term with a priority. The priority is a severity grading of the amount of compliance.
+	Rule processing on an assessment can use the state mapping and also roll to the worst case compliance for each K-PAC or Occurrence.
+	
+
+	
+\snippet TestAbstractAssessmentManager.java runRuleProcessorOnAssessmentCases
+      </documentation>
+      <input  message="tns:runRuleProcessorOnAssessmentRequest"  name="runRuleProcessorOnAssessmentRequest" />
+      <output message="tns:runRuleProcessorOnAssessmentResponse" name="runRuleProcessorOnAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="lockAssessment">
+      <documentation>
+        Locks the Assessment for modification by other users.
+        Subsequent calls by the user holding the lock allow changes to the Assessment. When modifications are done the lock must be released by unlockAssessment() call.
+\snippet TestAbstractAssessmentManager.java lockAssessmentCases
+      </documentation>
+      <input  message="tns:lockAssessmentRequest"  name="lockAssessmentRequest" />
+      <output message="tns:lockAssessmentResponse" name="lockAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="unlockAssessment">
+      <documentation>
+        Releases a previosly obtained lock.
+\snippet TestAbstractAssessmentManager.java lockAssessmentCases
+      </documentation>
+      <input  message="tns:unlockAssessmentRequest"  name="unlockAssessmentRequest" />
+      <output message="tns:unlockAssessmentResponse" name="unlockAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="getAssessmentHeaders">
+      <documentation>
+        Returns a list of AssessmentHeaders for the list of Assessment IDs.
+\snippet TestAbstractAssessmentManager.java getAssessmentHeadersCases
+      </documentation>
+      <input  message="tns:getAssessmentHeadersRequest"  name="getAssessmentHeadersRequest" />
+      <output message="tns:getAssessmentHeadersResponse" name="getAssessmentHeadersResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+    <operation name="getAssessmentHeadersByCreator">
+      <documentation>
+        Returns a list of AssessmentHeaders for the Creator userId.
+\snippet TestAbstractAssessmentManager.java getAssessmentHeadersByCreatorCases
+      </documentation>
+      <input  message="tns:getAssessmentHeadersByCreatorRequest"  name="getAssessmentHeadersByCreatorRequest" />
+      <output message="tns:getAssessmentHeadersByCreatorResponse" name="getAssessmentHeadersByCreatorResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+    
+    <operation name="getAssessmentHeadersByEvaluator">
+      <documentation>
+        Returns a list of AssessmentHeaders for the  Evaluator userId.
+\snippet TestAbstractAssessmentManager.java getAssessmentHeadersByEvaluatorCases
+      </documentation>
+      <input  message="tns:getAssessmentHeadersByEvaluatorRequest"  name="getAssessmentHeadersByEvaluatorRequest" />
+      <output message="tns:getAssessmentHeadersByEvaluatorResponse" name="getAssessmentHeadersByEvaluatorResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="createAssessment">
+      <documentation>
+        Creates an Assessment using the AssessmentHeader data. The Assessment ID will be ignored. The new Assessment returned will have the created ID in it's header.
+	The contedIDS can be a mixed list of kpac and set ids. The set id will be expanded to a list of kpacs it contains, which will be added to the assessment. 
+	Valid milestones and milestone versions must be used to create assessments. See getCoP() and getMilestonesOfCoP() in the E2ksBasePortType class. 
+	Valid sub projects can be obatined from the CoP object returned by getCoP() in E2ksBasePortType
+	Valid projects can be obatined from the getProjects() method in E2ksAssessmentsPortType class.
+\snippet TestAbstractAssessmentManager.java createAssessmentCases
+      </documentation>
+      <input  message="tns:createAssessmentRequest"  name="createAssessmentRequest" />
+      <output message="tns:createAssessmentResponse" name="createAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="deleteAssessment">
+      <documentation>
+        Deletes the assessment specified.
+\snippet TestAbstractAssessmentManager.java deleteAssessmentCases
+      </documentation>
+      <input  message="tns:deleteAssessmentRequest"  name="deleteAssessmentRequest" />
+      <output message="tns:deleteAssessmentResponse" name="deleteAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="modifyAssessmentHeader">
+      <documentation>
+        Modifies the assessment header data. Only those fields that have non null values and are writable will be modified.
+        Currently only Assessment Descriptor is handled in this method.
+\snippet TestAbstractAssessmentManager.java modifyAssessmentHeaderCases
+      </documentation>
+
+      <input  message="tns:modifyAssessmentHeaderRequest"  name="modifyAssessmentHeaderRequest" />
+      <output message="tns:modifyAssessmentHeaderResponse" name="modifyAssessmentHeaderResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="setAssessmentAttributes">
+      <documentation>
+        Sets the attributes for the Assessment. attributeType must be one of "acBasic","acDateExtendedElement", "acExtendedElement". 
+		attributeType = "acBasic" should be used for attributeName = { "Project" , "SubProject" }. 
+\snippet TestAbstractAssessmentManager.java setAssessmentAttributesCases
+      </documentation>
+      <input  message="tns:setAssessmentAttributesRequest"  name="setAssessmentAttributesRequest" />
+      <output message="tns:setAssessmentAttributesResponse" name="setAssessmentAttributesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+
+    <operation name="getAssessmentsAttributes">
+      <documentation>
+        Retrieves the attributes for the Assessment. Returns a list of assessment attributes. These can be some of the built in attributes in addition to AC extended elements.
+        attributeType = "BuiltIn" and  attributeName can be "Project", "SubProject", "MileStone", "MilestoneVersion", "Author", "ModifiedDate", "lastModifiedBy", "Evaluator".
+        See retrieveACEEAttributesForACs() for Extended Elements returned.
+		
+\snippet TestAbstractAssessmentManager.java getAssessmentsAttributesCases
+      </documentation>
+      <input  message="tns:getAssessmentsAttributesRequest"  name="getAssessmentsAttributesRequest" />
+      <output message="tns:getAssessmentsAttributesResponse" name="getAssessmentsAttributesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="updateAssessmentMemberList">
+      <documentation>
+        Sets the list of KPacs in an Assessment.
+\snippet TestAbstractAssessmentManager.java updateAssessmentMemberListCases
+      </documentation>
+      <input  message="tns:updateAssessmentMemberListRequest"  name="updateAssessmentMemberListRequest" />
+      <output message="tns:updateAssessmentMemberListResponse" name="updateAssessmentMemberListResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="reopenAssessment">
+      <input  message="tns:reopenAssessmentRequest"  name="reopenAssessmentRequest" />
+      <output message="tns:reopenAssessmentResponse" name="reopenAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="closeAssessment">
+      <input  message="tns:closeAssessmentRequest"  name="closeAssessmentRequest" />
+      <output message="tns:closeAssessmentResponse" name="closeAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <!-- This is tobe moved to E2ksBase Services -->
+    <operation name="getConformanceStateChoices">
+      <documentation>
+        Gets the list of Conformance State possible for the COP. Rule processing on KPacs results in Conformance objects that belong to one of these
+        Conformance states.
+\snippet TestAbstractAssessmentManager.java getConformanceStateChoicesCases
+      </documentation>
+      <input  message="tns:getConformanceStateChoicesRequest"  name="getConformanceStateChoicesRequest" />
+      <output message="tns:getConformanceStateChoicesResponse" name="getConformanceStateChoicesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="getRollupPriorityConformanceState">
+      <documentation>
+        For a list of Assessments, the "rolledup" conformance state, which is the worst case among a graded list of conformance states in the COP is returned.
+\snippet TestAbstractAssessmentManager.java getRollupPriorityConformanceStateCases
+      </documentation>
+      <input  message="tns:getRollupPriorityConformanceStateRequest"  name="getRollupPriorityConformanceStateRequest" />
+      <output message="tns:getRollupPriorityConformanceStateResponse" name="getRollupPriorityConformanceStateResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+
+
+    <operation name="getConformanceStateStatistics">
+      <documentation>
+        For a list of Assessments, count for each conformance state and each assessment is returned.
+\snippet TestAbstractAssessmentManager.java getConformanceStateStatisticsCases
+      </documentation>
+      <input  message="tns:getConformanceStateStatisticsRequest"  name="getConformanceStateStatisticsRequest" />
+      <output message="tns:getConformanceStateStatisticsResponse" name="getConformanceStateStatisticsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="getAssessmentLinkAndAttachmentStatistics">
+      <documentation>
+        For a list of Assessments, count for links, multimedia and support documents in each Assessment is returned.
+\snippet TestAbstractAssessmentManager.java getAssessmentLinkAndAttachmentStatisticsCases
+      </documentation>
+      <input  message="tns:getAssessmentLinkAndAttachmentStatisticsRequest"  name="getAssessmentLinkAndAttachmentStatisticsRequest" />
+      <output message="tns:getAssessmentLinkAndAttachmentStatisticsResponse" name="getAssessmentLinkAndAttachmentStatisticsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="changeOccurrence">
+      <documentation>
+
+        Changes the Occurrence id, sub occurrence id and name. If a fromName is specified a change will be made only if the
+        name matches to the fromOccurrenceID in Auros. inputOptions tells what information is to be copied to the new Occurrence
+
+        fromOccurrenceID - source occurrence, toOccurrenceID target occurrence, fromName source occurrence name, toName target occurrence name,
+        inputOptions valid options are
+        <![CDATA[
+			{"overWriteTargetOccurrence","true"}   - default false
+			{"copy","ConformanceState  & Action & Explanation"} - default not copied
+			{"deleteToReportedInstances","true"}   - default false. If there already are reported instances with the same name as toName, delete with this option
+			
+			]]>
+
+\snippet TestAbstractOccurrenceManager.java changeOccurrenceCases
+      </documentation>
+      <input  message="tns:changeOccurrenceRequest"  name="changeOccurrenceRequest" />
+      <output message="tns:changeOccurrenceResponse" name="changeOccurrenceResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+
+    <operation name="changeOccurrences">
+      <documentation>
+        Changes the Occurrence id, sub occurrence id and name. If a fromName is specified a change will be made only if the
+        name matches to the fromOccurrenceID in Auros. inputOptions tells what information is to be copied to the new Occurrence
+
+        fromOccurrenceID - source occurrence, toOccurrenceID target occurrence, fromName source occurrence name, toName target occurrence name,
+        inputOptions valid options are
+        <![CDATA[
+			{"overWriteTargetOccurrence","true"}   - default false
+			{"copy","ConformanceState  & Action & Explanation"} - default not copied
+			{"deleteToReportedInstances","true"}   - default false. If there already are reported instances with the same name as toName, delete with this option
+			
+			]]>
+
+\snippet TestAbstractOccurrenceManager.java changeOccurrencesCases
+      </documentation>
+      <input  message="tns:changeOccurrencesRequest"  name="changeOccurrencesRequest" />
+      <output message="tns:changeOccurrencesResponse" name="changeOccurrencesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+	
+    <operation name="retrieveACSEAttributesForCoPs">
+      <documentation>
+
+        Deprecated. Use retrieveACSEAttributesForCoPIDs instead
+\snippet TestAbstractAssessmentManager.java retrieveACSEAttributesForCoPsCases
+      </documentation>
+      <input  message="tns:retrieveACSEAttributesForCoPsRequest"  name="retrieveACSEAttributesForCoPsRequest" />
+      <output message="tns:retrieveACSEAttributesForCoPsResponse" name="retrieveACSEAttributesForCoPsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="retrieveACEEAttributesForCoPs">
+      <documentation>
+
+        Deprecated. Use retrieveACEEAttributesForCoPIDs instead
+\snippet TestAbstractAssessmentManager.java retrieveACEEAttributesForCoPsCases
+      </documentation>
+      <input  message="tns:retrieveACEEAttributesForCoPsRequest"  name="retrieveACEEAttributesForCoPsRequest" />
+      <output message="tns:retrieveACEEAttributesForCoPsResponse" name="retrieveACEEAttributesForCoPsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+	
+    <operation name="retrieveACSEAttributesForCoPIDs">
+      <documentation>
+
+        retrieves AC Secondary Element attributes for the specified CoPIDs.
+\snippet TestAbstractAssessmentManager.java retrieveACSEAttributesForCoPIDsCases
+      </documentation>
+      <input  message="tns:retrieveACSEAttributesForCoPIDsRequest"  name="retrieveACSEAttributesForCoPIDsRequest" />
+      <output message="tns:retrieveACSEAttributesForCoPIDsResponse" name="retrieveACSEAttributesForCoPIDsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="retrieveACEEAttributesForCoPIDs">
+      <documentation>
+
+        retrieves Extended Element attributes for the specified CoPIDs.
+\snippet TestAbstractAssessmentManager.java retrieveACEEAttributesForCoPIDsCases
+      </documentation>
+      <input  message="tns:retrieveACEEAttributesForCoPIDsRequest"  name="retrieveACEEAttributesForCoPIDsRequest" />
+      <output message="tns:retrieveACEEAttributesForCoPIDsResponse" name="retrieveACEEAttributesForCoPIDsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="retrieveACSEAttributesForACs">
+      <documentation>
+
+        Retrieves Secondary Evaluation Element attributes for the specified ACs. The returned list is scoped at the occurrence level. 
+        The containerID field in E2KSAttributeList denotes the occurrence.
+        [attributeType] [attributeDataType] fields in E2KSAttribute can be one of 
+        ["acSecondaryEvaluation"] [type1.type2.type3] 
+        where 
+        type1 = "Mulitiple" | "Single" 
+        type2 = "KpaceeMap" | "Fixed" | "Open" 
+        type3 = "Local" | "Global" 
+ 
+        ["acDateSecondaryEvaluation"] [type] 
+        where 
+        type = "date" 
+
+        The E2KSAttribute may contain more than one in the value field when type is Multiple.
+		
+\snippet TestAbstractAssessmentManager.java retrieveACSEAttributesForACsCases
+      </documentation>
+      <input  message="tns:retrieveACSEAttributesForACsRequest"  name="retrieveACSEAttributesForACsRequest" />
+      <output message="tns:retrieveACSEAttributesForACsResponse" name="retrieveACSEAttributesForACsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="retrieveACEEAttributesForACs">
+      <documentation>
+
+        Retrieves Extended Element attributes for the specified ACs. The returned list is scoped at the Assessment level. 
+        The containerID field in E2KSAttributeList denotes the Assessment.
+        [attributeType] [attributeDataType] fields in E2KSAttribute can be one of 
+        ["acExtendedElement"] [type1.type2.type3] 
+        where 
+        type1 = "Mulitiple" | "Single" 
+        type2 = "KpaceeMap" | "Fixed" | "Open" 
+        type3 = "Local" | "Global" 
+ 
+        ["acDateExtendedElement"] [type] 
+        where 
+        type = "date" 
+
+        The E2KSAttribute may contain more than one in the value field when type is Multiple.
+		
+\snippet TestAbstractAssessmentManager.java retrieveACEEAttributesForACsCases
+      </documentation>
+      <input  message="tns:retrieveACEEAttributesForACsRequest"  name="retrieveACEEAttributesForACsRequest" />
+      <output message="tns:retrieveACEEAttributesForACsResponse" name="retrieveACEEAttributesForACsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="setACSEAttributesForACs">
+      <documentation>
+
+        Insert Line Item Values for Secondary Evaluation Element attributes for the specified ACs.
+\snippet TestAbstractAssessmentManager.java setACSEAttributesForACsCases
+      </documentation>
+      <input  message="tns:setACSEAttributesForACsRequest"  name="setACSEAttributesForACsRequest" />
+      <output message="tns:setACSEAttributesForACsResponse" name="setACSEAttributesForACsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="getAllTargetValues">
+      <documentation>
+        Target values allow overriding the Value Column values for min, max, nominal, range type columns when rule processing
+		in the context of assessments. Instead of rule processing using the values in the K-PAC, target values specified at the 
+		occurrence level for the assessment are used. This method returns a list of target values for each assessment ID passed.
+		see setReportedValues() for needed configuration
+\snippet TestAbstractAssessmentManager.java getAllTargetValuesCases
+      </documentation>
+      <input  message="tns:getAllTargetValuesRequest"  name="getAllTargetValuesRequest" />
+      <output message="tns:getAllTargetValuesResponse" name="getAllTargetValuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="setAllTargetValues">
+      <documentation>
+        Target values allow overriding the Value Column values for min, max, nominal, range type columns when rule processing
+		in the context of assessments. Instead of rule processing using the values in the K-PAC, target values specified at the 
+		occurrence level for the assessment are used. This method returns sets a list of target values for each assessment ID passed.
+		see setReportedValues() for needed configuration		
+\snippet TestAbstractAssessmentManager.java setAllTargetValuesCases
+      </documentation>
+      <input  message="tns:setAllTargetValuesRequest"  name="setAllTargetValuesRequest" />
+      <output message="tns:setAllTargetValuesResponse" name="setAllTargetValuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+	
+    <operation name="addOccurrences">
+      <documentation>
+        Adds a list of Occurrences and related information - occuranceName, state, action, status, explanation.
+		If an occurrence with same id exists it will be ignored.
+\snippet TestAbstractOccurrenceManager.java addOccurrencesCases
+      </documentation>
+      <input  message="tns:addOccurrencesRequest"  name="addOccurrencesRequest" />
+      <output message="tns:addOccurrencesResponse" name="addOccurrencesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+	
+    <operation name="deleteOccurrences">
+      <documentation>
+        Deletes a list of Occurrences and related information - occuranceName, state, action, status, explanation.
+\snippet TestAbstractOccurrenceManager.java deleteOccurrencesCases
+      </documentation>
+      <input  message="tns:deleteOccurrencesRequest"  name="deleteOccurrencesRequest" />
+      <output message="tns:deleteOccurrencesResponse" name="deleteOccurrencesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+    <operation name="searchAssessmentsForCriteria">
+      <documentation>
+        returns a list of Assessments satisfying a search criteria specified through E2ksAttributes.
+\snippet TestAbstractAssessmentManager.java searchAssessmentsForCriteriaCases
+      </documentation>
+      <input  message="tns:searchAssessmentsForCriteriaRequest"  name="searchAssessmentsForCriteriaRequest" />
+      <output message="tns:searchAssessmentsForCriteriaResponse" name="searchAssessmentsForCriteriaResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+		
+    <operation name="getOccurrences">
+      <documentation>
+        returns a list of Occurrences in the specified assessment
+\snippet TestAbstractOccurrenceManager.java getOccurrencesCases
+      </documentation>
+      <input  message="tns:getOccurrencesRequest"  name="getOccurrencesRequest" />
+      <output message="tns:getOccurrencesResponse" name="getOccurrencesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+	
+    <operation name="addOccurrencesAutoNamed">
+      <documentation>
+        Adds a list of Occurrences and related information - occuranceName, state, action, status, explanation.
+	   acid - assessment id
+	   occurrenceToAdd - If this is a valid occurrence or suboccurrence count no. of suboccurrence will be appended to the end of all
+	   suboccurrences. If this is a valid kpac with null occID count number of occurrences will be appended to the end of all occurrences.
+	   count - The number of occurrences or suboccurrences to be added based on occurrenceToAdd
+	   nameTemplate - 1) if nameTemplate has place holders for both ~Occ and ~SubOcc then sub occurrences are considered to be created and inserted into 
+	   the occurrence in the occurrenceToAdd. The sub occurrence id in the occurrenceToAdd will be ignored.
+	   2) if nameTemplate has place holders only for ~Occ then occurrences are considered to be created and will be appended ignoring the occurreneID in occurrenceToAdd.
+\snippet TestAbstractOccurrenceManager.java addOccurrencesAutoNamedCases
+      </documentation>
+      <input  message="tns:addOccurrencesAutoNamedRequest"  name="addOccurrencesAutoNamedRequest" />
+      <output message="tns:addOccurrencesAutoNamedResponse" name="addOccurrencesAutoNamedResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+		
+    <operation name="setOccurrenceProperties">
+      <documentation>
+       A list of occurrenceProperties objects hold properties to be updated under a line item and passed in this call.
+       The properties that can be updated are ("conformanceStateID" ,"action", "pos", "explanation","discussion", "approvalStatus", "fmeaSeverity", "fmeaOccurrence", "fmeaDetection" , "fmeaRPN") and are set as attributeName of E2KSAttribute.
+       The attributeType for the above properties is "acOccurrenceBasic". conformanceStateID is the numeric id for the conformance state and can be obtained from ConformanceStateChoice.choiceID 
+       and the call getConformanceStateChoices() in assessment services. "action", "explanation" can be any text value.
+	   The above properties are not true extended elements but intrinsic properties handled in a similar way as extended elements only in this call.
+       In addition to the above properties AC Secondary Evaluation can be set by passing "acSecondaryEvaluation" for E2KSAttribute.attributeType. The usage is similar to the call setACSEAttributesForACs()
+       The class ConformanceStateChoice has mandataoryFields. To set the conformance to a choiceID value, related mandataoryFields if any must previously be set or set during the above call.
+       Auros allows mandataoryFields to be "explanation" or "discussion".
+       An additional call on getDiscussionsOnOccurrance() or getDiscussionsOnAssessment() may be needed to add a discussion post represented by DiscussionData under an existing DiscussionData.
+       DiscussionData.idx identifies a specific post. When passed as an E2KSAttribute object pass idx as E2KSAttribute.values[0] (0 for new thread) and text comment in E2KSAttribute.values[1]  
+
+	   "pos" property denotes the position of the occurrence in the assessment as viewed in the web application of the Assessment. 
+	   It can be used to reorder the occurrences in the assessment.
+
+	   Here is an example that changes the positions of 3 occurrences. The format is  {occurrence id},  {pos value}. Note that pos value is the string value of an integer.
+	   Suppose the order of the occurrences initially is 
+	   {"94902", "UTEST1", "9", "1", "1", "0" }, { "5" }
+	   ...
+	   {"94902", "UTEST1", "5", "1", "1", "0" }, { "10" }
+	   ...
+	   {"94902", "UTEST1", "7", "1", "1", "0" }, { "12" }
+	   
+	   by passing position values as below, 
+
+	   {"94902", "UTEST1", "9", "1", "1", "0" }, { "12" }
+	   {"94902", "UTEST1", "5", "1", "1", "0" }, { "5" }
+	   {"94902", "UTEST1", "7", "1", "1", "0" }, { "10" }
+	   
+	   The order shown in the web view will be as below.
+
+	   {"94902", "UTEST1", "5", "1", "1", "0" }, { "5" }
+	   ...
+	   {"94902", "UTEST1", "7", "1", "1", "0" }, { "10" }
+	   ...
+	   {"94902", "UTEST1", "9", "1", "1", "0" }, { "12" }
+	   
+	   "fmea*" properties are related to failure mode analysis scores. They measure various failure modeproperties and are integer values in the range 1-10. These properties must be enabled in the cop admin settings to be viewed and edited.
+\snippet TestAbstractOccurrenceManager.java setOccurrencePropertiesCases
+      </documentation>
+      <input  message="tns:setOccurrencePropertiesRequest"  name="setOccurrencePropertiesRequest" />
+      <output message="tns:setOccurrencePropertiesResponse" name="setOccurrencePropertiesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+		
+    <operation name="getDiscussionsOnOccurrance">
+      <documentation>
+        Gets Occurrence Discussions of an Occurrence
+\snippet TestAbstractOccurrenceManager.java getDiscussionsOnOccurranceCases
+      </documentation>
+      <input  message="tns:getDiscussionsOnOccurranceRequest"  name="getDiscussionsOnOccurranceRequest" />
+      <output message="tns:getDiscussionsOnOccurranceResponse" name="getDiscussionsOnOccurranceResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+		
+    <operation name="getDiscussionsOnAssessment">
+      <documentation>
+        Gets Occurrence Discussions of an Assessment
+\snippet TestAbstractAssessmentManager.java getDiscussionsOnAssessmentCases
+      </documentation>
+      <input  message="tns:getDiscussionsOnAssessmentRequest"  name="getDiscussionsOnAssessmentRequest" />
+      <output message="tns:getDiscussionsOnAssessmentResponse" name="getDiscussionsOnAssessmentResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+		
+    <operation name="getRolledUpConfStateForACByAttribute">
+      <documentation>
+      		getRolledUpConfStateForACByAttribute returns that Checklist's Conformance State Roll-Up Priority Status by K-PAC Extended Element
+      </documentation>
+      <input  message="tns:getRolledUpConfStateForACByAttributeRequest"  name="getRolledUpConfStateForACByAttributeRequest" />
+      <output message="tns:getRolledUpConfStateForACByAttributeResponse" name="getRolledUpConfStateForACByAttributeResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+    <operation name="countKPacsForAssessmentsByAttribute">
+      <documentation>
+        Gets KPAC Counts of an Assessment for an attribute
+\snippet TestAbstractAssessmentManager.java countKPacsForAssessmentsByAttribute
+      </documentation>
+      <input  message="tns:countKPacsForAssessmentsByAttributeRequest"  name="countKPacsForAssessmentsByAttributeRequest" />
+      <output message="tns:countKPacsForAssessmentsByAttributeResponse" name="countKPacsForAssessmentsByAttributeResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+    <operation name="copyAssessment">
+	    <documentation>
+	        copyAssessment copy Assessment including all header parameters and occurrences
+	    </documentation>
+	
+	    <input message="tns:copyAssessmentRequest" name="copyAssessmentRequest" />
+	    <output message="tns:copyAssessmentResponse"
+	        name="copyAssessmentResponse" />
+	    <fault name="e2ksFault" message="tns:E2KSFault" />
+    </operation>
+    
+    <operation name="replicateAssessments">
+        <documentation>
+            replicateAssessments copy Assessments including all header parameters and occurrences
+\snippet TestAbstractAssessmentManager.java replicateAssessmentsCases            
+        </documentation>
+    
+        <input message="tns:replicateAssessmentsRequest" name="replicateAssessmentsRequest" />
+        <output message="tns:replicateAssessmentsResponse"
+            name="replicateAssessmentsResponse" />
+        <fault name="e2ksFault" message="tns:E2KSFault" />
+    </operation>
+    
+    <operation name="setACApprovers">
+      <documentation>
+        setACApprovers add approvers to an assessment
+      </documentation>
+      <input  message="tns:setACApproversRequest"  name="setACApproversRequest" />
+      <output message="tns:setACApproversResponse" name="setACApproversResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+    <operation name="attachACToACStep">
+      <documentation>
+        Attach AC List to a given stepId of a Method K-PAC within a Master Assessment specified.
+\snippet TestAbstractAssessmentManager.java attachACToACStepCases                 
+      </documentation>
+      <input  message="tns:attachACToACStepRequest"  name="attachACToACStepRequest" />
+      <output message="tns:attachACToACStepResponse" name="attachACToACStepResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="isCopAssessmentCreator">
+	    <documentation>
+	        isCopAssessmentCreator check if desired User are Assessment Creator in the specific CoP
+	    </documentation>
+	
+	    <input message="tns:isCopAssessmentCreatorRequest" name="isCopAssessmentCreatorRequest" />
+	    <output message="tns:isCopAssessmentCreatorResponse"
+	        name="isCopAssessmentCreatorResponse" />
+	    <fault name="e2ksFault" message="tns:E2KSFault" />
+    </operation>
+    
+    <operation name="getCountReport">
+      <documentation>
+        Returns a Count Report for the list of Assessment IDs, Primary Sub-Category, Primary Sub-Category Type, Secondary Sub-Category and Secondary Sub-Category Type.
+        Primary Sub-Category Type or Secondary Sub-Category Type possible values:
+            NONE, ASSESSMENT, CREATOR, PROJECT, SUBPROJECT, MILESTONE, EVALUATOR, ACEE, ACEE_DATE, ACSE_DATE, ACSE_ELEMENT, KPACEE.
+\snippet TestAbstractAssessmentManager.java getCountReportRequestCases
+      </documentation>
+      <input  message="tns:getCountReportRequest"  name="getCountReportRequest" />
+      <output message="tns:getCountReportResponse" name="getCountReportResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+			
+		
+  </portType>
+  <binding name="E2KSAssessmentsBinding" type="tns:E2KSAssessmentsPortType">
+
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+
+    <operation name="getE2KSInstallationInfo">
+      <soap:operation soapAction="" />
+      <input name="getE2KSInstallationInfoRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getE2KSInstallationInfoResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="getAssessment">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="getAssessmentsInCop">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentsInCopRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentsInCopResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="getProjects">
+      <soap:operation soapAction="" />
+      <input name="getProjectsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getProjectsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="getProjectsWithAssessments">
+      <soap:operation soapAction="" />
+      <input name="getProjectsWithAssessmentsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getProjectsWithAssessmentsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="getSubProjectsWithAssessments">
+      <soap:operation soapAction="" />
+      <input name="getSubProjectsWithAssessmentsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output name="getSubProjectsWithAssessmentsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="getReportedValues">
+      <soap:operation soapAction="" />
+      <input name="getReportedValuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getReportedValuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="setReportedValues">
+      <soap:operation soapAction="" />
+      <input name="setReportedValuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="setReportedValuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="runRuleProcessorOnAssessment">
+      <soap:operation soapAction="" />
+      <input name="runRuleProcessorOnAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="runRuleProcessorOnAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="lockAssessment">
+      <soap:operation soapAction="" />
+      <input name="lockAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="lockAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="unlockAssessment">
+      <soap:operation soapAction="" />
+      <input name="unlockAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="unlockAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="getAssessmentHeaders">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentHeadersRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentHeadersResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="getAssessmentHeadersByEvaluator">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentHeadersByEvaluatorRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentHeadersByEvaluatorResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="getAssessmentHeadersByCreator">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentHeadersByCreatorRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentHeadersByCreatorResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="createAssessment">
+      <soap:operation soapAction="" />
+      <input name="createAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="createAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="deleteAssessment">
+      <soap:operation soapAction="" />
+      <input name="deleteAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="deleteAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="modifyAssessmentHeader">
+      <soap:operation soapAction="" />
+      <input name="modifyAssessmentHeaderRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="modifyAssessmentHeaderResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="setAssessmentAttributes">
+      <soap:operation soapAction="" />
+      <input name="setAssessmentAttributesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="setAssessmentAttributesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="getAssessmentsAttributes">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentsAttributesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentsAttributesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="updateAssessmentMemberList">
+      <soap:operation soapAction="" />
+      <input name="updateAssessmentMemberListRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="updateAssessmentMemberListResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="reopenAssessment">
+      <soap:operation soapAction="" />
+      <input name="reopenAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="reopenAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="closeAssessment">
+      <soap:operation soapAction="" />
+      <input name="closeAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="closeAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <!-- previously getConformanceStates() -->
+    <operation name="getConformanceStateChoices">
+      <soap:operation soapAction="" />
+      <input name="getConformanceStateChoicesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getConformanceStateChoicesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <!-- retrieve least conforming ConformanceState among a list of assessments -->
+    <operation name="getRollupPriorityConformanceState">
+      <soap:operation soapAction="" />
+      <input name="getRollupPriorityConformanceStateRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getRollupPriorityConformanceStateResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <!-- retrieve counts by conformance state choice for each assessment in a list -->
+    <operation name="getConformanceStateStatistics">
+      <soap:operation soapAction="" />
+      <input name="getConformanceStateStatisticsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getConformanceStateStatisticsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <!-- retrieve link and attachment counts for each assessment in a list -->
+    <operation name="getAssessmentLinkAndAttachmentStatistics">
+      <soap:operation soapAction="" />
+      <input name="getAssessmentLinkAndAttachmentStatisticsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAssessmentLinkAndAttachmentStatisticsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <!-- change Occurrence -->
+    <operation name="changeOccurrence">
+      <soap:operation soapAction="" />
+      <input name="changeOccurrenceRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="changeOccurrenceResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <!-- change Occurrence -->
+    <operation name="changeOccurrences">
+      <soap:operation soapAction="" />
+      <input name="changeOccurrencesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="changeOccurrencesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+     <operation name="retrieveACSEAttributesForCoPs">
+      <soap:operation soapAction="" />
+      <input name="retrieveACSEAttributesForCoPsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACSEAttributesForCoPsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="retrieveACEEAttributesForCoPs">
+      <soap:operation soapAction="" />
+      <input name="retrieveACEEAttributesForCoPsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACEEAttributesForCoPsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+     <operation name="retrieveACSEAttributesForCoPIDs">
+      <soap:operation soapAction="" />
+      <input name="retrieveACSEAttributesForCoPIDsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACSEAttributesForCoPIDsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="retrieveACEEAttributesForCoPIDs">
+      <soap:operation soapAction="" />
+      <input name="retrieveACEEAttributesForCoPIDsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACEEAttributesForCoPIDsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="retrieveACSEAttributesForACs">
+      <soap:operation soapAction="" />
+      <input name="retrieveACSEAttributesForACsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACSEAttributesForACsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="retrieveACEEAttributesForACs">
+      <soap:operation soapAction="" />
+      <input name="retrieveACEEAttributesForACsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACEEAttributesForACsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="setACSEAttributesForACs">
+      <soap:operation soapAction="" />
+      <input name="setACSEAttributesForACsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="setACSEAttributesForACsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="getAllTargetValues">
+      <soap:operation soapAction="" />
+      <input name="getAllTargetValuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAllTargetValuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="setAllTargetValues">
+      <soap:operation soapAction="" />
+      <input name="setAllTargetValuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="setAllTargetValuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="addOccurrences">
+      <soap:operation soapAction="" />
+      <input name="addOccurrencesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="addOccurrencesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="deleteOccurrences">
+      <soap:operation soapAction="" />
+      <input name="deleteOccurrencesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="deleteOccurrencesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+      <operation name="searchAssessmentsForCriteria">
+      <soap:operation soapAction="" />
+      <input name="searchAssessmentsForCriteriaRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="searchAssessmentsForCriteriaResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+  
+  
+       <operation name="getOccurrences">
+      <soap:operation soapAction="" />
+      <input name="getOccurrencesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getOccurrencesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="addOccurrencesAutoNamed">
+      <soap:operation soapAction="" />
+      <input name="addOccurrencesAutoNamedRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="addOccurrencesAutoNamedResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="setOccurrenceProperties">
+      <soap:operation soapAction="" />
+      <input name="setOccurrencePropertiesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="setOccurrencePropertiesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="getDiscussionsOnOccurrance">
+      <soap:operation soapAction="" />
+      <input name="getDiscussionsOnOccurranceRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getDiscussionsOnOccurranceResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="getDiscussionsOnAssessment">
+      <soap:operation soapAction="" />
+      <input name="getDiscussionsOnAssessmentRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getDiscussionsOnAssessmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+      <operation name="countKPacsForAssessmentsByAttribute">
+      <soap:operation soapAction="" />
+      <input name="countKPacsForAssessmentsByAttributeRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="countKPacsForAssessmentsByAttributeResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="copyAssessment">
+       <soap:operation soapAction="" />
+       <input name="copyAssessmentRequest">
+           <soap:body use="literal" />
+       </input>
+       <output name="copyAssessmentResponse">
+           <soap:body use="literal" />
+       </output>
+       <fault name="e2ksFault">
+           <soap:fault name="e2ksFault" use="literal" />
+       </fault>
+   </operation>
+   
+    <operation name="replicateAssessments">
+       <soap:operation soapAction="" />
+       <input name="replicateAssessmentsRequest">
+           <soap:body use="literal" />
+       </input>
+       <output name="replicateAssessmentsResponse">
+           <soap:body use="literal" />
+       </output>
+       <fault name="e2ksFault">
+           <soap:fault name="e2ksFault" use="literal" />
+       </fault>
+   </operation>
+   
+   <operation name="setACApprovers">
+      <soap:operation soapAction="" />
+      <input name="setACApproversRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="setACApproversResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+   <operation name="attachACToACStep">
+      <soap:operation soapAction="" />
+      <input name="attachACToACStepRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="attachACToACStepResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>    
+   
+   <operation name="isCopAssessmentCreator">
+       <soap:operation soapAction="" />
+       <input name="isCopAssessmentCreatorRequest">
+           <soap:body use="literal" />
+       </input>
+       <output name="isCopAssessmentCreatorResponse">
+           <soap:body use="literal" />
+       </output>
+       <fault name="e2ksFault">
+           <soap:fault name="e2ksFault" use="literal" />
+       </fault>
+   </operation>
+
+	<operation name="getRolledUpConfStateForACByAttribute">
+      <soap:operation soapAction="" />
+      <input name="getRolledUpConfStateForACByAttributeRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getRolledUpConfStateForACByAttributeResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="getCountReport">
+      <soap:operation soapAction="" />
+      <input name="getCountReportRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getCountReportResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="getMasterACIDsForCoP">
+      <soap:operation soapAction="" />
+      <input name="getMasterACIDsForCoPRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getMasterACIDsForCoPResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    
+    <operation name="getMasterACCheckpoints">
+      <soap:operation soapAction="" />
+      <input name="getMasterACCheckpointsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getMasterACCheckpointsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>    
+  </binding>
+  <service name="E2KSAssessmentsService">
+    <port name="E2KSAssessmentsPort" binding="tns:E2KSAssessmentsBinding">
+      <!-- soap:address location="http://localhost:8080/assessment_services/e2ksassessments" /-->
+       <soap:address location="http://173.14.32.17/auros-trunk/e2ksassessments?wsdl" />
+     <!--soap:address location="https://localhost:8443/assessment_services/e2ksassessments" /-->
+
+    </port>
+  </service>
+</definitions>

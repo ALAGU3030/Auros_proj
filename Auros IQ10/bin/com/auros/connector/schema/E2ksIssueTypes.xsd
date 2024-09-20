@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"  targetNamespace="http://e2ks.emergent.com/issue_types" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns="http://e2ks.emergent.com/issue_types" xmlns:e2kstypes="http://e2ks.emergent.com/types" elementFormDefault="qualified">
+  <xs:import namespace="http://e2ks.emergent.com/types" schemaLocation="E2ksTypes.xsd"/>
+  <xs:element name="issues" type="Issues" />
+
+  <xs:complexType name="Issues">
+    <xs:sequence>
+      <xs:element name="issue" type="Issue" maxOccurs="unbounded"/>
+      <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IssueType">
+    <xs:sequence>
+      <xs:element name="typeID" type="xs:int" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Name" type="xs:string" minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="description" type="xs:string" minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="issueApprovals" type="xs:string" minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="cardBackGroundColor" type="xs:string" minOccurs="1"  maxOccurs="1"/>
+      <xs:element name="leadAssignedDefaultPolicy" type="xs:boolean" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="userMapping" type="xs:boolean" minOccurs="1"  maxOccurs="1" />
+   </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Issue">
+    <xs:sequence>
+      <xs:element name="issueTypeId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueTypeName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueTypeDescription" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueStatus" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueStatusID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issuePriority" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issuePriorityID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueCreator" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueDescription" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueDiscussion" type="e2kstypes:Discussion" maxOccurs="unbounded"/>
+      <xs:element name="qaPlanning" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="developerComments" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="projectName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="projectID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="subProjectName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="subProjectID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="dateOpened" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="dateClosed" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastModified" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="issueAssignees" type="IssueAssignees" maxOccurs="unbounded"/>
+      <xs:element name="issueInterestedParties" type="IssueInterestedParties" maxOccurs="unbounded"/>
+      <xs:element name="IssueApprovers" type="IssueApprovers" maxOccurs="unbounded"/>
+      <xs:element name="mediaAttachments" type="e2kstypes:AurosAttachment" maxOccurs="unbounded"/>
+      <xs:element name="docAttachments" type="e2kstypes:AurosAttachment" maxOccurs="unbounded"/>
+      <xs:element name="issueLinks" type="Link" maxOccurs="unbounded"/>
+      <xs:element name="issueChapters" type="IssueChapter"  maxOccurs="unbounded"/>
+      <xs:element name="issueHistory" type="History"  maxOccurs="unbounded"/>
+      <xs:element name="issueVotingHistory" type="VotingHistory"  maxOccurs="unbounded"/>
+	  <xs:element name="issueAction" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  <xs:element name="issueSourceIdentifiers" type="e2kstypes:AurosIdentifier" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="issueId" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="IssueAssignees">
+    <xs:sequence>
+      <xs:element name="issueAssignee" type="xs:string" maxOccurs="unbounded"/>
+     <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="IssueApprovers">
+    <xs:sequence>
+      <xs:element name="issueApprover" type="xs:string" maxOccurs="unbounded"/>
+     <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="IssueInterestedParties">
+    <xs:sequence>
+      <xs:element name="issueInterestedParty" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+      <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+   </xs:sequence>
+  </xs:complexType >
+
+  <!-- xs:complexType name="Attachment">
+    <xs:sequence>
+      <xs:element name="issueSupportDoc" type="SupportDoc" maxOccurs="unbounded"/>
+      <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+   </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="SupportDoc">
+    <xs:sequence>
+      <xs:element name="attachmentFileName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="attachmentDescription" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="attachmentArchivePath" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="docType" type="xs:string" use="required"/>
+  </xs:complexType -->
+
+
+  <xs:complexType name="Link">
+    <xs:sequence>
+      <xs:element name="linkName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="linkDescription" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType >
+
+  <!-- <xs:complexType name="Chapter">
+    <xs:sequence>
+      <xs:element name="issueChapter" type="IssueChapter" maxOccurs="unbounded"/>
+      <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+   </xs:sequence>
+  </xs:complexType > -->
+
+  <xs:complexType name="IssueChapter">
+    <xs:sequence>
+      <xs:element name="chapterName" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="chapterDescription" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="chapterPosition" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="chapterExtendedElements" type="ExtendedElement" minOccurs="0"  maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="chapterId" type="xs:string" use="required"/>
+  </xs:complexType >
+
+  <xs:complexType name="ExtendedElement">
+    <xs:sequence>
+      <xs:element name="chapterExtendedElement" type="e2kstypes:E2KSAttribute"/>
+      <xs:element name="extendedElementID" type="xs:string"/>
+      <xs:element name="helpText" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+   </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="History">
+    <xs:sequence>
+      <xs:element name="historyInstance" type="HistoryInstance" maxOccurs="unbounded"/>
+      <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+   </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="HistoryInstance">
+    <xs:sequence>
+      <xs:element name="changedBy" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="changedFrom" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="changedTo" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="changedWhat" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="changedTimeStamp" type="xs:string" use="required"/>
+  </xs:complexType >
+
+  <xs:complexType name="VotingHistory">
+    <xs:sequence>
+      <xs:element name="votingHistoryInstance" type="VotingHistoryInstance" maxOccurs="unbounded"/>
+     <xs:element name="otherInfo" type="xs:string" minOccurs="0"   maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType >
+
+  <xs:complexType name="VotingHistoryInstance">
+    <xs:sequence>
+      <xs:element name="isApproved" type="xs:boolean" minOccurs="1" maxOccurs="1" />
+      <xs:element name="votedBy" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="votingComment" type="xs:string" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="votedOn" type="xs:string" use="required"/>
+  </xs:complexType >
+
+</xs:schema>

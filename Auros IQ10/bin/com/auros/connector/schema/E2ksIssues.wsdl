@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="E2KSIssues"  targetNamespace="http://auros.emergentsys.com/services/issues" xmlns:tns="http://auros.emergentsys.com/services/issues"
+    xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	>
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://auros.emergentsys.com/services/issues" xmlns:e2kstypes="http://e2ks.emergent.com/types"
+			 xmlns:issue_types="http://e2ks.emergent.com/issue_types"
+			xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+
+      <!-- schemaLocation Attribute for xsd location check path syntax-->
+      <xsd:import namespace="http://e2ks.emergent.com/issue_types" schemaLocation="E2ksIssueTypes.xsd" />
+      <xsd:import namespace="http://e2ks.emergent.com/types" schemaLocation="E2ksTypes.xsd" />
+
+      <complexType name="getE2KSInstallationInfoResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSInstallationInfo" />
+        </sequence>
+      </complexType>
+      <element name="getE2KSInstallationInfoResponse" type="tns:getE2KSInstallationInfoResponse" />
+
+
+
+
+      <element name="E2KSFault" type="tns:E2KSFault" />
+      <complexType name="E2KSFault">
+        <sequence>
+          <element name="faultInfo" type="xsd:string" />
+          <element name="message" type="xsd:string" />
+        </sequence>
+      </complexType>
+
+
+
+
+      <complexType name="getIssuesResponse">
+        <sequence>
+          <element name="result" type="issue_types:Issue"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getIssuesResponse" type="tns:getIssuesResponse" />
+
+      <complexType name="getIssuesRequest">
+        <sequence>
+          <element name="issueIdentifiers" type="e2kstypes:AurosIdentifier"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="getIssues" type="tns:getIssuesRequest" />
+
+
+      <complexType name="createIssueResponse">
+        <sequence>
+          <element name="result" type="issue_types:Issue"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="createIssueResponse" type="tns:createIssueResponse" />
+
+      <complexType name="createIssueRequest">
+        <sequence>
+          <element name="issueToCreate" type="issue_types:Issue"  minOccurs="1"   maxOccurs="1"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="createIssue" type="tns:createIssueRequest" />
+		
+			
+      <complexType name="addIssueDiscusssionResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="addIssueDiscusssionResponse" type="tns:addIssueDiscusssionResponse" />
+
+      <complexType name="addIssueDiscusssionRequest">
+        <sequence>
+          <element name="issueId" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>
+          <element name="issueDiscussion" type="e2kstypes:Discussion"  minOccurs="1"   maxOccurs="1"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="addIssueDiscusssion" type="tns:addIssueDiscusssionRequest" />
+		
+			
+      <complexType name="addIssueAssigneesResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="addIssueAssigneesResponse" type="tns:addIssueAssigneesResponse" />
+
+      <complexType name="addIssueAssigneesRequest">
+        <sequence>
+          <element name="issueId" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>
+          <element name="issueAssignees" type="issue_types:IssueAssignees"  minOccurs="1"   maxOccurs="1"/>
+         <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  		  
+        </sequence>
+      </complexType>
+      <element name="addIssueAssignees" type="tns:addIssueAssigneesRequest" />
+		
+			
+      <complexType name="deleteIssueAssigneesResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="deleteIssueAssigneesResponse" type="tns:deleteIssueAssigneesResponse" />
+
+      <complexType name="deleteIssueAssigneesRequest">
+        <sequence>
+          <element name="issueId" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>
+          <element name="issueAssignees" type="issue_types:IssueAssignees"  minOccurs="1"   maxOccurs="1"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="deleteIssueAssignees" type="tns:deleteIssueAssigneesRequest" />
+		
+			
+      <complexType name="addIssueSourceIdentifiersResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="addIssueSourceIdentifiersResponse" type="tns:addIssueSourceIdentifiersResponse" />
+
+      <complexType name="addIssueSourceIdentifiersRequest">
+        <sequence>
+          <element name="issueId" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>
+          <element name="issueSourceIdentifiers" type="e2kstypes:AurosIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="addIssueSourceIdentifiers" type="tns:addIssueSourceIdentifiersRequest" />
+		
+			
+      <complexType name="deleteIssueSourceIdentifiersResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="deleteIssueSourceIdentifiersResponse" type="tns:deleteIssueSourceIdentifiersResponse" />
+
+      <complexType name="deleteIssueSourceIdentifiersRequest">
+        <sequence>
+          <element name="issueId" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>
+          <element name="issueSourceIdentifiers" type="e2kstypes:AurosIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="deleteIssueSourceIdentifiers" type="tns:deleteIssueSourceIdentifiersRequest" />
+		
+			
+      <complexType name="modifyIssueAttributesResponse">
+        <sequence>
+          <element name="result" type="xsd:string"   minOccurs="1"   maxOccurs="1"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="modifyIssueAttributesResponse" type="tns:modifyIssueAttributesResponse" />
+
+      <complexType name="modifyIssueAttributesRequest">
+        <sequence>
+          <element name="issueId" type="xsd:string"  minOccurs="1"   maxOccurs="1"/>
+          <element name="issueAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		  
+        </sequence>
+      </complexType>
+      <element name="modifyIssueAttributes" type="tns:modifyIssueAttributesRequest" />
+
+      <complexType name="modifyAttributesOfListedIssuesResponse">
+        <sequence>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="modifyAttributesOfListedIssuesResponse" type="tns:modifyAttributesOfListedIssuesResponse" />
+
+      <complexType name="modifyAttributesOfListedIssuesRequest">
+        <sequence>
+           <element name="issueAttributes" type="e2kstypes:E2KSAttributeList"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>		   
+        </sequence>
+      </complexType>
+      <element name="modifyAttributesOfListedIssues" type="tns:modifyAttributesOfListedIssuesRequest" />
+	  
+	  
+      <complexType name="getIssuesForAssessmentsResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:AurosRelation"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getIssuesForAssessmentsResponse" type="tns:getIssuesForAssessmentsResponse" />
+
+      <complexType name="getIssuesForAssessmentsRequest">
+        <sequence>
+          <element name="assessmentIDs" type="xsd:string"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getIssuesForAssessments" type="tns:getIssuesForAssessmentsRequest" />
+	  
+	  
+	  
+      <complexType name="searchIssuesForCriteriaResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:AurosIdentifier"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="searchIssuesForCriteriaResponse" type="tns:searchIssuesForCriteriaResponse" />
+
+      <complexType name="searchIssuesForCriteriaRequest">
+        <sequence>
+          <element name="searchAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="searchIssuesForCriteria" type="tns:searchIssuesForCriteriaRequest" />
+	  	  
+      <complexType name="retrieveEEAttributeValuesOfAllIssuesResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveEEAttributeValuesOfAllIssuesResponse" type="tns:retrieveEEAttributeValuesOfAllIssuesResponse" />
+
+      <complexType name="retrieveEEAttributeValuesOfAllIssuesRequest">
+        <sequence>
+          <element name="searchAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveEEAttributeValuesOfAllIssues" type="tns:retrieveEEAttributeValuesOfAllIssuesRequest" /> 
+	  
+
+
+      <complexType name="retrieveEEAttributesForIssueTypesResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveEEAttributesForIssueTypesResponse" type="tns:retrieveEEAttributesForIssueTypesResponse" />
+
+      <complexType name="retrieveEEAttributesForIssueTypesRequest">
+        <sequence>
+          <element name="searchAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveEEAttributesForIssueTypes" type="tns:retrieveEEAttributesForIssueTypesRequest" />
+	  
+		 
+      <complexType name="getAllIssueTypesResponse">
+        <sequence>
+          <element name="result" type="issue_types:IssueType"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="getAllIssueTypesResponse" type="tns:getAllIssueTypesResponse" />
+
+      <complexType name="getAllIssueTypesRequest">
+        <sequence>
+           <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="getAllIssueTypes" type="tns:getAllIssueTypesRequest" />
+	  	  
+      <complexType name="retrieveACSEAttributeValuesOfAllIssuesResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:E2KSAttributeList"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributeValuesOfAllIssuesResponse" type="tns:retrieveACSEAttributeValuesOfAllIssuesResponse" />
+
+      <complexType name="retrieveACSEAttributeValuesOfAllIssuesRequest">
+        <sequence>
+          <element name="searchAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveACSEAttributeValuesOfAllIssues" type="tns:retrieveACSEAttributeValuesOfAllIssuesRequest" />
+      
+      
+      <complexType name="findIssuesByEventNameAndEventDateResponse">
+        <sequence>
+          <element name="result" type="e2kstypes:AurosIdentifier"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="findIssuesByEventNameAndEventDateResponse" type="tns:findIssuesByEventNameAndEventDateResponse" />
+      
+      <complexType name="findIssuesByEventNameAndEventDateRequest">
+        <sequence>
+          <element name="eventSearchCriteria" type="e2kstypes:AurosIdentifier"  minOccurs="1"   maxOccurs="1"/>
+          <element name="searchAttributes" type="e2kstypes:E2KSAttribute"  minOccurs="0"   maxOccurs="unbounded"/>
+        </sequence>
+      </complexType>
+      <element name="findIssuesByEventNameAndEventDate" type="tns:findIssuesByEventNameAndEventDateRequest" />
+      
+      <complexType name="fetchIssuesDataResponse">
+        <sequence>
+          <element name="result" type="issue_types:Issue"   minOccurs="0"   maxOccurs="unbounded"/>
+          <element name="messages" type="e2kstypes:AurosMessages"/>
+        </sequence>
+      </complexType>
+      <element name="fetchIssuesDataResponse" type="tns:fetchIssuesDataResponse" />
+      
+      <complexType name="fetchIssuesDataRequest">
+        <sequence>
+          <element name="issueIdentifiers" type="e2kstypes:AurosIdentifier"  minOccurs="1"   maxOccurs="unbounded"/>
+          <element name="options" type="e2kstypes:InputOptions"  minOccurs="2"   maxOccurs="2"/>
+        </sequence>
+      </complexType>
+      <element name="fetchIssuesData" type="tns:fetchIssuesDataRequest" />
+		 
+ </xsd:schema>
+
+	
+  </types>
+
+
+  <message name="E2KSFault">
+    <part name="E2KSFault" element="tns:E2KSFault" />
+  </message>
+
+  <message name="getE2KSInstallationInfoResponse">
+    <part name="parameters" element="tns:getE2KSInstallationInfoResponse" />
+  </message>
+  <message name="getE2KSInstallationInfoRequest">
+
+  </message>
+
+  <message name="getIssuesResponse">
+    <part name="parameters" element="tns:getIssuesResponse" />
+  </message>
+  <message name="getIssuesRequest">
+    <part name="parameters" element="tns:getIssues" />
+  </message>
+
+  <message name="createIssueResponse">
+    <part name="parameters" element="tns:createIssueResponse" />
+  </message>
+  <message name="createIssueRequest">
+    <part name="parameters" element="tns:createIssue" />
+  </message>
+
+  <message name="addIssueDiscusssionResponse">
+    <part name="parameters" element="tns:addIssueDiscusssionResponse" />
+  </message>
+  <message name="addIssueDiscusssionRequest">
+    <part name="parameters" element="tns:addIssueDiscusssion" />
+  </message>
+
+  <message name="addIssueAssigneesResponse">
+    <part name="parameters" element="tns:addIssueAssigneesResponse" />
+  </message>
+  <message name="addIssueAssigneesRequest">
+    <part name="parameters" element="tns:addIssueAssignees" />
+  </message>
+
+  <message name="deleteIssueAssigneesResponse">
+    <part name="parameters" element="tns:deleteIssueAssigneesResponse" />
+  </message>
+  <message name="deleteIssueAssigneesRequest">
+    <part name="parameters" element="tns:deleteIssueAssignees" />
+  </message>
+
+  <message name="addIssueSourceIdentifiersResponse">
+    <part name="parameters" element="tns:addIssueSourceIdentifiersResponse" />
+  </message>
+  <message name="addIssueSourceIdentifiersRequest">
+    <part name="parameters" element="tns:addIssueSourceIdentifiers" />
+  </message>
+
+  <message name="deleteIssueSourceIdentifiersResponse">
+    <part name="parameters" element="tns:deleteIssueSourceIdentifiersResponse" />
+  </message>
+  <message name="deleteIssueSourceIdentifiersRequest">
+    <part name="parameters" element="tns:deleteIssueSourceIdentifiers" />
+  </message>
+
+  <message name="modifyIssueAttributesResponse">
+    <part name="parameters" element="tns:modifyIssueAttributesResponse" />
+  </message>
+  <message name="modifyIssueAttributesRequest">
+    <part name="parameters" element="tns:modifyIssueAttributes" />
+  </message>
+
+  
+
+  <message name="modifyAttributesOfListedIssuesResponse">
+    <part name="parameters" element="tns:modifyAttributesOfListedIssuesResponse" />
+  </message>
+  <message name="modifyAttributesOfListedIssuesRequest">
+    <part name="parameters" element="tns:modifyAttributesOfListedIssues" />
+  </message>
+
+
+  <message name="getIssuesForAssessmentsResponse">
+    <part name="parameters" element="tns:getIssuesForAssessmentsResponse" />
+  </message>
+  <message name="getIssuesForAssessmentsRequest">
+    <part name="parameters" element="tns:getIssuesForAssessments" />
+  </message>
+
+  <message name="searchIssuesForCriteriaResponse">
+    <part name="parameters" element="tns:searchIssuesForCriteriaResponse" />
+  </message>
+  <message name="searchIssuesForCriteriaRequest">
+    <part name="parameters" element="tns:searchIssuesForCriteria" />
+  </message>
+  
+ 
+  <message name="retrieveEEAttributeValuesOfAllIssuesResponse">
+    <part name="parameters" element="tns:retrieveEEAttributeValuesOfAllIssuesResponse" />
+  </message>
+  <message name="retrieveEEAttributeValuesOfAllIssuesRequest">
+    <part name="parameters" element="tns:retrieveEEAttributeValuesOfAllIssues" />
+  </message>
+
+  
+    <message name="retrieveEEAttributesForIssueTypesResponse">
+    <part name="parameters" element="tns:retrieveEEAttributesForIssueTypesResponse" />
+  </message>
+  <message name="retrieveEEAttributesForIssueTypesRequest">
+    <part name="parameters" element="tns:retrieveEEAttributesForIssueTypes" />
+  </message>
+
+
+    <message name="getAllIssueTypesResponse">
+    <part name="parameters" element="tns:getAllIssueTypesResponse" />
+  </message>
+  <message name="getAllIssueTypesRequest">
+    <part name="parameters" element="tns:getAllIssueTypes" />
+  </message>
+  
+  <message name="retrieveACSEAttributeValuesOfAllIssuesResponse">
+    <part name="parameters" element="tns:retrieveACSEAttributeValuesOfAllIssuesResponse" />
+  </message>
+  <message name="retrieveACSEAttributeValuesOfAllIssuesRequest">
+    <part name="parameters" element="tns:retrieveACSEAttributeValuesOfAllIssues" />
+  </message>
+
+  <message name="findIssuesByEventNameAndEventDateResponse">
+    <part name="parameters" element="tns:findIssuesByEventNameAndEventDateResponse" />
+  </message>
+  <message name="findIssuesByEventNameAndEventDateRequest">
+    <part name="parameters" element="tns:findIssuesByEventNameAndEventDate" />
+  </message>
+  
+  <message name="fetchIssuesDataResponse">
+    <part name="parameters" element="tns:fetchIssuesDataResponse" />
+  </message>
+  <message name="fetchIssuesDataRequest">
+    <part name="parameters" element="tns:fetchIssuesData" />
+  </message>
+
+  
+  <portType name="E2KSIssuesPortType">
+
+    <operation name="getE2KSInstallationInfo">
+      <documentation>
+        Retrieves this installation information.
+\snippet TestAbstractAssessmentManager.java getE2KSInstallationInfoCases
+      </documentation>
+      <input message="tns:getE2KSInstallationInfoRequest"  name="getE2KSInstallationInfoRequest"/>
+      <output message="tns:getE2KSInstallationInfoResponse" name="getE2KSInstallationInfoResponse"/>
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="getIssues">
+      <documentation>
+        Retrieves Issue details for a list of issue ids supplied. See sample below.
+\snippet TestAbstractIssuesManager.java getIssuesCases
+      </documentation>
+      <input  message="tns:getIssuesRequest"  name="getIssuesRequest" />
+      <output message="tns:getIssuesResponse" name="getIssuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="createIssue">
+      <documentation>
+		Create Issue. An Issue object with all needed information is passed as an argument. 
+		Some members such as dates, creator etc. are ignored and will be generated or obtained by a different mechanism. 
+		See sample below.
+\snippet TestAbstractIssuesManager.java createIssueCases
+      </documentation>
+      <input  message="tns:createIssueRequest"  name="createIssueRequest" />
+      <output message="tns:createIssueResponse" name="createIssueResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="addIssueDiscusssion">
+      <documentation>
+        Add an Issue discussion to specified Issue. See sample below.
+\snippet TestAbstractIssuesManager.java addIssueDiscusssionCases
+      </documentation>
+      <input  message="tns:addIssueDiscusssionRequest"  name="addIssueDiscusssionRequest" />
+      <output message="tns:addIssueDiscusssionResponse" name="addIssueDiscusssionResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="addIssueAssignees">
+      <documentation>
+        Add Issue Assignees. See sample below.
+\snippet TestAbstractIssuesManager.java addIssueAssigneesCases
+      </documentation>
+      <input  message="tns:addIssueAssigneesRequest"  name="addIssueAssigneesRequest" />
+      <output message="tns:addIssueAssigneesResponse" name="addIssueAssigneesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="deleteIssueAssignees">
+      <documentation>
+        Delete Issue Assignees. See sample below.
+\snippet TestAbstractIssuesManager.java deleteIssueAssigneesCases
+      </documentation>
+      <input  message="tns:deleteIssueAssigneesRequest"  name="deleteIssueAssigneesRequest" />
+      <output message="tns:deleteIssueAssigneesResponse" name="deleteIssueAssigneesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="addIssueSourceIdentifiers">
+      <documentation>
+		Add Issue Source Identifiers. The sources can be assessments, assessment line items, projects and tells that the 
+		issue came into being due to a defect identified in the sources. See sample below.
+\snippet TestAbstractIssuesManager.java addIssueSourceIdentifiersCases
+      </documentation>
+      <input  message="tns:addIssueSourceIdentifiersRequest"  name="addIssueSourceIdentifiersRequest" />
+      <output message="tns:addIssueSourceIdentifiersResponse" name="addIssueSourceIdentifiersResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="deleteIssueSourceIdentifiers">
+      <documentation>
+        Delete Issue Source Identifiers. See sample below.
+\snippet TestAbstractIssuesManager.java deleteIssueSourceIdentifiersCases
+      </documentation>
+      <input  message="tns:deleteIssueSourceIdentifiersRequest"  name="deleteIssueSourceIdentifiersRequest" />
+      <output message="tns:deleteIssueSourceIdentifiersResponse" name="deleteIssueSourceIdentifiersResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+
+    <operation name="modifyIssueAttributes">
+      <documentation>
+        Modify Issue Attributes. issueTypeID, issuePriorityID,issueStatusID,issueDescription,issueAction,qaPlanning,developerComments,projectID,subProjectID
+        can be modified using this method. See sample below.
+\snippet TestAbstractIssuesManager.java modifyIssueAttributesCases
+      </documentation>
+      <input  message="tns:modifyIssueAttributesRequest"  name="modifyIssueAttributesRequest" />
+      <output message="tns:modifyIssueAttributesResponse" name="modifyIssueAttributesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+    <operation name="modifyAttributesOfListedIssues">
+      <documentation>
+        Modifies Attributes for multiple Issues. issueTypeID, issuePriorityID,issueStatusID,issueDescription,issueAction,qaPlanning,developerComments,projectID,subProjectID
+        can be modified using this method. The list supplied is actually E2KSAttributeList which associates issue ids and it's attributes to be modified. See sample below.
+\snippet TestAbstractIssuesManager.java modifyAttributesOfListedIssuesCases
+      </documentation>
+      <input  message="tns:modifyAttributesOfListedIssuesRequest"  name="modifyAttributesOfListedIssuesRequest" />
+      <output message="tns:modifyAttributesOfListedIssuesResponse" name="modifyAttributesOfListedIssuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+    <operation name="getIssuesForAssessments">
+      <documentation>
+        For a list of assessments returns a list of related issues as a list AurosRelation. 
+		The Relation maps assessments to issues, occurrence to issues See sample below.
+\snippet TestAbstractIssuesManager.java getIssuesForAssessmentsCases
+      </documentation>
+      <input  message="tns:getIssuesForAssessmentsRequest"  name="getIssuesForAssessmentsRequest" />
+      <output message="tns:getIssuesForAssessmentsResponse" name="getIssuesForAssessmentsResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	<operation name="searchIssuesForCriteria">
+      <documentation>
+        Search for a list of issues for a list of criteria. The attribute values are interpreted slightly differently based on type etc. 
+        Most search attributes are interpreted as an "OR" operation for each value.
+        While the different attributes are "AND"ed. Dates have ranges as shown below.
+        The method returns a list of issues ids.
+        Following are a list of possible Issue Attribute types
+        1) issueBasic						- Basic Issue Elements.
+		2) issueExtendedElement				- Issue Extended Elements.
+		3) issueLongTextExtendedElement		- Issue LongText Extended Elements
+		4) issueDateExtendedElement			- Issue Date Extended Elements.
+\snippet TestAbstractIssuesManager.java searchIssuesForCriteriaCases
+      </documentation>
+      <input  message="tns:searchIssuesForCriteriaRequest"  name="searchIssuesForCriteriaRequest" />
+      <output message="tns:searchIssuesForCriteriaResponse" name="searchIssuesForCriteriaResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+	<operation name="retrieveEEAttributeValuesOfAllIssues">
+      <documentation>
+     This call pertains to actually assigned Issue Extended Element Attributes and their values in Auros. The Issue extended elements are scoped at the Issue Type level.
+    An Issue has a unique Issue Type which determines what Issue Extended Element can be attributed to it. The Extended Element Attributes and values assigned in all issues are returned. 
+    Both Attribute names and Attribute values are case and space sensitive.
+    See below samples for several scenarios
+\snippet TestAbstractIssuesManager.java retrieveEEAttributeValuesOfAllIssuesCases
+      </documentation>
+      <input  message="tns:retrieveEEAttributeValuesOfAllIssuesRequest"  name="retrieveEEAttributeValuesOfAllIssuesRequest" />
+      <output message="tns:retrieveEEAttributeValuesOfAllIssuesResponse" name="retrieveEEAttributeValuesOfAllIssuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+		
+	<operation name="retrieveEEAttributesForIssueTypes">
+      <documentation>
+	 To be done.
+     This call pertains to Issue Extended Element Attributes and their possible/assignable fixed values in Auros. The Issue extended elements are scoped at the Issue Type level and defined by an Admin user.
+    Some of the Extended elements are assignable any value/values and are called open. Some can be assigned only from list of previously defined values and are called fixed types.	 
+    An Issue has a unique Issue Type which determines what Issue Extended Element can be attributed to it. The Extended Element Attributes and all posssible/assignable values for fixed value attributes are returned.
+    Both Attribute names and Attribute values are case and space sensitive. 
+    See below samples for several scenarios
+\snippet TestAbstractIssuesManager.java retrieveEEAttributesForIssueTypesCases
+      </documentation>
+      <input  message="tns:retrieveEEAttributesForIssueTypesRequest"  name="retrieveEEAttributesForIssueTypesRequest" />
+      <output message="tns:retrieveEEAttributesForIssueTypesResponse" name="retrieveEEAttributesForIssueTypesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+	<operation name="getAllIssueTypes">
+      <documentation>
+	  This call gets all issue types in Auros. Every issue is assocaited with a unique issue type.
+\snippet TestAbstractIssuesManager.java getAllIssueTypesCases
+      </documentation>
+      <input  message="tns:getAllIssueTypesRequest"  name="getAllIssueTypesRequest" />
+      <output message="tns:getAllIssueTypesResponse" name="getAllIssueTypesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	<operation name="retrieveACSEAttributeValuesOfAllIssues">
+      <documentation>
+     This call pertains to actually assigned AC Secondary Evaluation Attributes and their values in Auros. The Issue extended elements are scoped at the Issue Type level.
+    An Issue has a unique Issue Type which determines what AC Secondary Evaluation can be attributed to it. The AC Secondary Evaluation Attributes and values assigned in all issues are returned. 
+    Both Attribute names and Attribute values are case and space sensitive.
+    See below samples for several scenarios
+\snippet TestAbstractIssuesManager.java retrieveACSEAttributeValuesOfAllIssuesCases
+      </documentation>
+      <input  message="tns:retrieveACSEAttributeValuesOfAllIssuesRequest"  name="retrieveACSEAttributeValuesOfAllIssuesRequest" />
+      <output message="tns:retrieveACSEAttributeValuesOfAllIssuesResponse" name="retrieveACSEAttributeValuesOfAllIssuesResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+	
+	<operation name="findIssuesByEventNameAndEventDate">
+      <documentation>
+    	This API returns IDs of issues with specified criteria which had specified event (event name) in Auros system with in the specified time period (Between from Date and to Date)
+    	@ eventSearchCriteria - Events filter
+	    	- Event name is case and space sensitive (Please check with your Auros Administrator for valid Issue Events)
+	    	- Dates should be in dd-MMM-yyyy HH:mm:ss format
+	    	- Sample input: (Event, From date, To date)
+	    		Issue Modified
+	    		13-MAY-2021 08:12:00
+	    		13-MAY-2021 09:12:00
+	   
+    	@ searchAttributes - Filter issues by various criteria
+    		- Please refer to the documentation for searchIssuesForCriteria API
+    		
+    	- Sample SAOP request
+    	&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:iss=&quot;http://auros.emergentsys.com/services/issues&quot; xmlns:typ=&quot;http://e2ks.emergent.com/types&quot;&gt;
+		   &lt;soapenv:Header/&gt;
+		   &lt;soapenv:Body&gt;
+		      &lt;iss:findIssuesByEventNameAndEventDate&gt;
+		         &lt;iss:eventSearchCriteria&gt;
+		            &lt;typ:identifiers&gt;Issue Modified&lt;/typ:identifiers&gt;
+		            &lt;typ:identifiers&gt;06-Dec-2019 00:28:34&lt;/typ:identifiers&gt;
+		            &lt;typ:identifiers&gt;11-May-2021 13:30:34&lt;/typ:identifiers&gt;
+		         &lt;/iss:eventSearchCriteria&gt;
+		         &lt;iss:searchAttributes&gt;
+		            &lt;typ:attributeName&gt;issueType&lt;/typ:attributeName&gt;
+		            &lt;typ:attributeValue&gt;3&lt;/typ:attributeValue&gt;
+		            &lt;typ:attributeType&gt;issueBasic&lt;/typ:attributeType&gt;
+		         &lt;/iss:searchAttributes&gt;
+		      &lt;/iss:findIssuesByEventNameAndEventDate&gt;
+		   &lt;/soapenv:Body&gt;
+		&lt;/soapenv:Envelope&gt;
+\snippet TestAbstractIssuesManager.java findIssuesByEventNameAndEventDateCases
+      </documentation>
+      <input  message="tns:findIssuesByEventNameAndEventDateRequest"  name="findIssuesByEventNameAndEventDateRequest" />
+      <output message="tns:findIssuesByEventNameAndEventDateResponse" name="findIssuesByEventNameAndEventDateResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+    
+    <operation name="fetchIssuesData">
+      <documentation>
+      	This API takes list of issues Ids along with mandatory options (fromDateTime, toDateTime) and returns following details of corresponding issues
+		a. Basic information like Description, status, priority, type, project etc
+		b. Assignee (s)
+		c. Interested party
+		d. All extended elements information organized by chapter
+		e. Issue history between fromDateTime and toDateTime (&gt;= fromDateTime and &lt; toDateTime)
+		Note: It is advised to fetch information in batches (Start with 100 issues at a time and adjust based on response time). Dates should be in dd-MMM-yyyy HH:mm:ss format
+		
+		- Sample SOAP request
+		&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:iss=&quot;http://auros.emergentsys.com/services/issues&quot; xmlns:typ=&quot;http://e2ks.emergent.com/types&quot;&gt;
+		   &lt;soapenv:Header/&gt;
+		   &lt;soapenv:Body&gt;
+		      &lt;iss:fetchIssuesData&gt;
+		         &lt;iss:issueIdentifiers&gt;
+					&lt;typ:identifiers&gt;6752&lt;/typ:identifiers&gt;
+					&lt;typ:identifiers&gt;8625&lt;/typ:identifiers&gt;
+					&lt;typ:identifiers&gt;14179&lt;/typ:identifiers&gt;
+					&lt;typ:identifiers&gt;3833&lt;/typ:identifiers&gt;
+					&lt;typ:identifiers&gt;5100&lt;/typ:identifiers&gt;
+					&lt;typ:identifiers&gt;3688&lt;/typ:identifiers&gt;
+		         &lt;/iss:issueIdentifiers&gt;
+		         &lt;iss:options&gt;
+		            &lt;typ:name&gt;fromDateTime&lt;/typ:name&gt;
+		            &lt;typ:value&gt;05-AUG-2004 02:02:19&lt;/typ:value&gt;
+		         &lt;/iss:options&gt;
+		         &lt;iss:options&gt;
+		            &lt;typ:name&gt;toDateTime&lt;/typ:name&gt;
+		            &lt;typ:value&gt;29-AUG-2021 10:37:49&lt;/typ:value&gt;
+		         &lt;/iss:options&gt;
+		      &lt;/iss:fetchIssuesData&gt;
+		   &lt;/soapenv:Body&gt;
+		&lt;/soapenv:Envelope&gt;
+\snippet TestAbstractIssuesManager.java fetchIssuesDataCases
+      </documentation>
+      <input  message="tns:fetchIssuesDataRequest"  name="fetchIssuesDataRequest" />
+      <output message="tns:fetchIssuesDataResponse" name="fetchIssuesDataResponse" />
+      <fault name="e2ksFault" message="tns:E2KSFault"/>
+    </operation>
+	
+  </portType>
+  
+  
+  <binding name="E2KSIssuesBinding" type="tns:E2KSIssuesPortType">
+
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+
+
+
+
+
+    <operation name="getE2KSInstallationInfo">
+      <soap:operation soapAction="" />
+      <input name="getE2KSInstallationInfoRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getE2KSInstallationInfoResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="getIssues">
+      <soap:operation soapAction="" />
+      <input name="getIssuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getIssuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="createIssue">
+      <soap:operation soapAction="" />
+      <input name="createIssueRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="createIssueResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="addIssueDiscusssion">
+      <soap:operation soapAction="" />
+      <input name="addIssueDiscusssionRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="addIssueDiscusssionResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="addIssueAssignees">
+      <soap:operation soapAction="" />
+      <input name="addIssueAssigneesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="addIssueAssigneesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="deleteIssueAssignees">
+      <soap:operation soapAction="" />
+      <input name="deleteIssueAssigneesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="deleteIssueAssigneesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="addIssueSourceIdentifiers">
+      <soap:operation soapAction="" />
+      <input name="addIssueSourceIdentifiersRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="addIssueSourceIdentifiersResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="deleteIssueSourceIdentifiers">
+      <soap:operation soapAction="" />
+      <input name="deleteIssueSourceIdentifiersRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="deleteIssueSourceIdentifiersResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+    <operation name="modifyIssueAttributes">
+      <soap:operation soapAction="" />
+      <input name="modifyIssueAttributesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="modifyIssueAttributesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+    <operation name="modifyAttributesOfListedIssues">
+      <soap:operation soapAction="" />
+      <input name="modifyAttributesOfListedIssuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="modifyAttributesOfListedIssuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+
+
+    <operation name="getIssuesForAssessments">
+      <soap:operation soapAction="" />
+      <input name="getIssuesForAssessmentsRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getIssuesForAssessmentsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+    <operation name="searchIssuesForCriteria">
+      <soap:operation soapAction="" />
+      <input name="searchIssuesForCriteriaRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="searchIssuesForCriteriaResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+    <operation name="retrieveEEAttributeValuesOfAllIssues">
+      <soap:operation soapAction="" />
+      <input name="retrieveEEAttributeValuesOfAllIssuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveEEAttributeValuesOfAllIssuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+	
+     <operation name="retrieveEEAttributesForIssueTypes">
+      <soap:operation soapAction="" />
+      <input name="retrieveEEAttributesForIssueTypesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveEEAttributesForIssueTypesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+    <operation name="getAllIssueTypes">
+      <soap:operation soapAction="" />
+      <input name="getAllIssueTypesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="getAllIssueTypesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+ 
+    <operation name="retrieveACSEAttributeValuesOfAllIssues">
+      <soap:operation soapAction="" />
+      <input name="retrieveACSEAttributeValuesOfAllIssuesRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="retrieveACSEAttributeValuesOfAllIssuesResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="findIssuesByEventNameAndEventDate">
+      <soap:operation soapAction="" />
+      <input name="findIssuesByEventNameAndEventDateRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="findIssuesByEventNameAndEventDateResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+    
+    <operation name="fetchIssuesData">
+      <soap:operation soapAction="" />
+      <input name="fetchIssuesDataRequest">
+        <soap:body use="literal" />
+      </input>
+      <output  name="fetchIssuesDataResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="e2ksFault">
+        <soap:fault name="e2ksFault" use="literal" />
+      </fault>
+    </operation>
+  
+ </binding>
+  <service name="E2KSIssuesService">
+    <port name="E2KSIssuesPort" binding="tns:E2KSIssuesBinding">
+      <!-- soap:address location="http://localhost:8080/issues_services/e2ksissues" /-->
+      <soap:address location="https://localhost:8443/issues_services/e2ksissues" />
+
+    </port>
+  </service>
+</definitions>

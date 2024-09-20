@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<!-- avoid attributes named "id". They cause problems in gsoap at least-->
+<!-- http://www.xfront.com/HideVersusExpose.html -->
+<xs:schema version="1.0"  targetNamespace="http://e2ks.emergent.com/assessment_types" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://e2ks.emergent.com/assessment_types" 
+xmlns:e2kstypes="http://e2ks.emergent.com/types"
+elementFormDefault="qualified"
+>
+  <xs:import schemaLocation="E2ksTypes.xsd" namespace="http://e2ks.emergent.com/types"
+           />
+  <xs:complexType name="Assessment">
+    <xs:sequence>
+      <xs:element name="assessmentHeader" type="AssessmentHeader" minOccurs="1"  maxOccurs="1" />	  
+	  <!-- conformance states rolled up to K-PAC level and persisted in E2ks. Multiple instances are rolled up. Occurances are not rolled up -->
+	  <!-- conformance states returned by various runRuleProcessor() methods are not rolled up and have a few additional fields filled up. -->
+      <xs:element name="persistedConformanceStates" type="e2kstypes:ConformanceState" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="contentKPacHeaders" type="e2kstypes:KPacHeader" minOccurs="0"  maxOccurs="unbounded" />
+	  <xs:element name="occurrenceMediaAttachments" type="e2kstypes:AurosAttachment" minOccurs="0" maxOccurs="unbounded" />
+	  <xs:element name="occurrenceDocAttachments" type="e2kstypes:AurosAttachment" minOccurs="0" maxOccurs="unbounded" />
+	  <xs:element name="occurrenceURLAttachments" type="e2kstypes:AurosAttachment" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType >
+  
+  <xs:complexType name="AssessmentHeader">
+    <xs:sequence>
+	<!-- below data used when creating.  editor is not present in assessment - check -->
+	<!-- groupId, project,milestoneVersion, milestone, subproject, author, editor, descriptor, chkSource,  conflist -->
+	
+      <xs:element name="assessmentId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+	  
+      <xs:element name="copId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="projectName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="subProjectName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="mileStoneVersion" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="mileStone" type="xs:string" minOccurs="1"  maxOccurs="1" />
+
+
+      <xs:element name="assessmentSource" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="assessmentRequeryCriteria" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="creator" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="coCreators" type="xs:string" minOccurs="1"  maxOccurs="unbounded" />
+
+	  <!-- evaluator does not appear in getCheckListOut, but appears in getCheckListAttributes -->
+      <xs:element name="evaluator" type="xs:string" minOccurs="1"  maxOccurs="1" />
+ 
+      <xs:element name="openedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="closedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastModifiedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastModifedBy" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="descriptor" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="signOffText" type="xs:string" minOccurs="1"  maxOccurs="1" />
+       <xs:element name="status" type="xs:string" minOccurs="1" maxOccurs="1" />
+       <xs:element name="assessmentTreePath" type="xs:string" minOccurs="1" maxOccurs="1" />
+	   
+	   
+     <xs:element name="assessmentAttributes" type="e2kstypes:E2KSAttribute" minOccurs="0" maxOccurs="unbounded" />
+	  
+    </xs:sequence>
+  </xs:complexType >
+  
+			
+				
+  <xs:complexType name="AssessmentConformanceStatistics">
+	  	
+    <xs:sequence>
+      <xs:element name="conformanceCount" type="xs:int" minOccurs="0"  maxOccurs="unbounded" />	  
+      <xs:element name="conformanceStateChoice" type="e2kstypes:ConformanceStateChoice" minOccurs="0" maxOccurs="unbounded" />
+	  
+    </xs:sequence> 
+	<xs:attribute name="assessmentID" type="xs:string"/> 
+  </xs:complexType >
+  
+			
+				
+  <xs:complexType name="AssessmentLinkAndAttachmentStatistics">
+	<xs:attribute name="assessmentID" type="xs:string"/> 
+	<xs:attribute name="linkCount" type="xs:int"/> 
+	<xs:attribute name="multimediaCount" type="xs:int"/> 
+	<xs:attribute name="supportDocCount" type="xs:int"/> 
+	
+  </xs:complexType >
+  
+  
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element name="projectName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="projectID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="enabled" type="xs:boolean" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="derivativesEnabled" type="xs:boolean" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="creator" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="bornOnDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastUpdate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="lastArchivedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      <xs:element name="typeID" type="xs:string" minOccurs="1"  maxOccurs="1" />
+      
+	  <!-- issues TBD - made into unbounded -->
+      <xs:element name="copIds" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />	  
+	  <xs:element name="assessmentIds" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />	  
+	  <xs:element name="unAssociatedIssueIds" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />	  
+	  <xs:element name="issueIdsFromNonConformance" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />	  
+
+      <xs:element name="projectAttributes" type="e2kstypes:E2KSAttribute" minOccurs="0"  maxOccurs="unbounded" />
+
+	  
+    </xs:sequence>
+  </xs:complexType >
+  
+  <xs:complexType name="ParameterTarget">
+  	<xs:sequence>
+  		<!-- <xs:element name="assessmentId" type="xs:string" minOccurs="1"  maxOccurs="1" /> -->
+  		<xs:element name="parameterName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="parameterInstanceName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="targetValue" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="targetMinValue" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="targetMaxValue" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="lastModifiedBy" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="LastModifiedDate" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ParameterTargetList">
+  	<xs:sequence>
+  		<xs:element name="containerId" type="e2kstypes:AurosIdentifier" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="parameterTargetList" type="ParameterTarget" minOccurs="0"  maxOccurs="unbounded" />
+  	</xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Occurrence">
+  	<xs:sequence>
+	<!-- kpac or occurrence id -->
+		<xs:element name="copID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+		<xs:element name="kpacID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+		<xs:element name="kpacVersion" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+
+		<!-- if the assessment has occurances for this K-PAC this field will be -->
+		<xs:element name="occurrenceID" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+		<xs:element name="subOccurrenceID" type="xs:string"  minOccurs="0"  maxOccurs="1"/>
+
+  		<xs:element name="occurrenceName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+   		<xs:element name="state" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="action" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="status" type="xs:string" minOccurs="1"  maxOccurs="1" />
+  		<xs:element name="explanation" type="xs:string" minOccurs="1"  maxOccurs="1" />
+ 	</xs:sequence>
+  </xs:complexType>
+  
+	<xs:complexType name="AssessmentKPacCounter">
+	  	<xs:sequence>
+	  		<xs:element name="acID" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="description" type="xs:string"  minOccurs="1"  maxOccurs="1"/>
+	  		<xs:element name="countList" type="e2kstypes:AurosCounter"  minOccurs="1"  maxOccurs="unbounded"/>
+	 	</xs:sequence>
+  	</xs:complexType>
+  	
+	<xs:complexType name="RollUpStateByProperty">
+		<xs:sequence>
+		<xs:element name="propertyName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		<xs:element name="propertyValue" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		<xs:element name="conformanceState" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+  	
+  	<xs:complexType name="RollUpStateByACID">
+		<xs:sequence>
+		<xs:element name="assessmentId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		<xs:element name="rollUpStates" type="RollUpStateByProperty" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+    <xs:complexType name="ACReplicationData">
+        <xs:sequence>
+            <xs:element name="sourceAcId" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="destinationProjectName" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="destinationUserID" type="xs:string" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ACReplicationDataList">
+        <xs:sequence>
+            <xs:element name="destinationCoP" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="replicationData" type="ACReplicationData" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ReplicatedAC">
+        <xs:sequence>
+            <xs:element name="source" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="result" type="xs:int" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="CountReportHeaders">
+	    <xs:sequence>
+			<xs:element name="countReportHeader" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+	    </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="CountReportRow">
+	    <xs:sequence>
+			<xs:element name="countReportCell" type="xs:string" minOccurs="0"  maxOccurs="unbounded" />
+	    </xs:sequence>
+    </xs:complexType>
+	
+	<xs:complexType name="CountReport">
+	    <xs:sequence>
+	      <xs:element name="countReportHeaders" type="CountReportHeaders" minOccurs="1"  maxOccurs="1" />
+	      <xs:element name="countReportRow" type="CountReportRow" minOccurs="0"  maxOccurs="unbounded" />
+		</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StepHeader">
+	   <xs:sequence>
+	     <xs:element name="stepId" type="xs:int" minOccurs="1" maxOccurs="1" />
+         <xs:element name="stepName" type="xs:string" minOccurs="1" maxOccurs="1" />
+         <xs:element name="stepDescription" type="xs:string" minOccurs="1" maxOccurs="1" />
+	   </xs:sequence>
+    </xs:complexType> 
+   <xs:complexType name="Checkpoint">
+	    <xs:sequence>
+	      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="actualDate" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="targetDate" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="status" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="inboundSteps" type="StepHeader" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="outboundSteps" type="StepHeader" minOccurs="0" maxOccurs="unbounded" />
+	    </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ACLineItemHeader">
+        <xs:sequence>
+	      <xs:element name="lineItem" type="xs:string" minOccurs="1" maxOccurs="1" />
+	      <xs:element name="coPId" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="kpacId" type="xs:int" minOccurs="1" maxOccurs="1" />
+          <xs:element name="occurrenceId" type="xs:int" minOccurs="1" maxOccurs="1" />
+          <xs:element name="subOccurrenceId" type="xs:int" minOccurs="1" maxOccurs="1" />
+	    </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="MethodKpac">
+	    <xs:sequence>
+	      <xs:element name="lineItemHeader" type="ACLineItemHeader" minOccurs="1" maxOccurs="1" />
+          <xs:element name="checkpoints" type="Checkpoint" minOccurs="0" maxOccurs="unbounded" />
+	    </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MethodKpacRow">
+        <xs:sequence>
+	      <xs:element name="methodKpac" type="MethodKpac" minOccurs="1" maxOccurs="1" />
+	    </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="MasterACCheckpoints">
+	    <xs:sequence>
+	      <xs:element name="assessmentId" type="xs:int" minOccurs="1"  maxOccurs="1" />
+	      <xs:element name="methodKpacs" type="MethodKpac" minOccurs="0" maxOccurs="unbounded" />
+	    </xs:sequence>
+	</xs:complexType>     
+    <xs:complexType name="MasterACHeader">
+	    <xs:sequence>
+	      <xs:element name="assessmentId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+          <xs:element name="copId" type="xs:string" minOccurs="1"  maxOccurs="1" />
+          <xs:element name="projectName" type="xs:string" minOccurs="1"  maxOccurs="1" />
+          <xs:element name="creator" type="xs:string" minOccurs="1"  maxOccurs="1" />
+          <xs:element name="status" type="xs:string" minOccurs="1" maxOccurs="1" />
+          <xs:element name="descriptor" type="xs:string" minOccurs="1"  maxOccurs="1" />
+          <xs:element name="teamboards" type="xs:int" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CoPMasterACHeaders">
+    <xs:sequence>
+      <xs:element name="containerID" type="e2kstypes:AurosIdentifier" minOccurs="1" maxOccurs="1" />
+      <xs:element name="masterACHeader" type="MasterACHeader" minOccurs="0"  maxOccurs="unbounded" />
+    </xs:sequence>
+    </xs:complexType>
+</xs:schema>

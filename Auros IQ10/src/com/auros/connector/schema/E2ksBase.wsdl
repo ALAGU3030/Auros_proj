@@ -1,0 +1,3060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="E2ksBase"
+	targetNamespace="http://auros.emergentsys.com/services/aurosbase"
+	xmlns:tns="http://auros.emergentsys.com/services/aurosbase" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+	<!-- below elements provide a little more customization on package names 
+		for portType , service classes -->
+	<!-- But the wrapper code package name is always com.emergent.e2ks -->
+	<!-- avoid using -p option on wsimport cmd line or ant task. They override 
+		all package name customizations -->
+	<!-- <jaxws:bindings node="wsdl:definitions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"> <jaxws:package name="com.emergent.e2ks.services" 
+		/> </jaxws:bindings> <jaxws:bindings node="wsdl:definitions:types" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"> <jaxws:package name="com.emergent.e2ks.wrappers" 
+		/> </jaxws:bindings> -->
+	<types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified" targetNamespace="http://auros.emergentsys.com/services/aurosbase"
+			xmlns:e2kstypes="http://e2ks.emergent.com/types" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+
+			<!-- schemaLocation Attribute for xsd location check path syntax -->
+			<xsd:import namespace="http://e2ks.emergent.com/types"
+				schemaLocation="E2ksTypes.xsd" />
+
+			<complexType name="getE2KSInstallationInfoResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:E2KSInstallationInfo" />
+				</sequence>
+			</complexType>
+			<element name="getE2KSInstallationInfoResponse" type="tns:getE2KSInstallationInfoResponse" />
+
+			<element name="data" type="xsd:base64Binary"
+				xmime:expectedContentTypes="application/octet-stream" />
+			<element name="xml" type="xsd:base64Binary"
+				xmime:expectedContentTypes="text/xml" />
+			<element name="dataup" type="xsd:base64Binary"
+				xmime:expectedContentTypes="application/octet-stream" />
+
+			<element name="inputOptions" type="e2kstypes:InputOptions" />
+
+
+			<element name="aurosIdentifier" type="e2kstypes:AurosIdentifier" />
+
+			<complexType name="getAllCoPsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:CoPHeader"
+						maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllCoPsResponse" type="tns:getAllCoPsResponse" />
+
+			<complexType name="getAllCoPsRequest">
+				<sequence>
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="getAllCoPs" type="tns:getAllCoPsRequest" />
+
+			<complexType name="getKPacDescriptionsForCoPResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPacHeader"
+						maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getKPacDescriptionsForCoPResponse" type="tns:getKPacDescriptionsForCoPResponse" />
+
+			<complexType name="getKPacDescriptionsForCoPRequest">
+				<sequence>
+					<element name="copId" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getKPacDescriptionsForCoP" type="tns:getKPacDescriptionsForCoPRequest" />
+
+			<complexType name="getCoPResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:CoP" maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getCoPResponse" type="tns:getCoPResponse" />
+
+			<complexType name="getCoPRequest">
+				<sequence>
+					<element name="copId" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getCoP" type="tns:getCoPRequest" />
+
+			<complexType name="getMilestonesOfCoPResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:Milestone"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getMilestonesOfCoPResponse" type="tns:getMilestonesOfCoPResponse" />
+
+			<complexType name="getMilestonesOfCoPRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getMilestonesOfCoP" type="tns:getMilestonesOfCoPRequest" />
+
+
+
+			<complexType name="getKPacResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPac" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getKPacResponse" type="tns:getKPacResponse" />
+
+			<complexType name="getKPacRequest">
+				<sequence>
+					<element name="copId" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="kpacId" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="kpacVersion" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getKPac" type="tns:getKPacRequest" />
+
+
+			<complexType name="getSetResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:Set" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getSetResponse" type="tns:getSetResponse" />
+
+			<complexType name="getSetRequest">
+				<sequence>
+					<element name="setId" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getSet" type="tns:getSetRequest" />
+
+
+			<complexType name="getAllAtomicUnitsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:Unit" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllAtomicUnitsResponse" type="tns:getAllAtomicUnitsResponse" />
+
+			<complexType name="getAllAtomicUnitsRequest">
+				<sequence>
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="getAllAtomicUnits" type="tns:getAllAtomicUnitsRequest" />
+
+			<complexType name="getAllUnitsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:Unit" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllUnitsResponse" type="tns:getAllUnitsResponse" />
+
+			<complexType name="getAllUnitsRequest">
+				<sequence>
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllUnits" type="tns:getAllUnitsRequest" />
+
+			<complexType name="getDimensionsForUnitsResponse">
+				<sequence>
+					<element name="compoundDimensions" type="e2kstypes:CompoundDimension"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getDimensionsForUnitsResponse" type="tns:getDimensionsForUnitsResponse" />
+
+			<complexType name="getDimensionsForUnitsRequest">
+				<sequence>
+					<element name="units" type="e2kstypes:Unit" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getDimensionsForUnits" type="tns:getDimensionsForUnitsRequest" />
+
+			<complexType name="validateDimensionsForUnitsResponse">
+				<sequence>
+					<element name="result" type="xsd:boolean" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="validateDimensionsForUnitsResponse" type="tns:validateDimensionsForUnitsResponse" />
+
+			<complexType name="validateDimensionsForUnitsRequest">
+				<sequence>
+					<element name="expression" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="paramNames" type="xsd:string" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="units" type="e2kstypes:Unit" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="validateDimensionsForUnits" type="tns:validateDimensionsForUnitsRequest" />
+
+			<complexType name="validateDimensionsResponse">
+				<sequence>
+					<element name="result" type="xsd:boolean" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="validateDimensionsResponse" type="tns:validateDimensionsResponse" />
+
+			<complexType name="validateDimensionsRequest">
+				<sequence>
+					<element name="expression" type="xsd:string" minOccurs="1"
+						maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>
+								Expression to be validated.
+							</xsd:documentation>
+						</xsd:annotation>
+					</element>
+					<element name="paramNames" type="xsd:string" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="compoundDimensions" type="e2kstypes:CompoundDimension"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="validateDimensions" type="tns:validateDimensionsRequest" />
+
+
+			<complexType name="evaluateExpressionResponse">
+				<sequence>
+					<element name="result" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="evaluateExpressionResponse" type="tns:evaluateExpressionResponse" />
+
+			<complexType name="evaluateExpressionRequest">
+				<sequence>
+					<element name="expression" type="xsd:string" minOccurs="1"
+						maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>
+								Expression to be validated.
+							</xsd:documentation>
+						</xsd:annotation>
+					</element>
+
+					<element name="paramNames" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="paramValues" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+
+					<element name="authoredUnits" type="e2kstypes:Unit"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="inputUnits" type="e2kstypes:Unit" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="evaluateExpression" type="tns:evaluateExpressionRequest" />
+
+			<complexType name="evaluateExpressionsWithInstancesResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:EvaluationResult"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="evaluateExpressionsWithInstancesResponse"
+				type="tns:evaluateExpressionsWithInstancesResponse" />
+
+			<complexType name="evaluateExpressionsWithInstancesRequest">
+				<sequence>
+					<element name="expressions" type="xsd:string" minOccurs="1"
+						maxOccurs="unbounded" />
+					<element name="parameterNames" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="authoredUnits" type="e2kstypes:Unit"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="suppliedParameterInstances" type="e2kstypes:ParameterInstance"
+						minOccurs="0" maxOccurs="unbounded" />
+
+					<!-- input units are part of param instances -->
+					<!--element name="units" type="e2kstypes:Unit" minOccurs="0" maxOccurs="unbounded" 
+						/ -->
+					<element name="nOfConditionals" type="xsd:int" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="evaluateExpressionsWithInstances" type="tns:evaluateExpressionsWithInstancesRequest" />
+
+
+
+			<complexType name="runRuleProcessorResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:RuleProcessorResult"
+						minOccurs="1" maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="runRuleProcessorResponse" type="tns:runRuleProcessorResponse" />
+
+			<complexType name="runRuleProcessorRequest">
+				<sequence>
+					<element name="suppliedParameterInstances" type="e2kstypes:ParameterInstance"
+						minOccurs="0" maxOccurs="unbounded" />
+					<!-- input units are part of param instances -->
+					<!--element name="units" type="e2kstypes:Unit" minOccurs="0" maxOccurs="unbounded" 
+						/ -->
+					<element name="setID" type="e2kstypes:SetIdentifier"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="runRuleProcessor" type="tns:runRuleProcessorRequest" />
+
+
+
+			<complexType name="runRuleProcessorOnKPacListResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:RuleProcessorResult"
+						minOccurs="1" maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="runRuleProcessorOnKPacListResponse" type="tns:runRuleProcessorOnKPacListResponse" />
+
+			<complexType name="runRuleProcessorOnKPacListRequest">
+				<sequence>
+					<element name="suppliedParameterInstances" type="e2kstypes:ParameterInstance"
+						minOccurs="0" maxOccurs="unbounded" />
+					<!-- input units are part of param instances -->
+					<!--element name="units" type="e2kstypes:Unit" minOccurs="0" maxOccurs="unbounded" 
+						/ -->
+					<element name="kpacIdentifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="unbounded" />
+
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="runRuleProcessorOnKPacList" type="tns:runRuleProcessorOnKPacListRequest" />
+
+
+			<complexType name="runRuleProcessorOnParameterResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:RuleProcessorResult"
+						minOccurs="1" maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="runRuleProcessorOnParameterResponse" type="tns:runRuleProcessorOnParameterResponse" />
+
+			<complexType name="runRuleProcessorOnParameterRequest">
+				<sequence>
+					<element name="acId" type="xsd:int" minOccurs="1"
+						maxOccurs="1" />
+					<element name="parameterName" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="runRuleProcessorOnParameter" type="tns:runRuleProcessorOnParameterRequest" />
+
+
+
+			<complexType name="getAllSetsInCoPResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:SetHeader"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllSetsInCoPResponse" type="tns:getAllSetsInCoPResponse" />
+
+			<complexType name="getAllSetsInCoPRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllSetsInCoP" type="tns:getAllSetsInCoPRequest" />
+
+
+			<complexType name="searchKPacsForCriteriaResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPacHeader"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="searchKPacsForCriteriaResponse" type="tns:searchKPacsForCriteriaResponse" />
+
+			<complexType name="searchKPacsForCriteriaRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="searchCriteria" type="e2kstypes:E2KSAttribute"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="searchKPacsForCriteria" type="tns:searchKPacsForCriteriaRequest" />
+
+
+			<complexType name="countKPacsForCriteriaResponse">
+				<sequence>
+					<element name="result" type="xsd:int" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="countKPacsForCriteriaResponse" type="tns:countKPacsForCriteriaResponse" />
+
+			<complexType name="countKPacsForCriteriaRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="searchCriteria" type="e2kstypes:E2KSAttribute"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="countKPacsForCriteria" type="tns:countKPacsForCriteriaRequest" />
+
+
+
+			<complexType name="getAllRelatedKPacsInCoPResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPacHeader"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllRelatedKPacsInCoPResponse" type="tns:getAllRelatedKPacsInCoPResponse" />
+
+			<complexType name="getAllRelatedKPacsInCoPRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getAllRelatedKPacsInCoP" type="tns:getAllRelatedKPacsInCoPRequest" />
+
+
+
+
+			<complexType name="getHeadersOfVersionChangedKPacsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPacHeader"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getHeadersOfVersionChangedKPacsResponse" type="tns:getHeadersOfVersionChangedKPacsResponse" />
+
+			<complexType name="getHeadersOfVersionChangedKPacsRequest">
+				<sequence>
+					<element name="kpacIdentifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getHeadersOfVersionChangedKPacs" type="tns:getHeadersOfVersionChangedKPacsRequest" />
+
+
+
+			<complexType name="getHeadersOfChangedKPacsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPacHeader"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getHeadersOfChangedKPacsResponse" type="tns:getHeadersOfChangedKPacsResponse" />
+
+			<complexType name="getHeadersOfChangedKPacsRequest">
+				<sequence>
+					<element name="kpacIdentifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="fromDate" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getHeadersOfChangedKPacs" type="tns:getHeadersOfChangedKPacsRequest" />
+
+
+			<complexType name="getListedKPacsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPac" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getListedKPacsResponse" type="tns:getListedKPacsResponse" />
+
+			<complexType name="getListedKPacsRequest">
+				<sequence>
+					<element name="kpacIdentifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getListedKPacs" type="tns:getListedKPacsRequest" />
+
+
+			<complexType name="getParameterDependencyGraphResponse">
+				<!-- The graph may be multiple unconnected sub graphs. All startup nodes 
+					are returned -->
+				<!-- this means all nodes with nodesUsingThis = null will be returned -->
+				<!-- A downward traversal from these nodes will cover all nodes -->
+
+				<sequence>
+					<element name="result" type="e2kstypes:ParameterUseNode"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="getParameterDependencyGraphResponse" type="tns:getParameterDependencyGraphResponse" />
+
+			<complexType name="getParameterDependencyGraphRequest">
+				<sequence>
+					<element name="kpacIdentifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getParameterDependencyGraph" type="tns:getParameterDependencyGraphRequest" />
+
+
+			<complexType name="searchSetsForCriteriaResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:SetHeader"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" />
+
+				</sequence>
+			</complexType>
+			<element name="searchSetsForCriteriaResponse" type="tns:searchSetsForCriteriaResponse" />
+
+			<complexType name="searchSetsForCriteriaRequest">
+				<sequence>
+					<element name="searchCriteria" type="e2kstypes:E2KSAttribute"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="searchSetsForCriteria" type="tns:searchSetsForCriteriaRequest" />
+
+			<complexType name="retrieveKPacEEAttributesAndValuesOfAllKPacsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:E2KSAttribute"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="retrieveKPacEEAttributesAndValuesOfAllKPacsResponse"
+				type="tns:retrieveKPacEEAttributesAndValuesOfAllKPacsResponse" />
+
+			<complexType name="retrieveKPacEEAttributesAndValuesOfAllKPacsRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="retrieveKPacEEAttributesAndValuesOfAllKPacs"
+				type="tns:retrieveKPacEEAttributesAndValuesOfAllKPacsRequest" />
+
+
+			<complexType name="createKPacResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:KPac" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="createKPacResponse" type="tns:createKPacResponse" />
+
+			<complexType name="createKPacRequest">
+				<sequence>
+					<element name="kpacToCreate" type="e2kstypes:KPac" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="createKPac" type="tns:createKPacRequest" />
+
+			<complexType name="retrieveEEAttributeValuesOfAllSetsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:E2KSAttributeList"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="retrieveEEAttributeValuesOfAllSetsResponse"
+				type="tns:retrieveEEAttributeValuesOfAllSetsResponse" />
+
+			<complexType name="retrieveEEAttributeValuesOfAllSetsRequest">
+				<sequence>
+					<element name="cops" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="retrieveEEAttributeValuesOfAllSets" type="tns:retrieveEEAttributeValuesOfAllSetsRequest" />
+
+
+			<complexType name="retrieveAttachmentsResp">
+				<sequence>
+					<element name="result" type="base64Binary"
+						xmime:expectedContentTypes="application/octet-stream" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="identifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+
+			<element name="retrieveAttachmentsResponse" type="tns:retrieveAttachmentsResp" />
+
+
+			<complexType name="retrieveAttachmentsRequest">
+				<sequence>
+					<element name="attachmentIdentifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="retrieveAttachments" type="tns:retrieveAttachmentsRequest" />
+
+			<complexType name="retrieveAttachmentByChunksResp">
+				<sequence>
+					<element name="result" type="xsd:base64Binary"
+						xmime:expectedContentTypes="application/octet-stream" minOccurs="1"
+						maxOccurs="1" />
+					<element name="returnedChunckSize" type="xsd:int"
+						minOccurs="1" maxOccurs="1" />
+					<element name="estimatedTotalSize" type="xsd:int"
+						minOccurs="1" maxOccurs="1" />
+					<element name="remainingDataSize" type="xsd:int" minOccurs="1"
+						maxOccurs="1" />
+					<element name="tokenOut" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+
+			<element name="retrieveAttachmentByChunksResponse" type="tns:retrieveAttachmentByChunksResp" />
+
+			<complexType name="retrieveAttachmentByChunksReq">
+				<sequence>
+					<element name="attachmentIdentifier" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="1" />
+					<element name="fromDataPosition" type="xsd:int" minOccurs="1"
+						maxOccurs="1" />
+					<element name="preferredChunckSize" type="xsd:int"
+						minOccurs="1" maxOccurs="1" />
+					<element name="tokenIn" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+
+				</sequence>
+			</complexType>
+			<element name="retrieveAttachmentByChunks" type="tns:retrieveAttachmentByChunksReq" />
+
+			<complexType name="uploadAttachmentResp">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+
+			<element name="uploadAttachmentResponse" type="tns:uploadAttachmentResp" />
+
+
+			<complexType name="uploadAttachmentRequest">
+				<sequence>
+					<element name="attachmentInfo" type="e2kstypes:AurosAttachment" />
+					<element name="uploadData" type="base64Binary"
+						xmime:expectedContentTypes="application/octet-stream" />
+				</sequence>
+			</complexType>
+			<element name="uploadAttachment" type="tns:uploadAttachmentRequest" />
+
+
+			<complexType name="deleteAttachmentResp">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="deleteAttachmentResponse" type="tns:deleteAttachmentResp" />
+
+			<complexType name="deleteAttachmentRequest">
+				<sequence>
+					<element name="attachmentIdentifier" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="deleteAttachment" type="tns:deleteAttachmentRequest" />
+
+
+			<complexType name="retrieveKPacEEAttributesForCoPsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:E2KSAttributeList" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="retrieveKPacEEAttributesForCoPsResponse" type="tns:retrieveKPacEEAttributesForCoPsResponse" />
+
+			<complexType name="retrieveKPacEEAttributesForCoPsRequest">
+				<sequence>
+					<element name="cops" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="retrieveKPacEEAttributesForCoPs" type="tns:retrieveKPacEEAttributesForCoPsRequest" />
+
+
+			<complexType name="retrieveKPacEEAttributeListsForCoPsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:E2KSAttributeList"
+						minOccurs="0" maxOccurs="unbounded" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="retrieveKPacEEAttributeListsForCoPsResponse"
+				type="tns:retrieveKPacEEAttributeListsForCoPsResponse" />
+
+			<complexType name="retrieveKPacEEAttributeListsForCoPsRequest">
+				<sequence>
+					<element name="cops" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="retrieveKPacEEAttributeListsForCoPs"
+				type="tns:retrieveKPacEEAttributeListsForCoPsRequest" />
+
+
+			<complexType name="resolveAccessResponse">
+				<sequence>
+					<element name="currentResolutions" type="int" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="resolveAccessResponse" type="tns:resolveAccessResponse" />
+
+			<complexType name="resolveAccessRequest">
+				<sequence>
+					<element name="identifiers" type="e2kstypes:AurosIdentifier"
+						minOccurs="1" maxOccurs="unbounded" />
+					<element name="action" type="string" minOccurs="1"
+						maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="resolveAccess" type="tns:resolveAccessRequest" />
+
+			<complexType name="getSubProjectsOfCoPResponse">
+				<sequence>
+					<element name="result" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="getSubProjectsOfCoPResponse" type="tns:getSubProjectsOfCoPResponse" />
+
+			<complexType name="getSubProjectsOfCoPRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="options" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+
+				</sequence>
+			</complexType>
+			<element name="getSubProjectsOfCoP" type="tns:getSubProjectsOfCoPRequest" />
+
+
+			<complexType name="addNewUserResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="addNewUserResponse" type="tns:addNewUserResponse" />
+
+			<complexType name="addNewUserRequest">
+				<sequence>
+					<element name="user" type="e2kstypes:User" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="addNewUser" type="tns:addNewUserRequest" />
+
+			<complexType name="authenticateUserResponse">
+				<sequence>
+					<element name="result" type="xsd:boolean" minOccurs="1"
+						maxOccurs="1" />
+					<element name="messages" type="e2kstypes:AurosMessages"
+						minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="authenticateUserResponse" type="tns:authenticateUserResponse" />
+
+			<complexType name="authenticateUserRequest">
+				<sequence>
+					<element name="name" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="password" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="authenticateUser" type="tns:authenticateUserRequest" />
+
+
+
+			<complexType name="deleteUserResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="deleteUserResponse" type="tns:deleteUserResponse" />
+
+			<complexType name="deleteUserRequest">
+				<sequence>
+					<element name="userID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="deleteUser" type="tns:deleteUserRequest" />
+			
+			
+			<complexType name="getCurrentTimeResponse">
+                <sequence>
+                    <element name="result" type="xsd:long" minOccurs="1"
+                        maxOccurs="1" />
+                    <element name="messages" type="e2kstypes:AurosMessages"
+                        minOccurs="1" maxOccurs="1" />
+                </sequence>
+            </complexType>
+            <element name="getCurrentTimeResponse" type="tns:getCurrentTimeResponse" />
+
+            <complexType name="getCurrentTimeRequest">
+                <sequence>
+                    <element name="inputOptions" type="e2kstypes:InputOptions"
+                        minOccurs="0" maxOccurs="unbounded" />
+                </sequence>
+            </complexType>
+            <element name="getCurrentTime" type="tns:getCurrentTimeRequest" />
+
+			<complexType name="updateKpacVTCellResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="updateKpacVTCellResponse" type="tns:updateKpacVTCellResponse" />
+
+			<complexType name="updateKpacVTCellRequest">
+				<sequence>
+					<element name="valueTable" type="e2kstypes:ValueTable"
+						minOccurs="1" maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="updateKpacVTCell" type="tns:updateKpacVTCellRequest" />
+
+
+			<complexType name="addCoPAccessExceptionResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="addCoPAccessExceptionResponse" type="tns:addCoPAccessExceptionResponse" />
+
+			<complexType name="addCoPAccessExceptionRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="policyType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="flag" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="value" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="addCoPAccessException" type="tns:addCoPAccessExceptionRequest" />
+
+
+			<complexType name="deleteCoPAccessExceptionResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="deleteCoPAccessExceptionResponse" type="tns:deleteCoPAccessExceptionResponse" />
+
+			<complexType name="deleteCoPAccessExceptionRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="policyType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="flag" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="value" type="xsd:string" minOccurs="0"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="deleteCoPAccessException" type="tns:deleteCoPAccessExceptionRequest" />
+
+
+			<complexType name="addIssueACLExceptionResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="addIssueACLExceptionResponse" type="tns:addIssueACLExceptionResponse" />
+
+			<complexType name="addIssueACLExceptionRequest">
+				<sequence>
+					<element name="issueType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="projectName" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="aclType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="policyType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="flag" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="value" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="addIssueACLException" type="tns:addIssueACLExceptionRequest" />
+
+
+			<complexType name="deleteIssueACLExceptionResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="deleteIssueACLExceptionResponse" type="tns:deleteIssueACLExceptionResponse" />
+
+			<complexType name="deleteIssueACLExceptionRequest">
+				<sequence>
+					<element name="issueType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="projectName" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="aclType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="policyType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="flag" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="value" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="deleteIssueACLException" type="tns:deleteIssueACLExceptionRequest" />
+
+
+			<complexType name="addAssessmentACLExceptionResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="addAssessmentACLExceptionResponse" type="tns:addAssessmentACLExceptionResponse" />
+
+			<complexType name="addAssessmentACLExceptionRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="projectName" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="policyType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="flag" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="value" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="addAssessmentACLException" type="tns:addAssessmentACLExceptionRequest" />
+
+
+			<complexType name="deleteAssessmentACLExceptionResponse">
+				<sequence>
+					<element name="aurosMessages" type="e2kstypes:AurosMessages" />
+				</sequence>
+			</complexType>
+			<element name="deleteAssessmentACLExceptionResponse" type="tns:deleteAssessmentACLExceptionResponse" />
+
+			<complexType name="deleteAssessmentACLExceptionRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="projectName" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="policyType" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="flag" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="value" type="xsd:string" minOccurs="1"
+						maxOccurs="1" />
+					<element name="inputOptions" type="e2kstypes:InputOptions"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="deleteAssessmentACLException" type="tns:deleteAssessmentACLExceptionRequest" />
+
+			<complexType name="getChapterEEsResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:EEChapterGroup" minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="getChapterEEsResponse" type="tns:getChapterEEsResponse" />
+
+			<complexType name="getChapterEEsRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1" maxOccurs="1" />
+					<element name="options" type="e2kstypes:InputOptions" minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="getChapterEEs" type="tns:getChapterEEsRequest" />
+
+			<complexType name="getAllAlertTypesResponse">
+				<sequence>
+					<element name="result" type="e2kstypes:AlertType" minOccurs="0" maxOccurs="unbounded" />
+					<element name="messages" type="e2kstypes:AurosMessages" minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</complexType>
+			<element name="getAllAlertTypesResponse" type="tns:getAllAlertTypesResponse" />
+
+			<complexType name="getAllAlertTypesRequest">
+				<sequence>
+					<element name="copID" type="xsd:string" minOccurs="1" maxOccurs="1" />
+					<element name="options" type="e2kstypes:InputOptions" minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<element name="getAllAlertTypes" type="tns:getAllAlertTypesRequest" />
+
+			<element name="E2KSFault" type="tns:E2KSFault" />
+			<complexType name="E2KSFault">
+				<sequence>
+					<element name="faultInfo" type="xsd:string" />
+					<element name="message" type="xsd:string" />
+				</sequence>
+			</complexType>
+		</xsd:schema>
+	</types>
+
+
+	<message name="E2KSFault">
+		<part name="E2KSFault" element="tns:E2KSFault" />
+	</message>
+
+	<message name="getE2KSInstallationInfoResponse">
+		<part name="parameters" element="tns:getE2KSInstallationInfoResponse" />
+	</message>
+	<message name="getE2KSInstallationInfoRequest">
+
+	</message>
+
+	<message name="retrieveUserOptionsFileRequest">
+		<part name="inputOptions" element="tns:inputOptions" />
+	</message>
+
+	<message name="retrieveUserOptionsFileResponse">
+		<part name="data" element="tns:data" />
+	</message>
+
+	<message name="getAllCoPsResponse">
+		<part name="parameters" element="tns:getAllCoPsResponse" />
+	</message>
+	<message name="getAllCoPsRequest">
+		<part name="parameters" element="tns:getAllCoPs" />
+	</message>
+
+	<message name="getKPacDescriptionsForCoPResponse">
+		<part name="parameters" element="tns:getKPacDescriptionsForCoPResponse" />
+	</message>
+	<message name="getKPacDescriptionsForCoPRequest">
+		<part name="parameters" element="tns:getKPacDescriptionsForCoP" />
+	</message>
+
+	<message name="getCoPResponse">
+		<part name="parameters" element="tns:getCoPResponse" />
+	</message>
+	<message name="getCoPRequest">
+		<part name="parameters" element="tns:getCoP" />
+	</message>
+
+	<message name="getMilestonesOfCoPResponse">
+		<part name="parameters" element="tns:getMilestonesOfCoPResponse" />
+	</message>
+	<message name="getMilestonesOfCoPRequest">
+		<part name="parameters" element="tns:getMilestonesOfCoP" />
+	</message>
+
+	<message name="getKPacResponse">
+		<part name="parameters" element="tns:getKPacResponse" />
+	</message>
+	<message name="getKPacRequest">
+		<part name="parameters" element="tns:getKPac" />
+	</message>
+
+	<message name="getSetResponse">
+		<part name="parameters" element="tns:getSetResponse" />
+	</message>
+	<message name="getSetRequest">
+		<part name="parameters" element="tns:getSet" />
+	</message>
+
+	<message name="getAllAtomicUnitsResponse">
+		<part name="parameters" element="tns:getAllAtomicUnitsResponse" />
+	</message>
+	<message name="getAllAtomicUnitsRequest">
+		<part name="parameters" element="tns:getAllAtomicUnits" />
+	</message>
+
+	<message name="getDimensionsForUnitsResponse">
+		<part name="parameters" element="tns:getDimensionsForUnitsResponse" />
+	</message>
+	<message name="getDimensionsForUnitsRequest">
+		<part name="parameters" element="tns:getDimensionsForUnits" />
+	</message>
+
+	<message name="validateDimensionsForUnitsResponse">
+		<part name="parameters" element="tns:validateDimensionsForUnitsResponse" />
+	</message>
+	<message name="validateDimensionsForUnitsRequest">
+		<part name="parameters" element="tns:validateDimensionsForUnits" />
+	</message>
+
+	<message name="validateDimensionsResponse">
+		<part name="parameters" element="tns:validateDimensionsResponse" />
+	</message>
+	<message name="validateDimensionsRequest">
+		<part name="parameters" element="tns:validateDimensions" />
+	</message>
+
+	<message name="evaluateExpressionResponse">
+		<part name="parameters" element="tns:evaluateExpressionResponse" />
+	</message>
+	<message name="evaluateExpressionRequest">
+		<part name="parameters" element="tns:evaluateExpression" />
+	</message>
+
+	<message name="getAllUnitsResponse">
+		<part name="parameters" element="tns:getAllUnitsResponse" />
+	</message>
+	<message name="getAllUnitsRequest">
+		<part name="parameters" element="tns:getAllUnits" />
+	</message>
+
+	<message name="evaluateExpressionsWithInstancesResponse">
+		<part name="parameters" element="tns:evaluateExpressionsWithInstancesResponse" />
+	</message>
+	<message name="evaluateExpressionsWithInstancesRequest">
+		<part name="parameters" element="tns:evaluateExpressionsWithInstances" />
+	</message>
+
+	<message name="runRuleProcessorResponse">
+		<part name="parameters" element="tns:runRuleProcessorResponse" />
+	</message>
+	<message name="runRuleProcessorRequest">
+		<part name="parameters" element="tns:runRuleProcessor" />
+	</message>
+
+
+	<message name="runRuleProcessorOnKPacListResponse">
+		<part name="parameters" element="tns:runRuleProcessorOnKPacListResponse" />
+	</message>
+	<message name="runRuleProcessorOnKPacListRequest">
+		<part name="parameters" element="tns:runRuleProcessorOnKPacList" />
+	</message>
+
+	<message name="runRuleProcessorOnParameterResponse">
+		<part name="parameters" element="tns:runRuleProcessorOnParameterResponse" />
+	</message>
+	<message name="runRuleProcessorOnParameterRequest">
+		<part name="parameters" element="tns:runRuleProcessorOnParameter" />
+	</message>
+
+
+	<message name="getAllSetsInCoPResponse">
+		<part name="parameters" element="tns:getAllSetsInCoPResponse" />
+	</message>
+	<message name="getAllSetsInCoPRequest">
+		<part name="parameters" element="tns:getAllSetsInCoP" />
+	</message>
+
+	<message name="searchKPacsForCriteriaResponse">
+		<part name="parameters" element="tns:searchKPacsForCriteriaResponse" />
+	</message>
+	<message name="searchKPacsForCriteriaRequest">
+		<part name="parameters" element="tns:searchKPacsForCriteria" />
+	</message>
+	<message name="countKPacsForCriteriaResponse">
+		<part name="parameters" element="tns:countKPacsForCriteriaResponse" />
+	</message>
+	<message name="countKPacsForCriteriaRequest">
+		<part name="parameters" element="tns:countKPacsForCriteria" />
+	</message>
+	<message name="getAllRelatedKPacsInCoPResponse">
+		<part name="parameters" element="tns:getAllRelatedKPacsInCoPResponse" />
+	</message>
+	<message name="getAllRelatedKPacsInCoPRequest">
+		<part name="parameters" element="tns:getAllRelatedKPacsInCoP" />
+	</message>
+
+	<message name="getHeadersOfVersionChangedKPacsResponse">
+		<part name="parameters" element="tns:getHeadersOfVersionChangedKPacsResponse" />
+	</message>
+	<message name="getHeadersOfVersionChangedKPacsRequest">
+		<part name="parameters" element="tns:getHeadersOfVersionChangedKPacs" />
+	</message>
+
+
+	<message name="getHeadersOfChangedKPacsResponse">
+		<part name="parameters" element="tns:getHeadersOfChangedKPacsResponse" />
+	</message>
+	<message name="getHeadersOfChangedKPacsRequest">
+		<part name="parameters" element="tns:getHeadersOfChangedKPacs" />
+	</message>
+
+	<message name="getListedKPacsResponse">
+		<part name="parameters" element="tns:getListedKPacsResponse" />
+	</message>
+	<message name="getListedKPacsRequest">
+		<part name="parameters" element="tns:getListedKPacs" />
+	</message>
+
+	<message name="getParameterDependencyGraphResponse">
+		<part name="parameters" element="tns:getParameterDependencyGraphResponse" />
+	</message>
+	<message name="getParameterDependencyGraphRequest">
+		<part name="parameters" element="tns:getParameterDependencyGraph" />
+	</message>
+
+	<message name="searchSetsForCriteriaResponse">
+		<part name="parameters" element="tns:searchSetsForCriteriaResponse" />
+	</message>
+	<message name="searchSetsForCriteriaRequest">
+		<part name="parameters" element="tns:searchSetsForCriteria" />
+	</message>
+
+	<message name="retrieveKPacEEAttributesAndValuesOfAllKPacsResponse">
+		<part name="parameters"
+			element="tns:retrieveKPacEEAttributesAndValuesOfAllKPacsResponse" />
+	</message>
+	<message name="retrieveKPacEEAttributesAndValuesOfAllKPacsRequest">
+		<part name="parameters" element="tns:retrieveKPacEEAttributesAndValuesOfAllKPacs" />
+	</message>
+
+
+	<message name="createKPacResponse">
+		<part name="parameters" element="tns:createKPacResponse" />
+	</message>
+	<message name="createKPacRequest">
+		<part name="parameters" element="tns:createKPac" />
+	</message>
+
+	<message name="retrieveEEAttributeValuesOfAllSetsResponse">
+		<part name="parameters" element="tns:retrieveEEAttributeValuesOfAllSetsResponse" />
+	</message>
+	<message name="retrieveEEAttributeValuesOfAllSetsRequest">
+		<part name="parameters" element="tns:retrieveEEAttributeValuesOfAllSets" />
+	</message>
+
+	<message name="retrieveAttachmentsResponse">
+		<part name="data" element="tns:retrieveAttachmentsResponse" />
+	</message>
+	<message name="retrieveAttachmentsRequest">
+		<part name="parameters" element="tns:retrieveAttachments" />
+	</message>
+
+	<message name="retrieveAttachmentResponse">
+		<part name="aurosAttachmentData" element="tns:data" />
+	</message>
+	<message name="retrieveAttachmentRequest">
+		<part name="parameters" element="tns:aurosIdentifier" />
+	</message>
+
+	<message name="retrieveAttachmentByChunksResponse">
+		<part name="aurosAttachmentData" element="tns:retrieveAttachmentByChunksResponse" />
+	</message>
+	<message name="retrieveAttachmentByChunksRequest">
+		<part name="parameters" element="tns:retrieveAttachmentByChunks" />
+	</message>
+
+	<message name="uploadAttachmentResponse">
+		<part name="parameters" element="tns:uploadAttachmentResponse" />
+	</message>
+	<message name="uploadAttachmentRequest">
+		<part name="parameters" element="tns:uploadAttachment" />
+	</message>
+
+	<message name="deleteAttachmentResponse">
+		<part name="parameters" element="tns:deleteAttachmentResponse" />
+	</message>
+	<message name="deleteAttachmentRequest">
+		<part name="parameters" element="tns:deleteAttachment" />
+	</message>
+
+	<message name="retrieveKPacEEAttributesForCoPsResponse">
+		<part name="parameters" element="tns:retrieveKPacEEAttributesForCoPsResponse" />
+	</message>
+	<message name="retrieveKPacEEAttributesForCoPsRequest">
+		<part name="parameters" element="tns:retrieveKPacEEAttributesForCoPs" />
+	</message>
+
+	<message name="retrieveKPacEEAttributeListsForCoPsResponse">
+		<part name="parameters" element="tns:retrieveKPacEEAttributeListsForCoPsResponse" />
+	</message>
+	<message name="retrieveKPacEEAttributeListsForCoPsRequest">
+		<part name="parameters" element="tns:retrieveKPacEEAttributeListsForCoPs" />
+	</message>
+
+	<message name="resolveAccessResponse">
+		<part name="parameters" element="tns:resolveAccessResponse" />
+	</message>
+	<message name="resolveAccessRequest">
+		<part name="parameters" element="tns:resolveAccess" />
+	</message>
+
+	<message name="getSubProjectsOfCoPResponse">
+		<part name="parameters" element="tns:getSubProjectsOfCoPResponse" />
+	</message>
+	<message name="getSubProjectsOfCoPRequest">
+		<part name="parameters" element="tns:getSubProjectsOfCoP" />
+	</message>
+
+	<message name="addNewUserResponse">
+		<part name="parameters" element="tns:addNewUserResponse" />
+	</message>
+	<message name="addNewUserRequest">
+		<part name="parameters" element="tns:addNewUser" />
+	</message>
+
+	<message name="authenticateUserResponse">
+		<part name="parameters" element="tns:authenticateUserResponse" />
+	</message>
+	<message name="authenticateUserRequest">
+		<part name="parameters" element="tns:authenticateUser" />
+	</message>
+	
+	<message name="getCurrentTimeResponse">
+        <part name="parameters" element="tns:getCurrentTimeResponse" />
+    </message>
+    <message name="getCurrentTimeRequest">
+        <part name="parameters" element="tns:getCurrentTime" />
+    </message>
+	
+	<message name="updateKpacVTCellResponse">
+		<part name="parameters" element="tns:updateKpacVTCellResponse" />
+	</message>
+	<message name="updateKpacVTCellRequest">
+		<part name="parameters" element="tns:updateKpacVTCell" />
+	</message>
+
+	<message name="deleteUserResponse">
+		<part name="parameters" element="tns:deleteUserResponse" />
+	</message>
+	<message name="deleteUserRequest">
+		<part name="parameters" element="tns:deleteUser" />
+	</message>
+
+	<message name="addCoPAccessExceptionResponse">
+		<part name="parameters" element="tns:addCoPAccessExceptionResponse" />
+	</message>
+	<message name="addCoPAccessExceptionRequest">
+		<part name="parameters" element="tns:addCoPAccessException" />
+	</message>
+
+	<message name="deleteCoPAccessExceptionResponse">
+		<part name="parameters" element="tns:deleteCoPAccessExceptionResponse" />
+	</message>
+	<message name="deleteCoPAccessExceptionRequest">
+		<part name="parameters" element="tns:deleteCoPAccessException" />
+	</message>
+
+	<message name="addIssueACLExceptionResponse">
+		<part name="parameters" element="tns:addIssueACLExceptionResponse" />
+	</message>
+	<message name="addIssueACLExceptionRequest">
+		<part name="parameters" element="tns:addIssueACLException" />
+	</message>
+
+	<message name="deleteIssueACLExceptionResponse">
+		<part name="parameters" element="tns:deleteIssueACLExceptionResponse" />
+	</message>
+	<message name="deleteIssueACLExceptionRequest">
+		<part name="parameters" element="tns:deleteIssueACLException" />
+	</message>
+
+	<message name="addAssessmentACLExceptionResponse">
+		<part name="parameters" element="tns:addAssessmentACLExceptionResponse" />
+	</message>
+	<message name="addAssessmentACLExceptionRequest">
+		<part name="parameters" element="tns:addAssessmentACLException" />
+	</message>
+
+	<message name="deleteAssessmentACLExceptionResponse">
+		<part name="parameters" element="tns:deleteAssessmentACLExceptionResponse" />
+	</message>
+	<message name="deleteAssessmentACLExceptionRequest">
+		<part name="parameters" element="tns:deleteAssessmentACLException" />
+	</message>
+
+	<message name="getChapterEEsResponse">
+		<part name="parameters" element="tns:getChapterEEsResponse" />
+	</message>
+	<message name="getChapterEEsRequest">
+		<part name="parameters" element="tns:getChapterEEs" />
+	</message>
+
+	<message name="getAllAlertTypesResponse">
+		<part name="parameters" element="tns:getAllAlertTypesResponse" />
+	</message>
+	<message name="getAllAlertTypesRequest">
+		<part name="parameters" element="tns:getAllAlertTypes" />
+	</message>
+
+	<portType name="E2KSBasePortType">
+
+		<operation name="getE2KSInstallationInfo">
+			<documentation>
+				Retrieves Auros installation information from the server. See sample below.
+\snippet TestAbstractE2KSAppManager.java getE2KSInstallationInfoCases
+			</documentation>
+			<input message="tns:getE2KSInstallationInfoRequest" name="getE2KSInstallationInfoRequest" />
+			<output message="tns:getE2KSInstallationInfoResponse" name="getE2KSInstallationInfoResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveUserOptionsFile">
+			<documentation>
+				Retrieves a file identified in the input.
+				These files can be options, configurations etc. specific to applications
+				and connectors calling Auros webservices and needing a centralized
+				access to files.
+				The "CONNECTOR_USEROPTIONS_LOCATION" property must point to the folder
+				location on the server where
+\snippet retrieveUserOptionsFileCases
+			</documentation>
+			<input message="tns:retrieveUserOptionsFileRequest" />
+			<output message="tns:retrieveUserOptionsFileResponse" />
+			<fault name="retrieveUserOptionsFileFault" message="tns:E2KSFault" />
+		</operation>
+		<operation name="getAllCoPs">
+			<documentation>
+				Retrieves all CoPs existing in the Auros installation. Only name,
+				description, id are returned as CoPHeader objects. CoP represents
+				Community of Practice. See sample below.
+\snippet TestAbstractCoPsManager.java getAllCoPsCases
+			</documentation>
+
+			<input message="tns:getAllCoPsRequest" name="getAllCoPsRequest" />
+			<output message="tns:getAllCoPsResponse" name="getAllCoPsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getKPacDescriptionsForCoP">
+			<documentation>
+				Retrieves an outline of KPac information as KPacHeader for all KPacs in the
+				CoP supplied. See sample below.
+\snippet TestAbstractCoPsManager.java getKPacDescriptionsForCoPCases
+			</documentation>
+			<input message="tns:getKPacDescriptionsForCoPRequest" name="getKPacDescriptionsForCoPRequest" />
+			<output message="tns:getKPacDescriptionsForCoPResponse" name="getKPacDescriptionsForCoPResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getCoP">
+			<documentation>
+				Retrieves detailed information of a Community of Practice as CoP object. See
+				sample below.
+				List of Milestones of a CoP can either be Global, Local or Off.
+				Currently once the Milestone is changed to Global it can not be
+				reverted back to Local.
+				To set Milestone Palette of a CoP go to below Admin Screen
+				CoP Admin -> AC Controls -> Assessment Basic Configurations -> Edit AC
+				Milestone Palette
+				To create Global Milestone Palette go to below Admin Screen
+				Auros Admin -> Auros Global Palettes -> Milestone Global Palette
+\snippet TestAbstractCoPsManager.java getCoPCases
+			</documentation>
+			<input message="tns:getCoPRequest" name="getCoPRequest" />
+			<output message="tns:getCoPResponse" name="getCoPResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getMilestonesOfCoP">
+			<documentation>
+				Retrieves all possible Milestone Version and Milestones of a CoP. See sample
+				below.
+				List of Milestones of a CoP can either be Global, Local or Off.
+				Currently once the Milestone is changed to Global it can not be
+				reverted back to Local.
+				To set Milestone Palette of a CoP go to below Admin Screen
+				CoP Admin -> AC Controls -> Assessment Basic Configurations -> Edit AC
+				Milestone Palette
+				To create Global Milestone Palette go to below Admin Screen
+				Auros Admin -> Auros Global Palettes -> Milestone Global Palette
+\snippet TestAbstractCoPsManager.java getMilestonesOfCoPCases
+			</documentation>
+			<input message="tns:getMilestonesOfCoPRequest" name="getMilestonesOfCoPRequest" />
+			<output message="tns:getMilestonesOfCoPResponse" name="getMilestonesOfCoPResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getKPac">
+			<documentation>
+				Retrieves a single KPac, when CoPID, KPacID and version are passed. KPacs are
+				fundamental to Auros and represent knowledge at the lowest level of
+				use.
+				options accepted: {"queryKPacAttributes","true"} will return K-PAC extended
+				                  {"queryMethodDetails","true"} will return K-PAC Method details in case of Mehtod type K-PAC
+                                   which includes steps and step connections details
+				elements.
+				See sample below.
+\snippet TestAbstractCoPsManager.java getKPacCases
+			</documentation>
+			<input message="tns:getKPacRequest" name="getKPacRequest" />
+			<output message="tns:getKPacResponse" name="getKPacResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getSet">
+			<documentation>
+				Retrieves an Auros Set. Sets are a collection of K-PACs which may be based on
+				a static list or a search criteria persisted with the set for
+				dynamically choosing K-PACs.
+				See sample below.
+\snippet TestAbstractSetManager.java getSetCases
+			</documentation>
+			<input message="tns:getSetRequest" name="getSetRequest" />
+			<output message="tns:getSetResponse" name="getSetResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="getAllAtomicUnits">
+			<documentation>
+				Retrieves all fundamental units defined in Auros. Fundamental units are non
+				compounded and measure quantities of exactly one Dimension.
+				See sample below.
+\snippet TestAbstractE2KSAppManager.java getAllAtomicUnitsCases
+			</documentation>
+
+			<input message="tns:getAllAtomicUnitsRequest" name="getAllAtomicUnitsRequest" />
+			<output message="tns:getAllAtomicUnitsResponse" name="getAllAtomicUnitsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getAllUnits">
+			<documentation>
+				Retrieves all units defined in Auros. Units can be compounded and measure
+				quantities with one or more Dimension.
+				See sample below.
+\snippet TestAbstractE2KSAppManager.java getAllUnitsCases
+			</documentation>
+			<input message="tns:getAllUnitsRequest" name="getAllUnitsRequest" />
+			<output message="tns:getAllUnitsResponse" name="getAllUnitsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getDimensionsForUnits">
+			<documentation>
+				Returns a list of Dimensions for the suppplied list of units. If a
+				compounded unit is not defined, the Dimension is computed from the
+				base units Dimensions.
+				The compounded unit must resolve to base units defined in Auros.
+				See sample below.
+\snippet TestAbstractRuleProcessingManager.java getDimensionsForUnitsCases
+			</documentation>
+			<input message="tns:getDimensionsForUnitsRequest" name="getDimensionsForUnitsRequest" />
+			<output message="tns:getDimensionsForUnitsResponse" name="getDimensionsForUnitsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+
+		<operation name="validateDimensionsForUnits">
+			<documentation>
+				When a free expression not yet authored in Auros, and a list of
+				parameters names in the expression with corresponding units are
+				passed, the validity of the units in the expression is returned.
+\snippet TestAbstractRuleProcessingManager.java validateDimensionsForUnitsCases
+			</documentation>
+			<input message="tns:validateDimensionsForUnitsRequest" name="validateDimensionsForUnitsRequest" />
+			<output message="tns:validateDimensionsForUnitsResponse" name="validateDimensionsForUnitsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="validateDimensions">
+			<documentation>
+				When a free expression not yet authored in Auros, and a list of
+				parameters names in the expression with corresponding Compound
+				Dimensions are passed, the validity of the dimensions in the
+				expression is returned.
+\snippet TestAbstractRuleProcessingManager.java validateDimensionsCases
+			</documentation>
+			<input message="tns:validateDimensionsRequest" name="validateDimensionsRequest" />
+			<output message="tns:validateDimensionsResponse" name="validateDimensionsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="evaluateExpression">
+			<documentation>
+				When a free expression not yet authored in Auros, and a list of
+				parameters names in the expression with corresponding units are
+				passed, the validity of the dimensions in the expression is
+				returned.
+				The first list of units is the indended units for the expression and
+				the second list of units is for the values specified. All lists
+				match in size.
+\snippet TestAbstractRuleProcessingManager.java evaluateExpressionCases
+			</documentation>
+			<input message="tns:evaluateExpressionRequest" name="evaluateExpressionRequest" />
+			<output message="tns:evaluateExpressionResponse" name="evaluateExpressionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+
+		<operation name="evaluateExpressionsWithInstances">
+			<documentation>
+				When a free expression not yet authored in Auros, and a list of
+				parameters names in the expression with corresponding units,
+				parameter instances are passed the expresion is evaluated.
+\snippet TestAbstractRuleProcessingManager.java evaluateExpressionsWithInstancesCases
+			</documentation>
+			<input message="tns:evaluateExpressionsWithInstancesRequest"
+				name="evaluateExpressionsWithInstancesRequest" />
+			<output message="tns:evaluateExpressionsWithInstancesResponse"
+				name="evaluateExpressionsWithInstancesResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="runRuleProcessor">
+			<documentation>
+				Run Rule processor on an Auros Set.
+				KNOWN ISSUES:
+				Range type Cells are not handled correctly.
+				Target Values are not used in the case AC rule processing.
+
+				See below samples for several scenarios
+\snippet TestAbstractRuleProcessingManager.java runRuleProcessorCases
+
+			</documentation>
+			<input message="tns:runRuleProcessorRequest" name="runRuleProcessorRequest" />
+			<output message="tns:runRuleProcessorResponse" name="runRuleProcessorResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+
+		<operation name="runRuleProcessorOnKPacList">
+			<documentation>
+				Run Rule processor on a list of KPacs.
+				KNOWN ISSUES:
+				Range type Cells are not handled correctly.
+				Target Values are not used in the case AC rule processing.
+
+				See below samples for several scenarios
+\snippet TestAbstractRuleProcessingManager.java runRuleProcessorOnKPacListCases
+			</documentation>
+			<input message="tns:runRuleProcessorOnKPacListRequest" name="runRuleProcessorOnKPacListRequest" />
+			<output message="tns:runRuleProcessorOnKPacListResponse" name="runRuleProcessorOnKPacListResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="runRuleProcessorOnParameter">
+			<documentation>
+				Run Rule processor on a specific parameter of AC.
+			</documentation>
+			<input message="tns:runRuleProcessorOnParameterRequest" name="runRuleProcessorOnParameterRequest" />
+			<output message="tns:runRuleProcessorOnParameterResponse" name="runRuleProcessorOnParameterResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getAllSetsInCoP">
+			<documentation>
+				Retrieves all Auros Sets in a CoP. See below samples for several scenarios
+\snippet TestAbstractSetManager.java getAllSetsInCoPCases
+			</documentation>
+			<input message="tns:getAllSetsInCoPRequest" name="getAllSetsInCoPRequest" />
+			<output message="tns:getAllSetsInCoPResponse" name="getAllSetsInCoPResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="searchKPacsForCriteria">
+
+			<documentation>
+
+				Takes in a list of attributes as criteria and returns a list of KPacs
+				satisfying them.
+\snippet TestAbstractCoPsManager.java searchKPacsForCriteriaCases
+			</documentation>
+
+
+			<input message="tns:searchKPacsForCriteriaRequest" name="searchKPacsForCriteriaRequest" />
+			<output message="tns:searchKPacsForCriteriaResponse" name="searchKPacsForCriteriaResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+
+		<operation name="countKPacsForCriteria">
+			<documentation>
+
+				Takes in a list of attributes as criteria and returns the count of K-PACs
+				satisfying them.
+\snippet TestAbstractRuleProcessingManager.java searchKPacsForCriteriaCases
+			</documentation>
+			<input message="tns:countKPacsForCriteriaRequest" name="countKPacsForCriteriaRequest" />
+			<output message="tns:countKPacsForCriteriaResponse" name="countKPacsForCriteriaResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+
+
+		<operation name="getAllRelatedKPacsInCoP">
+			<documentation>
+				A list of kpac header data for the cop specified is returned. This
+				includes all pulled/pushed in K-PACS into the Cop and which are
+				active.
+				getKPacDescriptionsForCoP() on the other hand excludes them.
+\snippet TestAbstractCoPsManager.java getAllRelatedKPacsInCoPCases
+
+			</documentation>
+			<input message="tns:getAllRelatedKPacsInCoPRequest" name="getAllRelatedKPacsInCoPRequest" />
+			<output message="tns:getAllRelatedKPacsInCoPResponse" name="getAllRelatedKPacsInCoPResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="getHeadersOfVersionChangedKPacs">
+			<documentation>
+				Takes in a list of K-PAC identifiers that include version. K-PAC headers
+				of those that have a newer version are returned.
+\snippet TestAbstractRuleProcessingManager.java getHeadersOfVersionChangedKPacsCases
+			</documentation>
+			<input message="tns:getHeadersOfVersionChangedKPacsRequest"
+				name="getHeadersOfVersionChangedKPacsRequest" />
+			<output message="tns:getHeadersOfVersionChangedKPacsResponse"
+				name="getHeadersOfVersionChangedKPacsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+
+		<operation name="getHeadersOfChangedKPacs">
+			<documentation>
+
+				Takes in a list of K-PAC identifiers and a date. K-PAC headers of those
+				that have changed after the specified date are returned.
+				options accepted: {"queryKPacAttributes","true"} will return K-PAC extended
+				elements.
+
+\snippet TestAbstractRuleProcessingManager.java getHeadersOfChangedKPacsCases
+			</documentation>
+
+			<input message="tns:getHeadersOfChangedKPacsRequest" name="getHeadersOfChangedKPacsRequest" />
+			<output message="tns:getHeadersOfChangedKPacsResponse" name="getHeadersOfChangedKPacsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getListedKPacs">
+			<documentation>
+
+				A bulk call to get K-PACS. Takes in a list of ids and returns KPacs.
+				To get KPAC Extended Elements pass InputOptions with
+				Name:queryKPacAttributes and Value:true.
+\snippet TestAbstractRuleProcessingManager.java getListedKPacsCases
+			</documentation>
+			<input message="tns:getListedKPacsRequest" name="getListedKPacsRequest" />
+			<output message="tns:getListedKPacsResponse" name="getListedKPacsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getParameterDependencyGraph">
+			<input message="tns:getParameterDependencyGraphRequest" name="getParameterDependencyGraphRequest" />
+			<output message="tns:getParameterDependencyGraphResponse"
+				name="getParameterDependencyGraphResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="searchSetsForCriteria">
+			<documentation>
+
+				Takes in a list of attributes as criteria and returns the list of set
+				headers satisfying them.
+\snippet TestAbstractSetManager.java searchSetsForCriteriaCases
+			</documentation>
+			<input message="tns:searchSetsForCriteriaRequest" name="searchSetsForCriteriaRequest" />
+			<output message="tns:searchSetsForCriteriaResponse" name="searchSetsForCriteriaResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveKPacEEAttributesAndValuesOfAllKPacs">
+			<documentation>
+
+				Takes in a CoP ID and returns a list of attributes for the K-PAC extended
+				elements in the COP
+\snippet TestAbstractSetManager.java retrieveKPacEEAttributesAndValuesOfAllKPacsCases
+			</documentation>
+			<input message="tns:retrieveKPacEEAttributesAndValuesOfAllKPacsRequest"
+				name="retrieveKPacEEAttributesAndValuesOfAllKPacsRequest" />
+			<output message="tns:retrieveKPacEEAttributesAndValuesOfAllKPacsResponse"
+				name="retrieveKPacEEAttributesAndValuesOfAllKPacsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="createKPac">
+			<documentation>
+
+				TBD. kpacToCreate contains all data that needs to persist in Auros
+				Database. If a K-PAC is created it is retuned with a correct id. The
+				id initially passed in kpacToCreate is ignored. 
+				For Parameter and Unit only Name is required and remaining values will be ignored during KPAC Creation. 
+				For getKPac/getListedKPacs values for remaining attributes will be returned for Parameter and Unit.
+\snippet TestAbstractSetManager.java createKPacCases
+			</documentation>
+
+			<input message="tns:createKPacRequest" name="createKPacRequest" />
+			<output message="tns:createKPacResponse" name="createKPacResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="retrieveEEAttributeValuesOfAllSets">
+			<documentation>
+
+				This call pertains to actually assigned Extended Element Attributes and
+				their values for each set in a CoP. The CoP defines Extended Element
+				Attributes for all
+				Sets it contains and the possible choices for some of these Extended
+				Elements. A Set may assign values for these Extended Elements which
+				for certain types of
+				Extended Elements may be freely assigned. Also not all possible values may
+				be actually assigned in the Sets. This call handles multiple CoPs by
+				taking in a List of Cops,
+				and returning the Extended Element Attributes and values in the same
+				order. Both Attribute names and Attribute values are case and space
+				sensitive.
+				See below samples for several scenarios
+\snippet TestAbstractCopsManager.java retrieveEEAttributeValuesOfAllSetsCases
+			</documentation>
+
+			<input message="tns:retrieveEEAttributeValuesOfAllSetsRequest"
+				name="retrieveEEAttributeValuesOfAllSetsRequest" />
+			<output message="tns:retrieveEEAttributeValuesOfAllSetsResponse"
+				name="retrieveEEAttributeValuesOfAllSetsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveAttachments">
+			<documentation>
+
+				retrieveAttachments retrieves attachments for a list of AurosIdentifiers. A list of
+				DataHandler objects are returned. The DataHandlers provide
+				access to an input stream that can be read.
+\snippet TestAbstractE2KSAppManager.java retrieveAttachmentsCases
+			</documentation>
+			<input message="tns:retrieveAttachmentsRequest" name="retrieveAttachmentsRequest" />
+			<output message="tns:retrieveAttachmentsResponse" name="retrieveAttachmentsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveAttachment">
+			<documentation>
+
+				retrieveAttachment retrieves attachment for the AurosIdentifier specified. A
+				DataHandler object is returned. The DataHandler provides
+				access to an input stream that can be read.
+\snippet TestAbstractE2KSAppManager.java retrieveAttachmentCases
+			</documentation>
+			<input message="tns:retrieveAttachmentRequest" name="retrieveAttachmentRequest" />
+			<output message="tns:retrieveAttachmentResponse" name="retrieveAttachmentResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveAttachmentByChunks">
+			<documentation>
+
+				retrieveAttachmentByChunks retrieves attachments in sections and chunks of size that could be
+				specified by client. token fields are currently unused.
+\snippet TestAbstractE2KSAppManager.java retrieveAttachmentByChunksCases
+			</documentation>
+			<input message="tns:retrieveAttachmentByChunksRequest" name="retrieveAttachmentByChunksRequest" />
+			<output message="tns:retrieveAttachmentByChunksResponse" name="retrieveAttachmentByChunksResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="uploadAttachment">
+
+			<documentation>
+
+				uploadAttachment uploads attachments with associated metadata. The uploadData object
+				provides access to the input stream that can be read to for uploaded
+				data.
+				attachmentInfo contains metadata and whose member attachmentIdentifier identifies
+				the auros object such K-PAC, issue etc. to which the attachment is
+				associated.
+				FileTypeID passed by user will be ignored.
+				Ensure that the file extension exists in the screen under "Auros
+				Admin->Basic Auros Configuration->Allowed Attachment File Types".
+				Pass "media" for Multimedia listed in Audio, Video, Image sections
+				as in the above config page.
+				Pass "doc" for Support Docs listed in Other Binary as in the above
+				config page.
+\snippet TestAbstractE2KSAppManager.java uploadAttachmentCases
+			</documentation>
+			<input message="tns:uploadAttachmentRequest" name="uploadAttachmentRequest" />
+			<output message="tns:uploadAttachmentResponse" name="uploadAttachmentResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+
+		<operation name="deleteAttachment">
+			<documentation>
+				deleteAttachment deletes attachment with associated Identifier.
+\snippet TestAbstractE2KSAppManager.java deleteAttachmentCases
+			</documentation>
+			<input message="tns:deleteAttachmentRequest" name="deleteAttachmentRequest" />
+			<output message="tns:deleteAttachmentResponse" name="deleteAttachmentResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveKPacEEAttributesForCoPs">
+			<documentation>
+				Deprecated. Use retrieveKPacEEAttributeListsForCoPs instead
+			</documentation>
+			<input message="tns:retrieveKPacEEAttributesForCoPsRequest"
+				name="retrieveKPacEEAttributesForCoPsRequest" />
+			<output message="tns:retrieveKPacEEAttributesForCoPsResponse"
+				name="retrieveKPacEEAttributesForCoPsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="retrieveKPacEEAttributeListsForCoPs">
+			<documentation>
+				retrieveKPacEEAttributeListsForCoPs returns the list of E2ksAttribute for each CoP in the input list.
+\snippet TestAbstractCoPsManager.java retrieveKPacEEAttributeListsForCoPsCases
+			</documentation>
+			<input message="tns:retrieveKPacEEAttributeListsForCoPsRequest"
+				name="retrieveKPacEEAttributeListsForCoPsRequest" />
+			<output message="tns:retrieveKPacEEAttributeListsForCoPsResponse"
+				name="retrieveKPacEEAttributeListsForCoPsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="resolveAccess">
+			<documentation>
+				resolveAccess returns a list of access resolutions for a list of Auros resources
+				specified as auros ids and an action on them.
+				resolutions are integers: 1 - allowed, 2 - denied, 3 - does not exist.
+				This method currently checks Access restrictions for the following
+				(Values in double quotes are action values).
+				1) K-PACS
+				a) Create K-PAC - "createKpac"
+				b) View K-PAC - "viewKpac"
+				c) Delete K-PAC Attachment - "deleteKpacAttachment"
+				2) CoPs
+				a) Access CoP - "copAccess"
+				b) Modify CoP - "copModify"
+				c) Delete CoP - "copDelete"
+				3) ACs
+				a) View AC - "acView"
+				b) Create AC - "acCreate"
+				c) Edit AC MetaData - "editACMetaData"
+				d) Edit AC LineItem - "editACLineItem"
+				e) Edit AC Attributes - "editACAttributes"
+				f) Delete AC LineItem Attachment - "deleteACLineItemAttachment"
+				g) Delete AC - "acDelete"
+				4) Issues
+				a) Raise Issue - "raiseIssue"
+				b) Modify Issue - "modifyIssue"
+				c) Delete Issue Attachment - "deleteIssueAttachment"
+				5) Set
+				a) Delete Set Attachment - "DeleteSetAttachment"
+\snippet TestAbstractE2KSAppManager.java resolveAccessCases
+			</documentation>
+
+			<input message="tns:resolveAccessRequest" name="resolveAccessRequest" />
+			<output message="tns:resolveAccessResponse" name="resolveAccessResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getSubProjectsOfCoP">
+			<documentation>
+				getSubProjectsOfCoP returns a list of Sub Projects of a CoP.
+\snippet TestAbstractCoPsManager.java getSubProjectsOfCoPCases
+			</documentation>
+
+			<input message="tns:getSubProjectsOfCoPRequest" name="getSubProjectsOfCoPRequest" />
+			<output message="tns:getSubProjectsOfCoPResponse" name="getSubProjectsOfCoPResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="addNewUser">
+			<documentation>
+				addNewUser creates User with the details provided and return AurosMessage with
+				appropriate message(s).
+\snippet TestAbstractE2KSAppManager.java addNewUserCases
+			</documentation>
+
+			<input message="tns:addNewUserRequest" name="addNewUserRequest" />
+			<output message="tns:addNewUserResponse" name="addNewUserResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="authenticateUser">
+			<documentation>
+				authenticateUserRequest authenticate User with the details provided and return AurosMessage
+				with appropriate message(s).
+			</documentation>
+
+			<input message="tns:authenticateUserRequest" name="authenticateUserRequest" />
+			<output message="tns:authenticateUserResponse" name="authenticateUserResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+		
+		<operation name="getCurrentTime">
+            <documentation>
+                getCurrentTime return how many milliseconds have passed since January 1, 1970, 00:00:00 
+            </documentation>
+
+            <input message="tns:getCurrentTimeRequest" name="getCurrentTimeRequest" />
+            <output message="tns:getCurrentTimeResponse" name="getCurrentTimeResponse" />
+            <fault name="e2ksFault" message="tns:E2KSFault" />
+        </operation>
+
+		<operation name="updateKpacVTCell">
+			<documentation>
+				updateKpacVTCell update K-PAC Value Tables with the details provided and return
+				AurosMessage with appropriate message(s).
+			</documentation>
+
+			<input message="tns:updateKpacVTCellRequest" name="updateKpacVTCellRequest" />
+			<output message="tns:updateKpacVTCellResponse" name="updateKpacVTCellResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="deleteUser">
+			<documentation>
+				deleteUser deletes User with the details provided and return AurosMessage with
+				appropriate message(s).
+\snippet TestAbstractE2KSAppManager.java deleteUserCases
+			</documentation>
+
+			<input message="tns:deleteUserRequest" name="deleteUserRequest" />
+			<output message="tns:deleteUserResponse" name="deleteUserResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="addCoPAccessException">
+			<documentation>
+				addCoPAccessException adds a CoP Access Rule Exception for the CoP specified. The
+				policyType can be either "Accept" or "Deny" for the flag and value
+				pair specified.
+\snippet TestAbstractE2KSAppManager.java addCoPAccessExceptionCases
+			</documentation>
+
+			<input message="tns:addCoPAccessExceptionRequest" name="addCoPAccessExceptionRequest" />
+			<output message="tns:addCoPAccessExceptionResponse" name="addCoPAccessExceptionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="deleteCoPAccessException">
+			<documentation>
+				deleteCoPAccessException deletes CoP Access Rule Exception for the CoP specified. The
+				policyType can be either "Accept" or "Deny" for the flag and value
+				pair specified.
+\snippet TestAbstractE2KSAppManager.java deleteCoPAccessExceptionCases
+			</documentation>
+
+			<input message="tns:deleteCoPAccessExceptionRequest" name="deleteCoPAccessExceptionRequest" />
+			<output message="tns:deleteCoPAccessExceptionResponse" name="deleteCoPAccessExceptionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="addIssueACLException">
+			<documentation>
+				addIssueACLException adds Issue ACL Exception Rule for the issueType, projectName,
+				aclType combination specified. The policyType can be either "Accept"
+				or "Deny" for the flag and value pair specified.
+\snippet TestAbstractE2KSAppManager.java addIssueACLExceptionCases
+			</documentation>
+
+			<input message="tns:addIssueACLExceptionRequest" name="addIssueACLExceptionRequest" />
+			<output message="tns:addIssueACLExceptionResponse" name="addIssueACLExceptionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="deleteIssueACLException">
+			<documentation>
+				deleteIssueACLException deletes Issue ACL Exception Rule for the issueType, projectName,
+				aclType combination specified. The policyType can be either "Accept"
+				or "Deny" for the flag and value pair specified.
+\snippet TestAbstractE2KSAppManager.java deleteIssueACLExceptionCases
+			</documentation>
+
+			<input message="tns:deleteIssueACLExceptionRequest" name="deleteIssueACLExceptionRequest" />
+			<output message="tns:deleteIssueACLExceptionResponse" name="deleteIssueACLExceptionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="addAssessmentACLException">
+			<documentation>
+				addAssessmentACLException adds Assessment ACL Exception Rule for assessments in copID,
+				projectName combination specified. The policyType can be either
+				"Accept" or "Deny" for the flag and value pair specified.
+\snippet TestAbstractE2KSAppManager.java addAssessmentACLExceptionCases
+			</documentation>
+
+			<input message="tns:addAssessmentACLExceptionRequest" name="addAssessmentACLExceptionRequest" />
+			<output message="tns:addAssessmentACLExceptionResponse" name="addAssessmentACLExceptionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="deleteAssessmentACLException">
+			<documentation>
+				deleteAssessmentACLException deletes Assessment ACL Exception Rule for assessments in copID,
+				projectName combination specified. The policyType can be either
+				"Accept" or "Deny" for the flag and value pair specified.
+\snippet TestAbstractE2KSAppManager.java deleteAssessmentACLExceptionCases
+			</documentation>
+
+			<input message="tns:deleteAssessmentACLExceptionRequest" name="deleteAssessmentACLExceptionRequest" />
+			<output message="tns:deleteAssessmentACLExceptionResponse"
+				name="deleteAssessmentACLExceptionResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getChapterEEs">
+			<documentation>
+				getChapterEEs gets the Extended Elements chapter wise for a given CoPID.
+\snippet TestAbstractE2KSAppManager.java getChapterEEsCases
+			</documentation>
+
+			<input message="tns:getChapterEEsRequest" name="getChapterEEsRequest" />
+			<output message="tns:getChapterEEsResponse" name="getChapterEEsResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+
+		<operation name="getAllAlertTypes">
+			<documentation>
+				getAllAlertTypes Alert types of CoPID.
+\snippet TestAbstractE2KSAppManager.java getAllAlertTypesCases
+			</documentation>
+
+			<input message="tns:getAllAlertTypesRequest" name="getAllAlertTypesRequest" />
+			<output message="tns:getAllAlertTypesResponse" name="getAllAlertTypesResponse" />
+			<fault name="e2ksFault" message="tns:E2KSFault" />
+		</operation>
+		
+	</portType>
+	<binding name="E2KSBaseBinding" type="tns:E2KSBasePortType">
+
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+
+
+
+
+
+		<operation name="getE2KSInstallationInfo">
+			<soap:operation soapAction="" />
+			<input name="getE2KSInstallationInfoRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getE2KSInstallationInfoResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="retrieveUserOptionsFile">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="retrieveUserOptionsFileFault">
+				<soap:fault name="retrieveUserOptionsFileFault" use="literal" />
+			</fault>
+		</operation>
+		<operation name="getAllCoPs">
+			<soap:operation soapAction="" />
+			<input name="getAllCoPsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getAllCoPsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="getKPacDescriptionsForCoP">
+			<soap:operation soapAction="" />
+			<input name="getKPacDescriptionsForCoPRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getKPacDescriptionsForCoPResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="getCoP">
+			<soap:operation soapAction="" />
+			<input name="getCoPRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getCoPResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="getMilestonesOfCoP">
+			<soap:operation soapAction="" />
+			<input name="getMilestonesOfCoPRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getMilestonesOfCoPResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="getKPac">
+			<soap:operation soapAction="" />
+			<input name="getKPacRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getKPacResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getSet">
+			<soap:operation soapAction="" />
+			<input name="getSetRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getSetResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+
+		<operation name="getAllAtomicUnits">
+			<xsd:annotation>
+				<xsd:documentation>
+					Retrieves all units stored which are stored in Auros.
+				</xsd:documentation>
+			</xsd:annotation>
+			<soap:operation soapAction="" />
+			<input name="getAllAtomicUnitsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getAllAtomicUnitsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<!-- to be changed - getInstalledUnits() is more appropriate -->
+		<operation name="getAllUnits">
+			<xsd:annotation>
+				<xsd:documentation>Retrieves all units stored which are stored in
+					Auros. They are atomic and compounded and help enumerate on a
+					client.</xsd:documentation>
+			</xsd:annotation>
+			<soap:operation soapAction="" />
+			<input name="getAllUnitsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getAllUnitsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getDimensionsForUnits">
+			<xsd:annotation>
+				<xsd:documentation>Retrieves dimensions for the units supplied
+				</xsd:documentation>
+			</xsd:annotation>
+			<soap:operation soapAction="" />
+			<input name="getDimensionsForUnitsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getDimensionsForUnitsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+
+		<operation name="validateDimensionsForUnits">
+
+			<soap:operation soapAction="" />
+			<input name="validateDimensionsForUnitsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="validateDimensionsForUnitsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="validateDimensions">
+
+			<soap:operation soapAction="" />
+			<input name="validateDimensionsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="validateDimensionsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+
+		<operation name="evaluateExpression">
+
+			<soap:operation soapAction="" />
+			<input name="evaluateExpressionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="evaluateExpressionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="evaluateExpressionsWithInstances">
+			<soap:operation soapAction="" />
+			<input name="evaluateExpressionsWithInstancesRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="evaluateExpressionsWithInstancesResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="runRuleProcessor">
+
+			<soap:operation soapAction="" />
+			<input name="runRuleProcessorRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="runRuleProcessorResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="runRuleProcessorOnKPacList">
+			<xsd:documentation>runRuleProcessorOnKPacList accepts a list K-Pacs
+				as KPac objects.</xsd:documentation>
+
+			<soap:operation soapAction="" />
+			<input name="runRuleProcessorOnKPacListRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="runRuleProcessorOnKPacListResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+		
+		<operation name="runRuleProcessorOnParameter">
+
+            <soap:operation soapAction="" />
+            <input name="runRuleProcessorOnParameterRequest">
+                <soap:body use="literal" />
+            </input>
+            <output name="runRuleProcessorOnParameterResponse">
+                <soap:body use="literal" />
+            </output>
+            <fault name="e2ksFault">
+                <soap:fault name="e2ksFault" use="literal" />
+            </fault>
+        </operation>
+
+		<operation name="getAllSetsInCoP">
+			<soap:operation soapAction="" />
+			<input name="getAllSetsInCoPRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getAllSetsInCoPResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="searchKPacsForCriteria">
+			<soap:operation soapAction="" />
+			<input name="searchKPacsForCriteriaRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="searchKPacsForCriteriaResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="countKPacsForCriteria">
+			<soap:operation soapAction="" />
+			<input name="countKPacsForCriteriaRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="countKPacsForCriteriaResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+
+		<operation name="getAllRelatedKPacsInCoP">
+			<soap:operation soapAction="" />
+			<input name="getAllRelatedKPacsInCoPRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getAllRelatedKPacsInCoPResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+
+		<operation name="getHeadersOfVersionChangedKPacs">
+			<soap:operation soapAction="" />
+			<input name="getHeadersOfVersionChangedKPacsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getHeadersOfVersionChangedKPacsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getHeadersOfChangedKPacs">
+			<soap:operation soapAction="" />
+			<input name="getHeadersOfChangedKPacsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getHeadersOfChangedKPacsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getListedKPacs">
+			<soap:operation soapAction="" />
+			<input name="getListedKPacsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getListedKPacsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="getParameterDependencyGraph">
+			<soap:operation soapAction="" />
+			<input name="getParameterDependencyGraphRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getParameterDependencyGraphResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="searchSetsForCriteria">
+			<soap:operation soapAction="" />
+			<input name="searchSetsForCriteriaRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="searchSetsForCriteriaResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="retrieveKPacEEAttributesAndValuesOfAllKPacs">
+			<soap:operation soapAction="" />
+			<input name="retrieveKPacEEAttributesAndValuesOfAllKPacsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveKPacEEAttributesAndValuesOfAllKPacsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="createKPac">
+			<soap:operation soapAction="" />
+			<input name="createKPacRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="createKPacResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="retrieveEEAttributeValuesOfAllSets">
+			<soap:operation soapAction="" />
+			<input name="retrieveEEAttributeValuesOfAllSetsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveEEAttributeValuesOfAllSetsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="retrieveAttachments">
+			<soap:operation soapAction="" />
+			<input name="retrieveAttachmentsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveAttachmentsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="retrieveAttachment">
+			<soap:operation soapAction="" />
+			<input name="retrieveAttachmentRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveAttachmentResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="retrieveAttachmentByChunks">
+			<soap:operation soapAction="" />
+			<input name="retrieveAttachmentByChunksRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveAttachmentByChunksResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="uploadAttachment">
+			<soap:operation soapAction="" />
+			<input name="uploadAttachmentRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="uploadAttachmentResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="deleteAttachment">
+			<soap:operation soapAction="" />
+			<input name="deleteAttachmentRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="deleteAttachmentResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="retrieveKPacEEAttributesForCoPs">
+			<soap:operation soapAction="" />
+			<input name="retrieveKPacEEAttributesForCoPsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveKPacEEAttributesForCoPsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="retrieveKPacEEAttributeListsForCoPs">
+			<soap:operation soapAction="" />
+			<input name="retrieveKPacEEAttributeListsForCoPsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="retrieveKPacEEAttributeListsForCoPsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="resolveAccess">
+			<soap:operation soapAction="" />
+			<input name="resolveAccessRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="resolveAccessResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getSubProjectsOfCoP">
+			<soap:operation soapAction="" />
+			<input name="getSubProjectsOfCoPRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getSubProjectsOfCoPResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="addNewUser">
+			<soap:operation soapAction="" />
+			<input name="addNewUserRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="addNewUserResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="authenticateUser">
+			<soap:operation soapAction="" />
+			<input name="authenticateUserRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="authenticateUserResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+		
+		<operation name="getCurrentTime">
+            <soap:operation soapAction="" />
+            <input name="getCurrentTimeRequest">
+                <soap:body use="literal" />
+            </input>
+            <output name="getCurrentTimeResponse">
+                <soap:body use="literal" />
+            </output>
+            <fault name="e2ksFault">
+                <soap:fault name="e2ksFault" use="literal" />
+            </fault>
+        </operation>
+
+		<operation name="updateKpacVTCell">
+			<soap:operation soapAction="" />
+			<input name="updateKpacVTCellRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="updateKpacVTCellResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="deleteUser">
+			<soap:operation soapAction="" />
+			<input name="deleteUserRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="deleteUserResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="addCoPAccessException">
+			<soap:operation soapAction="" />
+			<input name="addCoPAccessExceptionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="addCoPAccessExceptionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="deleteCoPAccessException">
+			<soap:operation soapAction="" />
+			<input name="deleteCoPAccessExceptionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="deleteCoPAccessExceptionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="addIssueACLException">
+			<soap:operation soapAction="" />
+			<input name="addIssueACLExceptionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="addIssueACLExceptionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="deleteIssueACLException">
+			<soap:operation soapAction="" />
+			<input name="deleteIssueACLExceptionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="deleteIssueACLExceptionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="addAssessmentACLException">
+			<soap:operation soapAction="" />
+			<input name="addAssessmentACLExceptionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="addAssessmentACLExceptionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="deleteAssessmentACLException">
+			<soap:operation soapAction="" />
+			<input name="deleteAssessmentACLExceptionRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="deleteAssessmentACLExceptionResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getChapterEEs">
+			<soap:operation soapAction="" />
+			<input name="getChapterEEsRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getChapterEEsResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="getAllAlertTypes">
+			<soap:operation soapAction="" />
+			<input name="getAllAlertTypesRequest">
+				<soap:body use="literal" />
+			</input>
+			<output name="getAllAlertTypesResponse">
+				<soap:body use="literal" />
+			</output>
+			<fault name="e2ksFault">
+				<soap:fault name="e2ksFault" use="literal" />
+			</fault>
+		</operation>
+	</binding>
+	<service name="E2KSBaseService">
+		<port name="E2KSBasePort" binding="tns:E2KSBaseBinding">
+			<soap:address location="http://173.14.32.17:8080/auros-trunk/e2ksbase?wsdl" />
+			<!--soap:address location="https://localhost:8443/e2ks_services/e2ksbase" 
+				/ -->
+
+		</port>
+	</service>
+</definitions>

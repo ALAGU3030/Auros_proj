@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="com/auros/connector/user.txt" kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="excel_jars/poi-3.11-20141221.jar" sourcepath="C:/Users/fnaurot1/AppData/Local/Temp/.org.sf.feeling.decompiler1583220919035/source/poi-3.11-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="excel_jars/poi-ooxml-3.11-20141221.jar"/>
+	<classpathentry exported="true" kind="lib" path="excel_jars/poi-ooxml-schemas-3.11-20141221.jar"/>
+	<classpathentry exported="true" kind="lib" path="excel_jars/xmlbeans-2.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="other_jars/jsoup-1.10.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="other_jars/jansi-1.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="other_jars/jline-3.0.0.M1.jar"/>
+	<classpathentry exported="true" kind="lib" path="other_jars/log4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.activation-1.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.activation-api-1.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.annotation-api-1.3.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.jws-api-2.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.ws.rs-api-2.1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.xml.bind-api-2.3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.xml.soap-api-1.4.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jakarta.xml.ws-api-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxb-api-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxb-impl-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxb-jxc-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxb-runtime-2.3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxb-xjc-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxrpc-api-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxws-api-2.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxws-rt-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/jaxws-tools-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/streambuffer-1.5.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/ws-assessment-interface-types-IQ10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/ws-assessment-services-IQ10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/ws-aurosbase-interface-types-IQ10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/ws-aurosbase-services-IQ10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/ws-issues-interface-types-IQ10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/ws-issues-services-IQ10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/policy-2.7.10.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/stax2-api-4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/stax-ex-1.8.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/saaj-impl-1.5.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/gmbal-4.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/gmbal-api-only-3.1.0-b001.jar"/>
+	<classpathentry exported="true" kind="lib" path="auros_iq10_jars/mimepull-1.9.13.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
